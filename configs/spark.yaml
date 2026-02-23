@@ -1,0 +1,3 @@
+﻿spark:
+  master: local[*]
+  app_name: credit-risk

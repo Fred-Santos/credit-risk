@@ -1,0 +1,11 @@
+﻿repo_root: .
+data:
+  raw: data/raw
+  bronze: data/bronze
+  silver: data/silver
+  gold: data/gold
+docs:
+  data_dictionary: docs/data_dictionary/tables
+  data_quality: docs/data_quality
+  lineage: docs/lineage
+  observability: docs/observability

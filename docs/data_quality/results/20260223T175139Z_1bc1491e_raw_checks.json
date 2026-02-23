@@ -1,0 +1,423 @@
+{
+  "run_id": "20260223T175139Z_1bc1491e",
+  "started_at_utc": "2026-02-23T17:51:39.648307+00:00",
+  "failed_checks": 0,
+  "results": [
+    {
+      "table": "parquet_files/train/train_applprev_1_0.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_applprev_1_0.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_applprev_1_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_applprev_1_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_applprev_2.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_applprev_2.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_base.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_base.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_0.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_0.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_2.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_2.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_3.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_1_3.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_0.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_0.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_10.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_10.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_2.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_2.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_3.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_3.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_4.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_4.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_5.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_5.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_6.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_6.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_7.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_7.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_8.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_8.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_9.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_a_2_9.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_b_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_b_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_b_2.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_credit_bureau_b_2.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_debitcard_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_debitcard_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_deposit_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_deposit_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_other_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_other_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_person_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_person_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_person_2.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_person_2.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_static_0_0.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_static_0_0.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_static_0_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_static_0_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_static_cb_0.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_static_cb_0.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_a_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_a_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_b_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_b_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_c_1.parquet",
+      "check": "non_empty",
+      "severity": "fail",
+      "success": true
+    },
+    {
+      "table": "parquet_files/train/train_tax_registry_c_1.parquet",
+      "check": "require_columns",
+      "severity": "fail",
+      "success": true,
+      "missing_columns": []
+    }
+  ]
+}

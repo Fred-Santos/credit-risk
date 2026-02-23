@@ -1,0 +1,21 @@
+﻿# Data (nÃ£o versionar)
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+
+# Spark
+**/spark-warehouse/
+**/*.crc
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs e outputs
+logs/

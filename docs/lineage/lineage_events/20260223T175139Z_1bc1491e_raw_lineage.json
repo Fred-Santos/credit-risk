@@ -1,0 +1,265 @@
+{
+  "eventType": "COMPLETE",
+  "eventTime": "2026-02-23T18:34:46.502650+00:00",
+  "run": {
+    "runId": "20260223T175139Z_1bc1491e",
+    "startedAt": "2026-02-23T17:51:39.648307+00:00",
+    "facets": {
+      "git": {},
+      "runtime": {
+        "python": null,
+        "platform": "nt"
+      }
+    }
+  },
+  "job": {
+    "namespace": "local",
+    "name": "raw_mvp",
+    "facets": {
+      "documentation": {
+        "description": "Ingest\u00e3o e governan\u00e7a RAW (download/unzip/limpeza + profiling/quality/metrics/lineage).",
+        "contentType": "text/plain"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "namespace": "kaggle",
+      "name": "home-credit-credit-risk-model-stability",
+      "facets": {
+        "documentation": {
+          "description": "Fonte: Kaggle competition dataset (download via kaggle CLI/API).",
+          "contentType": "text/plain"
+        }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "file",
+      "name": "C:/Users/fred/Documents/Estudo de dados/Projeto/credit-risk/data/raw",
+      "facets": {
+        "dataQuality": {
+          "note": "Qualidade detalhada registrada separadamente em docs/data_quality/results/."
+        },
+        "storage": {
+          "format": "mixed (parquet/csv)",
+          "path": "C:/Users/fred/Documents/Estudo de dados/Projeto/credit-risk/data/raw"
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "raw_files": {
+      "count": 34,
+      "checksum_included": true,
+      "checksum_max_files": 200,
+      "files": [
+        {
+          "path": "data/raw/feature_definitions.csv",
+          "bytes": 34047,
+          "mtime_utc": "2026-02-22T18:51:31.568657+00:00",
+          "sha256": "628f1f75ae2842de0dbd6559e31855e0edff87da16d382d55725d6a2afba6dd4"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_applprev_1_0.parquet",
+          "bytes": 106951598,
+          "mtime_utc": "2026-02-22T18:51:32.383382+00:00",
+          "sha256": "0301380ee0092b0d3215329896b850e6321ff1fc73ff889c07778c7034472dee"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_applprev_1_1.parquet",
+          "bytes": 72860971,
+          "mtime_utc": "2026-02-22T18:51:32.890602+00:00",
+          "sha256": "cae63fdb5d8de8ba0c61eca8a9f15be4d15d24e320bf3ad8bc1c78f877d1a5d2"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_applprev_2.parquet",
+          "bytes": 28484608,
+          "mtime_utc": "2026-02-22T18:51:33.101022+00:00",
+          "sha256": "153dbbd225a9b3846666fb78f75a1191ba322b9ac93994b8e4b3fe92cfd15246"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_base.parquet",
+          "bytes": 7048047,
+          "mtime_utc": "2026-02-22T18:51:33.121623+00:00",
+          "sha256": "29d94662545eece908f20e44e6592336c9c40916dcfdad7735de92b8e9edf908"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_1_0.parquet",
+          "bytes": 64863053,
+          "mtime_utc": "2026-02-22T18:51:33.593698+00:00",
+          "sha256": "b8e29ea89da103ce50a86d3fadd24bcc9e1523b3f3d7a1fe9dedde172fee1b00"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_1_1.parquet",
+          "bytes": 183293106,
+          "mtime_utc": "2026-02-22T18:51:35.255181+00:00",
+          "sha256": "5f3c4b28e09685fbcf23e0baaac1523af96734934ab6723e5c8e8afbd7764aaf"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_1_2.parquet",
+          "bytes": 123506425,
+          "mtime_utc": "2026-02-22T18:51:37.711730+00:00",
+          "sha256": "931908b33e0c3d675f88b7ad6e134f38ffd8b838e0d906b1284f795576d545fc"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_1_3.parquet",
+          "bytes": 71774171,
+          "mtime_utc": "2026-02-22T18:51:39.216233+00:00",
+          "sha256": "b9d4f5803ecb24311fd0f2a9372629ea05262f6429070e3239be6240761a310b"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_0.parquet",
+          "bytes": 5786632,
+          "mtime_utc": "2026-02-22T18:51:39.346085+00:00",
+          "sha256": "053c2269990eabd6fe26a888409e9f6334109b4a933591bde0ad09801beb715f"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_1.parquet",
+          "bytes": 10006927,
+          "mtime_utc": "2026-02-22T18:51:39.600861+00:00",
+          "sha256": "18f30c8bb9f781488f4a871fe0b6ccee82f1e79fad665fc4850708be855ec6db"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_10.parquet",
+          "bytes": 7646586,
+          "mtime_utc": "2026-02-22T18:51:39.834870+00:00",
+          "sha256": "4913d6516000587f15addbbb8f80a6fdcc41a2c17a3ba14c731ede392f608323"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_2.parquet",
+          "bytes": 30669743,
+          "mtime_utc": "2026-02-22T18:51:40.271831+00:00",
+          "sha256": "c36e8952d3ffedef387e0a2f6cac233aab6121cea322820a8fb6df1083598696"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_3.parquet",
+          "bytes": 47836939,
+          "mtime_utc": "2026-02-22T18:51:40.714567+00:00",
+          "sha256": "55de63492b08a48016f86f58a2d3418deb3685c35a1eae041661566ca988d1e9"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_4.parquet",
+          "bytes": 49233367,
+          "mtime_utc": "2026-02-22T18:51:41.144604+00:00",
+          "sha256": "6262695f7ae7631936611a889eefee80f355f8bd867dde93e22b94816bb7db50"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_5.parquet",
+          "bytes": 60984109,
+          "mtime_utc": "2026-02-22T18:51:42.200977+00:00",
+          "sha256": "92e20fe1e772353c2cc1fca5b934fe3066d729bc774702f8be79527f08324fe8"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_6.parquet",
+          "bytes": 45183113,
+          "mtime_utc": "2026-02-22T18:51:43.100053+00:00",
+          "sha256": "720fc7c9bc407d498f22cc6de83b38887058874333c4273b373672e0caec9a53"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_7.parquet",
+          "bytes": 14137608,
+          "mtime_utc": "2026-02-22T18:51:43.274096+00:00",
+          "sha256": "80779c277c1d336f935a27052a3fefbdb43170dd7ba590abf5d88c9f28b5bc56"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_8.parquet",
+          "bytes": 23832969,
+          "mtime_utc": "2026-02-22T18:51:43.514754+00:00",
+          "sha256": "f639dc8b7c896e6c972b3e7fbc84a2eb06aceb44f672cbaeb8c734e770b68be1"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_a_2_9.parquet",
+          "bytes": 32090419,
+          "mtime_utc": "2026-02-22T18:51:43.900778+00:00",
+          "sha256": "882177fa0b1cb55000980d849e924d79a7232f46f2e93ad7af5cc1215cfffac4"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_b_1.parquet",
+          "bytes": 4506882,
+          "mtime_utc": "2026-02-22T18:51:43.948725+00:00",
+          "sha256": "a4842614f688e939486a303e0bbd305ab3ffe952b2efacc7a8898f98d95128ff"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_credit_bureau_b_2.parquet",
+          "bytes": 2067641,
+          "mtime_utc": "2026-02-22T18:51:43.967955+00:00",
+          "sha256": "9cd22472c28a2714e2ba4ba001ff0cb0ea6b78462e9ab42d32b8959941c0083f"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_debitcard_1.parquet",
+          "bytes": 1188384,
+          "mtime_utc": "2026-02-22T18:51:43.974185+00:00",
+          "sha256": "4f1d81bd55075dff22780fe6f453dd7f2f91087f58dd1651d427f9d89ce15dbf"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_deposit_1.parquet",
+          "bytes": 1598148,
+          "mtime_utc": "2026-02-22T18:51:44.006371+00:00",
+          "sha256": "845fa0b14c3614b4f4c37891ede924414b035e5d6c04a2a6d50a5976dcdd6996"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_other_1.parquet",
+          "bytes": 805374,
+          "mtime_utc": "2026-02-22T18:51:44.018968+00:00",
+          "sha256": "a84aaf075bc3dd115c114bd80ed6d37f824adba0ce5829c7fb1cdd22c77af21e"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_person_1.parquet",
+          "bytes": 43892239,
+          "mtime_utc": "2026-02-22T18:51:44.500659+00:00",
+          "sha256": "81fcdb5596d8f7474a8a57a5bfa7184b5d179330d3479bd83f17a9b5a59748de"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_person_2.parquet",
+          "bytes": 7559249,
+          "mtime_utc": "2026-02-22T18:51:44.555869+00:00",
+          "sha256": "c295eb898df66fde0a629c4461b9cd6bd2468b80e78706d60f7700bc894eb032"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_static_0_0.parquet",
+          "bytes": 113858592,
+          "mtime_utc": "2026-02-22T18:51:45.876579+00:00",
+          "sha256": "c993192e68853259183babe05870b173b2695799c9ea56a7824ee6cf6b083366"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_static_0_1.parquet",
+          "bytes": 74691173,
+          "mtime_utc": "2026-02-22T18:51:47.152996+00:00",
+          "sha256": "78adb27582754d3c986b692dbe6ca03ef43806d5265e65d9f460eef8554d3d2d"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_static_cb_0.parquet",
+          "bytes": 30654579,
+          "mtime_utc": "2026-02-22T18:51:47.456920+00:00",
+          "sha256": "08a460c7c10b9ebc80597f2c7be636ba15ba68c482f138f7d2a0ebdb592b74e0"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_tax_registry_a_1.parquet",
+          "bytes": 21687764,
+          "mtime_utc": "2026-02-22T18:51:47.602774+00:00",
+          "sha256": "50ff790d9daec8dc48b94c18af361de3b3298bbb354b36dbfea33e04af367531"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_tax_registry_b_1.parquet",
+          "bytes": 9915038,
+          "mtime_utc": "2026-02-22T18:51:47.672371+00:00",
+          "sha256": "a1f1de27b00da19ee690ce86b85008d9b97dbd89c9e8a60afc2a6fb710df1e93"
+        },
+        {
+          "path": "data/raw/parquet_files/train/train_tax_registry_c_1.parquet",
+          "bytes": 29825347,
+          "mtime_utc": "2026-02-22T18:51:47.941017+00:00",
+          "sha256": "59786491e9cc79058d7fdffb17ac59e77422641d8b575c61801070f047ded77d"
+        },
+        {
+          "path": "data/raw/sample_submission.csv",
+          "bytes": 114,
+          "mtime_utc": "2026-02-22T18:51:47.942006+00:00",
+          "sha256": "87244a614d1972a5f3deb195ba6ab6f4a0eb9db6d7d08ff553959ba1b06a95b9"
+        }
+      ]
+    }
+  }
+}

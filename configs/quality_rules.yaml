@@ -1,0 +1,18 @@
+﻿version: 1
+defaults:
+  action_on_fail: fail   # fail | warn
+tables:
+  - pattern: "parquet_files/train/*.parquet"
+    checks:
+      - type: "non_empty"
+        severity: "fail"
+      - type: "require_columns"
+        severity: "fail"
+        columns: ["case_id"]
+  - pattern: "parquet_files/test/*.parquet"
+    checks:
+      - type: "non_empty"
+        severity: "warn"
+      - type: "require_columns"
+        severity: "warn"
+        columns: ["case_id"]
