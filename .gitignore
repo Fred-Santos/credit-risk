@@ -1,21 +1,84 @@
-﻿# Data (nÃ£o versionar)
+# ==========================
+# Data (não versionar)
+# ==========================
 data/raw/
 data/bronze/
 data/silver/
 data/gold/
 
+# ==========================
 # Spark
+# ==========================
 **/spark-warehouse/
 **/*.crc
 
+# ==========================
 # Python
+# ==========================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
 .venv/
 .env
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
+# ==========================
+# Build / Distribution
+# ==========================
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+MANIFEST
+
+# ==========================
 # Jupyter
+# ==========================
 .ipynb_checkpoints/
 
-# Logs e outputs
+# ==========================
+# Logs
+# ==========================
 logs/
+*.log
+
+# ==========================
+# Coverage / Testing
+# ==========================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
+.hypothesis/
+
+# ==========================
+# Type checkers / linters
+# ==========================
+.mypy_cache/
+.pyre/
+.ruff_cache/
+
+# ==========================
+# IDEs
+# ==========================
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
