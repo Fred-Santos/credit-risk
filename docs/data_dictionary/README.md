@@ -1,6 +1,8 @@
-# Data Dictionary (raw)
+# Data Dictionary - RAW Layer
+**Run ID**: `20260225T134256-abcd1234`  
+**Gerado**: `2026-02-25T13:42:56Z`
 
-- Run ID: 20260223T175139Z_1bc1491e
+## 📊 Sumário por Tabela
 
 
 - `feature_definitions.csv` → [feature_definitions.md](tables/feature_definitions.md)
@@ -37,3 +39,4 @@
 - `parquet_files/train/train_tax_registry_b_1.parquet` → [parquet_files__train__train_tax_registry_b_1.md](tables/parquet_files__train__train_tax_registry_b_1.md)
 - `parquet_files/train/train_tax_registry_c_1.parquet` → [parquet_files__train__train_tax_registry_c_1.md](tables/parquet_files__train__train_tax_registry_c_1.md)
 - `sample_submission.csv` → [sample_submission.md](tables/sample_submission.md)
+> **💡 Dica**: Clique nas tabelas para ver schema detalhado (%null, dtypes, exemplos)
