@@ -18,8 +18,11 @@ text
 
 ## 🔍 O que rastreia
 ✅ Input: kaggle/home-credit-credit-risk-model-stability
+
 ✅ Output: data/raw/ (X arquivos, Y GB)
+
 ✅ Git commit: abc1234
+
 ✅ Hashes: arquivo.parquet → a1b2c3d4...
 ✅ Timestamps UTC
 
