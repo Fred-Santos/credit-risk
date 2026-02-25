@@ -49,7 +49,7 @@ python run_raw_mvp.py              # Gerar docs
 # Ver resultados
 ls docs/raw/
 cat docs/raw/datadictionary/README.md
-```bash
+```
 📋 O que o RAW já faz
 Profiling: Schema, %null, unique values
 
