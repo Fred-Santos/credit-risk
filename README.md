@@ -50,7 +50,7 @@ python run_raw_mvp.py              # Gerar docs
 ls docs/raw/
 cat docs/raw/datadictionary/README.md
 ```
-📋 O que o RAW já faz
+## *📋 O que o RAW já faz*
 Profiling: Schema, %null, unique values
 
 Quality: Gates automáticos (YAML configurable)
@@ -61,15 +61,16 @@ Lineage: Hashes SHA256 + git commit
 
 Inventory: Catálogo datasets + feature definitions
 
-🛣️ Roadmap
-text
+## *🛣️ Roadmap*
+
 1. RAW ✅           (Governança completa)
 2. Silver ⏳        (Joins + limpeza)
 3. Gold ⏳          (ABT + features finais)  
 4. Análise ⏳       (Público-alvo + EDA)
 5. Modelagem ⏳     (Predição risco crédito)
 6. Produção ⏳      (Monitoramento)
-🤝 Contribuições
+
+## *🤝 Contribuições*
 
 ✅ Pull requests bem-vindos!
 
