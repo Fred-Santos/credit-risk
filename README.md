@@ -10,8 +10,6 @@ RAW → Silver → Gold → ABT → Análise Público → Modelo Final
 ↓
 [RAW concluído 👇]
 
-text
-
 ## 🏗️ **Etapas Planejadas**
 
 | Etapa | Status | Descrição |
@@ -34,8 +32,6 @@ docs/raw/ # Governança RAW
 │ └── governance/ # Inventário datasets
 src/ingest/ # Scripts
 └── run_raw_mvp.py # Orquestrador RAW
-
-text
 
 ## 🚀 **Teste Rápido (RAW Layer)**
 
@@ -73,10 +69,13 @@ text
 5. Modelagem ⏳     (Predição risco crédito)
 6. Produção ⏳      (Monitoramento)
 🤝 Contribuições
-text
+
 ✅ Pull requests bem-vindos!
+
 ✅ RAW funcionando 100%
+
 ✅ Issues para sugestões/bugs
+
 📄 Licença
 MIT
 
