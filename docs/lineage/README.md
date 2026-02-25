@@ -5,7 +5,6 @@ Kaggle Competition → download → unzip → cleanup → RAW/
 ↓
 [Este pipeline documenta 👇]
 
-text
 
 **Run ID**: `20260225T134256-abcd1234`
 
@@ -27,6 +26,6 @@ text
 
 ✅ Timestamps UTC
 
-text
+
 
 > **🎯 Reprodutibilidade total**: Saiba exatamente o que foi baixado/gerado
