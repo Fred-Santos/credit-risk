@@ -14,7 +14,6 @@ configs/quality_rules.yaml
 ↓
 Pattern matching → Aplica checks específicos
 
-text
 
 ## 📊 Results
 docs/dataquality/results/runid_rawchecks.json
@@ -24,3 +23,4 @@ docs/dataquality/results/runid_rawchecks.json
 }
 
 > **🚫 Pipeline falha** se `failed_checks > 0` + `action_on_fail=fail`
+
