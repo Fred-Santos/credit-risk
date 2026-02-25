@@ -24,6 +24,7 @@ text
 ✅ Git commit: abc1234
 
 ✅ Hashes: arquivo.parquet → a1b2c3d4...
+
 ✅ Timestamps UTC
 
 text
