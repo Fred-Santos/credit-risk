@@ -13,9 +13,8 @@
 
 ## 🚨 Alerts Automáticos
 🔴 FAIL: missing_files
-🟡 WARN: new_files, bytes_drop
 
-text
+🟡 WARN: new_files, bytes_drop
 
 ## 📊 Últimos Runs
 latest_rawmetrics.json ← Atualizado sempre
