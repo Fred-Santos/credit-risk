@@ -81,5 +81,6 @@ Inventory: Catálogo datasets + feature definitions
 📄 Licença
 MIT
 
-👨‍💻 Frederico Costa
-📅 Início: Fevereiro 2026
+
+## 👨‍💻 Frederico Costa
+## 📅 Início: Fevereiro 2026
