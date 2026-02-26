@@ -24,6 +24,7 @@ RAW → Bronze → Silver → Gold → ABT → Análise Público → Modelo Fina
 
 ## 📂 **Estrutura Atual**
 
+```text
 data/
 └── raw/                          # Dados brutos
 
@@ -38,6 +39,7 @@ docs/
 src/
 └── pipelines/
     └── run_raw_mvp.py            # Orquestrador RAW
+```
 
 
 ## 🚀 **Teste Rápido (RAW Layer)**
