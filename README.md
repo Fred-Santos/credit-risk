@@ -24,17 +24,21 @@ RAW → Bronze → Silver → Gold → ABT → Análise Público → Modelo Fina
 
 ## 📂 **Estrutura Atual**
 
-data/raw/ # Dados brutos
+data/
+└── raw/                          # Dados brutos
 
-docs/raw/ # Governança RAW
+docs/
+└── raw/                          # Governança RAW
+    ├── datadictionary/           # Schema + profiling
+    ├── dataquality/              # Quality gates
+    ├── observability/            # Metrics + alerts
+    ├── lineage/                  # Proveniência
+    └── governance/               # Inventário datasets
 
-│ ├── datadictionary/ # Schema + profiling
-│ ├── dataquality/ # Quality gates
-│ ├── observability/ # Metrics + alerts
-│ ├── lineage/ # Proveniência
-│ └── governance/ # Inventário datasets
-src/ingest/ # Scripts
-└── run_raw_mvp.py # Orquestrador RAW
+src/
+└── pipelines/
+    └── run_raw_mvp.py            # Orquestrador RAW
+
 
 ## 🚀 **Teste Rápido (RAW Layer)**
 
