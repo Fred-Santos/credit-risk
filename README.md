@@ -15,11 +15,12 @@ RAW → Silver → Gold → ABT → Análise Público → Modelo Final
 | Etapa | Status | Descrição |
 |-------|--------|-----------|
 | **1. RAW** | 🟢 **Concluído** | Ingestão + governança automática |
-| **2. Silver** | 🟡 **Planejado** | Integração + limpeza |
-| **3. Gold** | 🟡 **Planejado** | ABT (Analytical Base Table) |
-| **4. Análise** | 🟡 **Planejado** | Análise público-alvo |
-| **5. Modelagem** | 🟡 **Planejado** | Modelo preditivo risco crédito |
-| **6. Produção** | 🟡 **Planejado** | Monitoramento + retrain |
+| **2. Bronze** | 🟢 **Concluído** | Rastreabilidade + append-only|
+| **3. Silver** | 🟡 **Planejado** | Integração + limpeza |
+| **4. Gold** | 🟡 **Planejado** | ABT (Analytical Base Table) |
+| **5. Análise** | 🟡 **Planejado** | Análise público-alvo |
+| **6. Modelagem** | 🟡 **Planejado** | Modelo preditivo risco crédito |
+| **7. Produção** | 🟡 **Planejado** | Monitoramento + retrain |
 
 ## 📂 **Estrutura Atual**
 
