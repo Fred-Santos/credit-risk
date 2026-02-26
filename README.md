@@ -6,7 +6,7 @@
 ## 🎯 **Objetivo**
 Montar **end-to-end** pipeline desde ingestão até predição de risco de crédito usando dataset **Home Credit**.
 
-RAW → Silver → Gold → ABT → Análise Público → Modelo Final
+RAW → Bronze → Silver → Gold → ABT → Análise Público → Modelo Final
 ↓
 [RAW concluído 👇]
 
