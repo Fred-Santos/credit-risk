@@ -64,11 +64,12 @@ Inventory: Catálogo datasets + feature definitions
 ## *🛣️ Roadmap*
 
 1. RAW ✅           (Governança completa)
-2. Silver ⏳        (Joins + limpeza)
-3. Gold ⏳          (ABT + features finais)  
-4. Análise ⏳       (Público-alvo + EDA)
-5. Modelagem ⏳     (Predição risco crédito)
-6. Produção ⏳      (Monitoramento)
+2. Bronze ✅        (Parquet puro + run_id + ingest_date + append-only)
+3. Silver ⏳        (Joins + limpeza)
+4. Gold ⏳          (ABT + features finais)  
+5. Análise ⏳       (Público-alvo + EDA)
+6. Modelagem ⏳     (Predição risco crédito)
+7. Produção ⏳      (Monitoramento)
 
 ## *🤝 Contribuições*
 
