@@ -1,0 +1,11 @@
+defaults:
+  action_on_fail: warn
+
+tables:
+  - pattern: "*"
+    checks:
+      - type: nonempty
+        severity: warn
+
+  - pattern: "*/"
+    checks: []

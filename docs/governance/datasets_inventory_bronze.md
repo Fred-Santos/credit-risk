@@ -1,0 +1,38 @@
+# Datasets inventory BRONZE
+- Run ID: 20260226T010510Z_b4c8535c
+- Bronze dir: data/bronze
+
+| dataset | tipo | path |
+|---|---|---|
+| train_applprev_1_0 | parquet | train_applprev_1_0/part-00000-7bfadc89-a55d-47c4-b88d-2e48141fa6db-c000.snappy.parquet |
+| train_applprev_1_1 | parquet | train_applprev_1_1/part-00000-0167deed-13cd-4e1c-a532-cf7d1e0447b5-c000.snappy.parquet |
+| train_applprev_2 | parquet | train_applprev_2/part-00000-0f6eba77-e119-499a-91ee-88adfb22e1e9-c000.snappy.parquet |
+| train_base | parquet | train_base/part-00000-936f09c4-0fe8-4d6e-aa26-39467eb98fc2-c000.snappy.parquet |
+| train_credit_bureau_a_1_0 | parquet | train_credit_bureau_a_1_0/part-00000-95dfae4e-1bef-40a7-bcdc-b143f94e6b6c-c000.snappy.parquet |
+| train_credit_bureau_a_1_1 | parquet | train_credit_bureau_a_1_1/part-00000-f7601e62-ed7f-4c39-b2b6-b1deab80e616-c000.snappy.parquet |
+| train_credit_bureau_a_1_2 | parquet | train_credit_bureau_a_1_2/part-00000-ace2b1fc-bdb1-414f-9e5e-e8bdaed9423a-c000.snappy.parquet |
+| train_credit_bureau_a_1_3 | parquet | train_credit_bureau_a_1_3/part-00000-56e5ddb5-ed06-4a9f-9e64-d6e93dbf7413-c000.snappy.parquet |
+| train_credit_bureau_a_2_0 | parquet | train_credit_bureau_a_2_0/part-00000-1e4dbd2f-628f-4a4c-becf-d19336ca581e-c000.snappy.parquet |
+| train_credit_bureau_a_2_1 | parquet | train_credit_bureau_a_2_1/part-00000-8f474bff-e765-4dec-a427-a8fdafb570b1-c000.snappy.parquet |
+| train_credit_bureau_a_2_10 | parquet | train_credit_bureau_a_2_10/part-00000-f2c385f9-145c-4cde-92cf-8c41b503aa51-c000.snappy.parquet |
+| train_credit_bureau_a_2_2 | parquet | train_credit_bureau_a_2_2/part-00000-92d23ac7-1586-4e4b-8dad-78e033c2d435-c000.snappy.parquet |
+| train_credit_bureau_a_2_3 | parquet | train_credit_bureau_a_2_3/part-00000-1631a2f3-cf55-4860-8469-0860b4a6e9ac-c000.snappy.parquet |
+| train_credit_bureau_a_2_4 | parquet | train_credit_bureau_a_2_4/part-00000-9d036b0a-d372-4e97-8561-1dc20d9abe80-c000.snappy.parquet |
+| train_credit_bureau_a_2_5 | parquet | train_credit_bureau_a_2_5/part-00000-c023359a-2ced-4351-a3bc-e374985ef187-c000.snappy.parquet |
+| train_credit_bureau_a_2_6 | parquet | train_credit_bureau_a_2_6/part-00000-36938cf0-490a-450f-88a1-933c4061d98b-c000.snappy.parquet |
+| train_credit_bureau_a_2_7 | parquet | train_credit_bureau_a_2_7/part-00000-4b0a2b03-5e29-4371-80d0-3aba8723c78d-c000.snappy.parquet |
+| train_credit_bureau_a_2_8 | parquet | train_credit_bureau_a_2_8/part-00000-ce3b3675-8228-4322-be2b-8afebea6b712-c000.snappy.parquet |
+| train_credit_bureau_a_2_9 | parquet | train_credit_bureau_a_2_9/part-00000-8f4fd973-e457-4df8-815b-84b742760e24-c000.snappy.parquet |
+| train_credit_bureau_b_1 | parquet | train_credit_bureau_b_1/part-00000-11866957-e4aa-4c12-abac-7ca1b3a619f3-c000.snappy.parquet |
+| train_credit_bureau_b_2 | parquet | train_credit_bureau_b_2/part-00000-e6092745-0959-480b-905a-4825b753c357-c000.snappy.parquet |
+| train_debitcard_1 | parquet | train_debitcard_1/part-00000-7380464a-94d5-4ca3-8b1a-4b021081ef4f-c000.snappy.parquet |
+| train_deposit_1 | parquet | train_deposit_1/part-00000-00fe49a4-257b-42dc-a3c8-719d14bd65fb-c000.snappy.parquet |
+| train_other_1 | parquet | train_other_1/part-00000-094e7ce1-e5a0-432a-93d1-fd8b0cabfdd8-c000.snappy.parquet |
+| train_person_1 | parquet | train_person_1/part-00000-6f808d1e-355f-45b7-bef4-c470355213ec-c000.snappy.parquet |
+| train_person_2 | parquet | train_person_2/part-00000-b074ac2d-40dc-4e28-bedd-e5119ea51096-c000.snappy.parquet |
+| train_static_0_0 | parquet | train_static_0_0/part-00000-95050815-f25f-4a9c-ab21-ecd9459d710e-c000.snappy.parquet |
+| train_static_0_1 | parquet | train_static_0_1/part-00000-4974d855-c392-4ea3-aadb-979c53641e20-c000.snappy.parquet |
+| train_static_cb_0 | parquet | train_static_cb_0/part-00000-3f5aa762-c8d3-4e2c-9a3e-9d7994023049-c000.snappy.parquet |
+| train_tax_registry_a_1 | parquet | train_tax_registry_a_1/part-00000-4268e117-ffa7-4d84-9235-e58b3ce6f92e-c000.snappy.parquet |
+| train_tax_registry_b_1 | parquet | train_tax_registry_b_1/part-00000-2de5635c-b116-4cf6-a8f7-2539433db055-c000.snappy.parquet |
+| train_tax_registry_c_1 | parquet | train_tax_registry_c_1/part-00000-2c50de64-fd45-422f-9eeb-d60940796010-c000.snappy.parquet |

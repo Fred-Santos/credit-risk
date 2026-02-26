@@ -1,0 +1,41 @@
+{
+  "eventType": "COMPLETE",
+  "eventTime": "2026-02-25T22:56:54.837875+00:00",
+  "run": {
+    "runId": "20260225T225630Z_ef876dde",
+    "startedAt": "2026-02-25T22:56:30.136344+00:00"
+  },
+  "facets": {
+    "git": {
+      "commit": "dce7491d90d8fcf17f960cdae318e3bf2c526218"
+    },
+    "runtime": {
+      "python": "3.9.12",
+      "platform": "nt"
+    }
+  },
+  "job": {
+    "namespace": "local",
+    "name": "bronze_mvp"
+  },
+  "inputs": [
+    {
+      "namespace": "file",
+      "name": "data/raw/parquet_files/train"
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "file",
+      "name": "data/bronze"
+    }
+  ],
+  "artifacts": {
+    "bronzeFiles": {
+      "count": 0,
+      "checksumsIncluded": true,
+      "checksumMaxFiles": 200,
+      "files": []
+    }
+  }
+}

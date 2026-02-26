@@ -1,0 +1,847 @@
+{
+  "runid": "20260226T010510Z_b4c8535c",
+  "started_at_utc": "2026-02-26T01:05:10.282273+00:00",
+  "bronze_dir": "data/bronze",
+  "duration_seconds": 0.032,
+  "file_count": 128,
+  "total_bytes": 1471155565,
+  "files": [
+    {
+      "path": "data/bronze/train_applprev_1_0/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:06:04.005510+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_0/.part-00000-7bfadc89-a55d-47c4-b88d-2e48141fa6db-c000.snappy.parquet.crc",
+      "bytes": 837800,
+      "mtime_utc": "2026-02-26T01:06:03.953338+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_0/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:06:04.003496+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_0/part-00000-7bfadc89-a55d-47c4-b88d-2e48141fa6db-c000.snappy.parquet",
+      "bytes": 107237353,
+      "mtime_utc": "2026-02-26T01:06:03.954339+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:06:35.139036+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_1/.part-00000-0167deed-13cd-4e1c-a532-cf7d1e0447b5-c000.snappy.parquet.crc",
+      "bytes": 567568,
+      "mtime_utc": "2026-02-26T01:06:35.099359+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:06:35.139036+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_1_1/part-00000-0167deed-13cd-4e1c-a532-cf7d1e0447b5-c000.snappy.parquet",
+      "bytes": 72647232,
+      "mtime_utc": "2026-02-26T01:06:35.099359+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_2/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:07:11.735373+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_2/.part-00000-0f6eba77-e119-499a-91ee-88adfb22e1e9-c000.snappy.parquet.crc",
+      "bytes": 287492,
+      "mtime_utc": "2026-02-26T01:07:11.709228+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_2/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:07:11.735373+00:00"
+    },
+    {
+      "path": "data/bronze/train_applprev_2/part-00000-0f6eba77-e119-499a-91ee-88adfb22e1e9-c000.snappy.parquet",
+      "bytes": 36797467,
+      "mtime_utc": "2026-02-26T01:07:11.709228+00:00"
+    },
+    {
+      "path": "data/bronze/train_base/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:07:16.034389+00:00"
+    },
+    {
+      "path": "data/bronze/train_base/.part-00000-936f09c4-0fe8-4d6e-aa26-39467eb98fc2-c000.snappy.parquet.crc",
+      "bytes": 51408,
+      "mtime_utc": "2026-02-26T01:07:16.018544+00:00"
+    },
+    {
+      "path": "data/bronze/train_base/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:07:16.034389+00:00"
+    },
+    {
+      "path": "data/bronze/train_base/part-00000-936f09c4-0fe8-4d6e-aa26-39467eb98fc2-c000.snappy.parquet",
+      "bytes": 6578922,
+      "mtime_utc": "2026-02-26T01:07:16.018544+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_0/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:08:02.722128+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_0/.part-00000-95dfae4e-1bef-40a7-bcdc-b143f94e6b6c-c000.snappy.parquet.crc",
+      "bytes": 597764,
+      "mtime_utc": "2026-02-26T01:08:02.704838+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_0/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:08:02.722128+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_0/part-00000-95dfae4e-1bef-40a7-bcdc-b143f94e6b6c-c000.snappy.parquet",
+      "bytes": 76512455,
+      "mtime_utc": "2026-02-26T01:08:02.704838+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:09:20.542476+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_1/.part-00000-f7601e62-ed7f-4c39-b2b6-b1deab80e616-c000.snappy.parquet.crc",
+      "bytes": 1466456,
+      "mtime_utc": "2026-02-26T01:09:20.519920+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:09:20.542476+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_1/part-00000-f7601e62-ed7f-4c39-b2b6-b1deab80e616-c000.snappy.parquet",
+      "bytes": 187705071,
+      "mtime_utc": "2026-02-26T01:09:20.519920+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_2/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:10:10.023365+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_2/.part-00000-ace2b1fc-bdb1-414f-9e5e-e8bdaed9423a-c000.snappy.parquet.crc",
+      "bytes": 986864,
+      "mtime_utc": "2026-02-26T01:10:09.985401+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_2/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:10:10.022908+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_2/part-00000-ace2b1fc-bdb1-414f-9e5e-e8bdaed9423a-c000.snappy.parquet",
+      "bytes": 126317203,
+      "mtime_utc": "2026-02-26T01:10:09.985401+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_3/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:10:38.637455+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_3/.part-00000-56e5ddb5-ed06-4a9f-9e64-d6e93dbf7413-c000.snappy.parquet.crc",
+      "bytes": 571096,
+      "mtime_utc": "2026-02-26T01:10:38.618507+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_3/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:10:38.637455+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_3/part-00000-56e5ddb5-ed06-4a9f-9e64-d6e93dbf7413-c000.snappy.parquet",
+      "bytes": 73098903,
+      "mtime_utc": "2026-02-26T01:10:38.618507+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_0/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:11:02.318676+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_0/.part-00000-1e4dbd2f-628f-4a4c-becf-d19336ca581e-c000.snappy.parquet.crc",
+      "bytes": 52596,
+      "mtime_utc": "2026-02-26T01:11:02.297528+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_0/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:11:02.317463+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_0/part-00000-1e4dbd2f-628f-4a4c-becf-d19336ca581e-c000.snappy.parquet",
+      "bytes": 6731224,
+      "mtime_utc": "2026-02-26T01:11:02.299274+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:11:34.671180+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_1/.part-00000-8f474bff-e765-4dec-a427-a8fdafb570b1-c000.snappy.parquet.crc",
+      "bytes": 91352,
+      "mtime_utc": "2026-02-26T01:11:34.648475+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:11:34.661028+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_1/part-00000-8f474bff-e765-4dec-a427-a8fdafb570b1-c000.snappy.parquet",
+      "bytes": 11691755,
+      "mtime_utc": "2026-02-26T01:11:34.648475+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_10/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:11:53.163169+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_10/.part-00000-f2c385f9-145c-4cde-92cf-8c41b503aa51-c000.snappy.parquet.crc",
+      "bytes": 69828,
+      "mtime_utc": "2026-02-26T01:11:53.142862+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_10/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:11:53.162099+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_10/part-00000-f2c385f9-145c-4cde-92cf-8c41b503aa51-c000.snappy.parquet",
+      "bytes": 8936878,
+      "mtime_utc": "2026-02-26T01:11:53.142862+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_2/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:13:06.010444+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_2/.part-00000-92d23ac7-1586-4e4b-8dad-78e033c2d435-c000.snappy.parquet.crc",
+      "bytes": 417520,
+      "mtime_utc": "2026-02-26T01:13:05.989113+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_2/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:13:06.007962+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_2/part-00000-92d23ac7-1586-4e4b-8dad-78e033c2d435-c000.snappy.parquet",
+      "bytes": 53441180,
+      "mtime_utc": "2026-02-26T01:13:05.989113+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_3/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:14:53.750522+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_3/.part-00000-1631a2f3-cf55-4860-8469-0860b4a6e9ac-c000.snappy.parquet.crc",
+      "bytes": 476680,
+      "mtime_utc": "2026-02-26T01:14:53.719011+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_3/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:14:53.737910+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_3/part-00000-1631a2f3-cf55-4860-8469-0860b4a6e9ac-c000.snappy.parquet",
+      "bytes": 61013927,
+      "mtime_utc": "2026-02-26T01:14:53.719011+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_4/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:16:48.788059+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_4/.part-00000-9d036b0a-d372-4e97-8561-1dc20d9abe80-c000.snappy.parquet.crc",
+      "bytes": 492060,
+      "mtime_utc": "2026-02-26T01:16:48.744617+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_4/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:16:48.786048+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_4/part-00000-9d036b0a-d372-4e97-8561-1dc20d9abe80-c000.snappy.parquet",
+      "bytes": 62982512,
+      "mtime_utc": "2026-02-26T01:16:48.744617+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_5/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:19:09.892397+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_5/.part-00000-c023359a-2ced-4351-a3bc-e374985ef187-c000.snappy.parquet.crc",
+      "bytes": 623316,
+      "mtime_utc": "2026-02-26T01:19:09.867959+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_5/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:19:09.891650+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_5/part-00000-c023359a-2ced-4351-a3bc-e374985ef187-c000.snappy.parquet",
+      "bytes": 79783126,
+      "mtime_utc": "2026-02-26T01:19:09.867959+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_6/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:20:53.439744+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_6/.part-00000-36938cf0-490a-450f-88a1-933c4061d98b-c000.snappy.parquet.crc",
+      "bytes": 438236,
+      "mtime_utc": "2026-02-26T01:20:53.404505+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_6/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:20:53.438192+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_6/part-00000-36938cf0-490a-450f-88a1-933c4061d98b-c000.snappy.parquet",
+      "bytes": 56093022,
+      "mtime_utc": "2026-02-26T01:20:53.404505+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_7/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:21:26.122780+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_7/.part-00000-4b0a2b03-5e29-4371-80d0-3aba8723c78d-c000.snappy.parquet.crc",
+      "bytes": 131500,
+      "mtime_utc": "2026-02-26T01:21:26.101798+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_7/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:21:26.121809+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_7/part-00000-4b0a2b03-5e29-4371-80d0-3aba8723c78d-c000.snappy.parquet",
+      "bytes": 16830932,
+      "mtime_utc": "2026-02-26T01:21:26.101798+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_8/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:22:22.028216+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_8/.part-00000-ce3b3675-8228-4322-be2b-8afebea6b712-c000.snappy.parquet.crc",
+      "bytes": 221604,
+      "mtime_utc": "2026-02-26T01:22:22.010499+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_8/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:22:22.028216+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_8/part-00000-ce3b3675-8228-4322-be2b-8afebea6b712-c000.snappy.parquet",
+      "bytes": 28364230,
+      "mtime_utc": "2026-02-26T01:22:22.010499+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_9/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:39.835522+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_9/.part-00000-8f4fd973-e457-4df8-815b-84b742760e24-c000.snappy.parquet.crc",
+      "bytes": 299976,
+      "mtime_utc": "2026-02-26T01:23:39.803678+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_9/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:39.835522+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_9/part-00000-8f4fd973-e457-4df8-815b-84b742760e24-c000.snappy.parquet",
+      "bytes": 38395773,
+      "mtime_utc": "2026-02-26T01:23:39.803678+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:42.444870+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_1/.part-00000-11866957-e4aa-4c12-abac-7ca1b3a619f3-c000.snappy.parquet.crc",
+      "bytes": 33880,
+      "mtime_utc": "2026-02-26T01:23:42.393236+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:42.442857+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_1/part-00000-11866957-e4aa-4c12-abac-7ca1b3a619f3-c000.snappy.parquet",
+      "bytes": 4335527,
+      "mtime_utc": "2026-02-26T01:23:42.393236+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_2/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:47.820449+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_2/.part-00000-e6092745-0959-480b-905a-4825b753c357-c000.snappy.parquet.crc",
+      "bytes": 16832,
+      "mtime_utc": "2026-02-26T01:23:47.780761+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_2/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:47.820449+00:00"
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_2/part-00000-e6092745-0959-480b-905a-4825b753c357-c000.snappy.parquet",
+      "bytes": 2152976,
+      "mtime_utc": "2026-02-26T01:23:47.780761+00:00"
+    },
+    {
+      "path": "data/bronze/train_debitcard_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:48.860206+00:00"
+    },
+    {
+      "path": "data/bronze/train_debitcard_1/.part-00000-7380464a-94d5-4ca3-8b1a-4b021081ef4f-c000.snappy.parquet.crc",
+      "bytes": 9228,
+      "mtime_utc": "2026-02-26T01:23:48.829425+00:00"
+    },
+    {
+      "path": "data/bronze/train_debitcard_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:48.855682+00:00"
+    },
+    {
+      "path": "data/bronze/train_debitcard_1/part-00000-7380464a-94d5-4ca3-8b1a-4b021081ef4f-c000.snappy.parquet",
+      "bytes": 1179702,
+      "mtime_utc": "2026-02-26T01:23:48.829425+00:00"
+    },
+    {
+      "path": "data/bronze/train_deposit_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:49.947196+00:00"
+    },
+    {
+      "path": "data/bronze/train_deposit_1/.part-00000-00fe49a4-257b-42dc-a3c8-719d14bd65fb-c000.snappy.parquet.crc",
+      "bytes": 12348,
+      "mtime_utc": "2026-02-26T01:23:49.914772+00:00"
+    },
+    {
+      "path": "data/bronze/train_deposit_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:49.947196+00:00"
+    },
+    {
+      "path": "data/bronze/train_deposit_1/part-00000-00fe49a4-257b-42dc-a3c8-719d14bd65fb-c000.snappy.parquet",
+      "bytes": 1579512,
+      "mtime_utc": "2026-02-26T01:23:49.914772+00:00"
+    },
+    {
+      "path": "data/bronze/train_other_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:23:50.601511+00:00"
+    },
+    {
+      "path": "data/bronze/train_other_1/.part-00000-094e7ce1-e5a0-432a-93d1-fd8b0cabfdd8-c000.snappy.parquet.crc",
+      "bytes": 5476,
+      "mtime_utc": "2026-02-26T01:23:50.561342+00:00"
+    },
+    {
+      "path": "data/bronze/train_other_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:23:50.600436+00:00"
+    },
+    {
+      "path": "data/bronze/train_other_1/part-00000-094e7ce1-e5a0-432a-93d1-fd8b0cabfdd8-c000.snappy.parquet",
+      "bytes": 699444,
+      "mtime_utc": "2026-02-26T01:23:50.561342+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:24:13.034533+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_1/.part-00000-6f808d1e-355f-45b7-bef4-c470355213ec-c000.snappy.parquet.crc",
+      "bytes": 347248,
+      "mtime_utc": "2026-02-26T01:24:13.018116+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:24:13.034533+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_1/part-00000-6f808d1e-355f-45b7-bef4-c470355213ec-c000.snappy.parquet",
+      "bytes": 44446403,
+      "mtime_utc": "2026-02-26T01:24:13.018116+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_2/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:24:19.060483+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_2/.part-00000-b074ac2d-40dc-4e28-bedd-e5119ea51096-c000.snappy.parquet.crc",
+      "bytes": 55792,
+      "mtime_utc": "2026-02-26T01:24:19.036460+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_2/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:24:19.059494+00:00"
+    },
+    {
+      "path": "data/bronze/train_person_2/part-00000-b074ac2d-40dc-4e28-bedd-e5119ea51096-c000.snappy.parquet",
+      "bytes": 7140169,
+      "mtime_utc": "2026-02-26T01:24:19.036460+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_0/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:25:08.966213+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_0/.part-00000-95050815-f25f-4a9c-ab21-ecd9459d710e-c000.snappy.parquet.crc",
+      "bytes": 936984,
+      "mtime_utc": "2026-02-26T01:25:08.919611+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_0/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:25:08.966213+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_0/part-00000-95050815-f25f-4a9c-ab21-ecd9459d710e-c000.snappy.parquet",
+      "bytes": 119932734,
+      "mtime_utc": "2026-02-26T01:25:08.919611+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:25:41.911970+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_1/.part-00000-4974d855-c392-4ea3-aadb-979c53641e20-c000.snappy.parquet.crc",
+      "bytes": 585488,
+      "mtime_utc": "2026-02-26T01:25:41.877225+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:25:41.910982+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_0_1/part-00000-4974d855-c392-4ea3-aadb-979c53641e20-c000.snappy.parquet",
+      "bytes": 74941222,
+      "mtime_utc": "2026-02-26T01:25:41.877225+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_cb_0/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:25:56.108751+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_cb_0/.part-00000-3f5aa762-c8d3-4e2c-9a3e-9d7994023049-c000.snappy.parquet.crc",
+      "bytes": 249984,
+      "mtime_utc": "2026-02-26T01:25:56.085952+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_cb_0/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:25:56.107467+00:00"
+    },
+    {
+      "path": "data/bronze/train_static_cb_0/part-00000-3f5aa762-c8d3-4e2c-9a3e-9d7994023049-c000.snappy.parquet",
+      "bytes": 31996915,
+      "mtime_utc": "2026-02-26T01:25:56.085952+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_a_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:26:07.367231+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_a_1/.part-00000-4268e117-ffa7-4d84-9235-e58b3ce6f92e-c000.snappy.parquet.crc",
+      "bytes": 162868,
+      "mtime_utc": "2026-02-26T01:26:07.341808+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_a_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:26:07.363592+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_a_1/part-00000-4268e117-ffa7-4d84-9235-e58b3ce6f92e-c000.snappy.parquet",
+      "bytes": 20845569,
+      "mtime_utc": "2026-02-26T01:26:07.341808+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_b_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:26:11.022496+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_b_1/.part-00000-2de5635c-b116-4cf6-a8f7-2539433db055-c000.snappy.parquet.crc",
+      "bytes": 76108,
+      "mtime_utc": "2026-02-26T01:26:11.004379+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_b_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:26:11.022496+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_b_1/part-00000-2de5635c-b116-4cf6-a8f7-2539433db055-c000.snappy.parquet",
+      "bytes": 9740642,
+      "mtime_utc": "2026-02-26T01:26:11.004379+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_c_1/._SUCCESS.crc",
+      "bytes": 8,
+      "mtime_utc": "2026-02-26T01:26:20.493914+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_c_1/.part-00000-2c50de64-fd45-422f-9eeb-d60940796010-c000.snappy.parquet.crc",
+      "bytes": 231264,
+      "mtime_utc": "2026-02-26T01:26:20.466820+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_c_1/_SUCCESS",
+      "bytes": 0,
+      "mtime_utc": "2026-02-26T01:26:20.483467+00:00"
+    },
+    {
+      "path": "data/bronze/train_tax_registry_c_1/part-00000-2c50de64-fd45-422f-9eeb-d60940796010-c000.snappy.parquet",
+      "bytes": 29600713,
+      "mtime_utc": "2026-02-26T01:26:20.466820+00:00"
+    }
+  ],
+  "tables": [
+    {
+      "path": "data/bronze/train_applprev_1_0/part-00000-7bfadc89-a55d-47c4-b88d-2e48141fa6db-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_applprev_1_1/part-00000-0167deed-13cd-4e1c-a532-cf7d1e0447b5-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_applprev_2/part-00000-0f6eba77-e119-499a-91ee-88adfb22e1e9-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_base/part-00000-936f09c4-0fe8-4d6e-aa26-39467eb98fc2-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_0/part-00000-95dfae4e-1bef-40a7-bcdc-b143f94e6b6c-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_1/part-00000-f7601e62-ed7f-4c39-b2b6-b1deab80e616-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_2/part-00000-ace2b1fc-bdb1-414f-9e5e-e8bdaed9423a-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_1_3/part-00000-56e5ddb5-ed06-4a9f-9e64-d6e93dbf7413-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_0/part-00000-1e4dbd2f-628f-4a4c-becf-d19336ca581e-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_1/part-00000-8f474bff-e765-4dec-a427-a8fdafb570b1-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_10/part-00000-f2c385f9-145c-4cde-92cf-8c41b503aa51-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_2/part-00000-92d23ac7-1586-4e4b-8dad-78e033c2d435-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_3/part-00000-1631a2f3-cf55-4860-8469-0860b4a6e9ac-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_4/part-00000-9d036b0a-d372-4e97-8561-1dc20d9abe80-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_5/part-00000-c023359a-2ced-4351-a3bc-e374985ef187-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_6/part-00000-36938cf0-490a-450f-88a1-933c4061d98b-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_7/part-00000-4b0a2b03-5e29-4371-80d0-3aba8723c78d-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_8/part-00000-ce3b3675-8228-4322-be2b-8afebea6b712-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_a_2_9/part-00000-8f4fd973-e457-4df8-815b-84b742760e24-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_1/part-00000-11866957-e4aa-4c12-abac-7ca1b3a619f3-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_credit_bureau_b_2/part-00000-e6092745-0959-480b-905a-4825b753c357-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_debitcard_1/part-00000-7380464a-94d5-4ca3-8b1a-4b021081ef4f-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_deposit_1/part-00000-00fe49a4-257b-42dc-a3c8-719d14bd65fb-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_other_1/part-00000-094e7ce1-e5a0-432a-93d1-fd8b0cabfdd8-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_person_1/part-00000-6f808d1e-355f-45b7-bef4-c470355213ec-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_person_2/part-00000-b074ac2d-40dc-4e28-bedd-e5119ea51096-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_static_0_0/part-00000-95050815-f25f-4a9c-ab21-ecd9459d710e-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_static_0_1/part-00000-4974d855-c392-4ea3-aadb-979c53641e20-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_static_cb_0/part-00000-3f5aa762-c8d3-4e2c-9a3e-9d7994023049-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_tax_registry_a_1/part-00000-4268e117-ffa7-4d84-9235-e58b3ce6f92e-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_tax_registry_b_1/part-00000-2de5635c-b116-4cf6-a8f7-2539433db055-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    },
+    {
+      "path": "data/bronze/train_tax_registry_c_1/part-00000-2c50de64-fd45-422f-9eeb-d60940796010-c000.snappy.parquet",
+      "format": "parquet",
+      "row_count": null,
+      "columns": null
+    }
+  ],
+  "row_counts": {
+    "enabled": false
+  }
+}
