@@ -25,7 +25,9 @@ RAW → Bronze → Silver → Gold → ABT → Análise Público → Modelo Fina
 ## 📂 **Estrutura Atual**
 
 data/raw/ # Dados brutos
+
 docs/raw/ # Governança RAW
+
 │ ├── datadictionary/ # Schema + profiling
 │ ├── dataquality/ # Quality gates
 │ ├── observability/ # Metrics + alerts
