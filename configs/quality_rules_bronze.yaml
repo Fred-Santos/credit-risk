@@ -1,11 +1,59 @@
+version: 1
+snapshot_contract: configs/contracts/home_credit_v1.yaml
 defaults:
-  action_on_fail: warn
-
+  action_on_fail: fail
+required_datasets: [train_base]
 tables:
   - pattern: "*"
     checks:
-      - type: nonempty
-        severity: warn
-
-  - pattern: "*/"
-    checks: []
+      - type: require_columns
+        columns: [case_id, _run_id, _ingest_date, _source_file]
+      - type: not_null
+        columns: [case_id, _run_id, _ingest_date, _source_file]
+      - type: column_types
+        types:
+          case_id: bigint
+          _run_id: string
+          _ingest_date: date
+          _source_file: string
+      - type: foreign_key
+        columns: [case_id]
+        reference: train_base
+  - pattern: train_base
+    checks:
+      - type: non_empty
+      - type: require_columns
+        columns: [date_decision, MONTH, WEEK_NUM, target]
+      - type: unique
+        columns: [case_id]
+      - type: not_null
+        columns: [date_decision, MONTH, WEEK_NUM, target]
+      - type: column_types
+        types:
+          date_decision: string
+          MONTH: bigint
+          WEEK_NUM: bigint
+          target: bigint
+      - type: allowed_values
+        column: target
+        values: [0, 1]
+  - patterns: ["train_static_0", "train_static_0_*", "train_static_cb_0"]
+    checks:
+      - type: unique
+        columns: [case_id]
+  - patterns: ["train_applprev_1", "train_applprev_1_*", "train_credit_bureau_a_1", "train_credit_bureau_a_1_*", "train_credit_bureau_b_1", "train_debitcard_1", "train_deposit_1", "train_other_1", "train_person_1", "train_tax_registry_?_1"]
+    checks:
+      - type: column_types
+        types: {num_group1: bigint}
+      - type: not_null
+        columns: [num_group1]
+      - type: unique
+        columns: [case_id, num_group1]
+  - patterns: ["train_applprev_2", "train_credit_bureau_a_2", "train_credit_bureau_a_2_*", "train_credit_bureau_b_2", "train_person_2"]
+    checks:
+      - type: column_types
+        types: {num_group1: bigint, num_group2: bigint}
+      - type: not_null
+        columns: [num_group1, num_group2]
+      - type: unique
+        columns: [case_id, num_group1, num_group2]

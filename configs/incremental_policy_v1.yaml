@@ -1,0 +1,18 @@
+version: 1
+scope: f04_local_simulated_incremental
+transport: typed_parquet_with_event_v1_and_bronze_metadata
+precedence: greatest_source_revision
+same_revision_conflict: reject_entire_batch_including_old_revisions
+duplicate_tie_break: smallest_delivery_id_after_payload_and_provenance_agreement
+absence: preserve_existing_rows_no_delete
+state: business_and_bronze_metadata_plus_event_identity
+reconstruction: group_max_revision_join_and_distinct_state
+late_case: second_eligible_case_in_first_temporal_batch
+correction_case: first_eligible_case_in_first_temporal_batch
+corrections:
+  train_static_0:
+    column: annuity_780A
+    add: 1.0
+  train_applprev_1:
+    column: credamount_590A
+    add: 1.0

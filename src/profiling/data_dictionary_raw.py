@@ -80,7 +80,7 @@ def _profile_df(df, max_examples=5):
 
 
 def generate_data_dictionary(ctx, spark: SparkSession) -> Dict[str, str]:
-    out_dir = ctx.repo_root / "docs" / "data_dictionary" / "tables"
+    out_dir = ctx.data_dictionary_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
     candidates = sorted(
@@ -119,7 +119,7 @@ def generate_data_dictionary(ctx, spark: SparkSession) -> Dict[str, str]:
     index = out_dir.parent / "README.md"
     idx_lines = [f"# Data Dictionary (raw)\n", f"- Run ID: {ctx.run_id}\n", ""]
     for rel, md in sorted(written.items()):
-        idx_lines.append(f"- `{rel}` → [{Path(md).name}](tables/{Path(md).name})")
+        idx_lines.append(f"- `{rel}` → [{Path(md).name}]({out_dir.name}/{Path(md).name})")
     index.write_text("\n".join(idx_lines) + "\n", encoding="utf-8")
 
     return written

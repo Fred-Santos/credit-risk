@@ -1,0 +1,7 @@
+# Ambiente local: Python 3.11.14 + Java 17. Dependências transitivas em requirements.lock.
+pyspark==3.5.7
+delta-spark==3.3.2
+PyYAML==6.0.3
+kaggle==2.2.5
+# Importado pelo cliente Kaggle; declarado explicitamente para evitar dependência implícita.
+six==1.17.0

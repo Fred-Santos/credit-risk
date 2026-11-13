@@ -1,0 +1,55 @@
+version: 1
+scope: silver_initial
+implementation_status: transformations_implemented
+snapshot_contract_sha256: 091e65bbee8e1c0907dd9bf23cf9b07dae512f62c3ecd99935a53c728c722cb6
+notebook_sha256: 350aa226f0fbed8851d1f86cf13d23b41a2ab66c5afc953922b4f8dbcf35111e
+policies:
+  input: approved_bronze_snapshot
+  grain: preserve_each_source_table
+  date_cast: iso_date_with_zero_new_nulls_or_block
+  numeric_types: preserve_source_types
+  optional_nulls: preserve
+  sentinel_replacement: none_without_semantic_evidence
+  coded_strings: preserve_all_formats
+  column_drop: none
+  boolean_null_to_false: false
+  deduplication: none_fail_on_key_violation
+  historical_join_to_case: deferred_aggregate_before_gold_join
+  target: retrospective_only_no_resampling
+tables:
+  train_base:
+    key:
+    - case_id
+    cast_to_date:
+    - date_decision
+  train_static_0:
+    key:
+    - case_id
+    cast_to_date:
+    - datefirstoffer_1144D
+    - datelastinstal40dpd_247D
+    - datelastunpaid_3546854D
+    - dtlastpmtallstes_4499206D
+    - firstclxcampaign_1125D
+    - firstdatedue_489D
+    - lastactivateddate_801D
+    - lastapplicationdate_877D
+    - lastapprdate_640D
+    - lastdelinqdate_224D
+    - lastrejectdate_50D
+    - lastrepayingdate_696D
+    - maxdpdinstldate_3546855D
+    - payvacationpostpone_4187118D
+    - validfrom_1069D
+  train_applprev_1:
+    key:
+    - case_id
+    - num_group1
+    cast_to_date:
+    - approvaldate_319D
+    - creationdate_885D
+    - dateactivated_425D
+    - dtlastpmt_581D
+    - dtlastpmtallstes_3545839D
+    - employedfrom_700D
+    - firstnonzeroinstldate_307D

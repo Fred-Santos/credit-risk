@@ -4,7 +4,10 @@ data:
   bronze: data/bronze
   silver: data/silver
   gold: data/gold
+  sample: data/samples
+  events: data/events
 docs:
+  root: docs
   data_dictionary: docs/data_dictionary/tables
   data_quality: docs/data_quality
   lineage: docs/lineage

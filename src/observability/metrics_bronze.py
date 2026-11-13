@@ -27,8 +27,8 @@ def record_bronze_metrics(
     spark: Optional[SparkSession] = None,
     include_row_counts: bool = True,
 ):
-    bronze_dir = ctx.repo_root / "data" / "bronze"
-    outdir = ctx.repo_root / "docs" / "observability" / "metrics"
+    bronze_dir = ctx.bronze_dir
+    outdir = ctx.observability_dir / "metrics"
     outdir.mkdir(parents=True, exist_ok=True)
 
     latestpath = outdir / "latest_bronze_metrics.json"
@@ -60,6 +60,7 @@ def record_bronze_metrics(
         "runid": ctx.run_id,
         "started_at_utc": ctx.started_at_utc,
         "bronze_dir": bronze_dir.relative_to(ctx.repo_root).as_posix(),
+        "selection_id": ctx.selection_id,
         "duration_seconds": round(time.time() - t0, 3),
         "file_count": len(files),
         "total_bytes": totalbytes,

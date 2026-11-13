@@ -1,0 +1,9 @@
+version: 1
+storage: local_filesystem
+writer: single_exclusive_nonblocking_lock
+visibility: immutable_manifest_then_atomic_current_pointer
+recovery: inspect_tagged_delta_commits_and_resume_same_intent
+retention_days: 30
+published_versions: pin_all_indefinitely_until_explicit_retirement
+real_vacuum: forbidden
+destructive_retention_demo: internally_created_temporary_fixture_only

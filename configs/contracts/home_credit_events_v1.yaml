@@ -1,0 +1,43 @@
+version: 1
+scope: simulated_event_batches
+source_system: home_credit_simulator_v1
+snapshot_contract_sha256: 091e65bbee8e1c0907dd9bf23cf9b07dae512f62c3ecd99935a53c728c722cb6
+operations:
+- upsert
+scenarios:
+- baseline_replay
+- correction_simulation
+- late_arrival
+- duplicate_delivery
+payload_origins:
+- home_credit_snapshot
+- home_credit_with_simulated_change
+- synthetic_fixture
+event_identity: event_v1_context_table_business_key_revision
+delivery_identity: delivery_v1_context_batch_table_ordinal
+payload_encoding: typed_python_json_v1
+policies:
+  payload_mode: full_row
+  all_arrivals_simulated: true
+  duplicate_event_same_payload: preserve_deliveries
+  same_revision_different_payload: reject_batch
+  older_revision: accept_history_never_overwrite_newer_state
+  batch_content_change: reject
+  delete_by_absence: forbidden
+fields:
+  _event_contract_version: integer
+  _source_system: string
+  _selection_id: string
+  _stream_id: string
+  _batch_id: string
+  _table: string
+  _ordinal: integer
+  _source_revision: positive_int64
+  _operation: string
+  _is_simulated: boolean
+  _scenario: string
+  _payload_origin: string
+  _event_id: sha256
+  _delivery_id: sha256
+  _payload_sha256: sha256
+  _payload: object

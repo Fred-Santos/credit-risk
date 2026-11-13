@@ -40,14 +40,14 @@ def _list_files(root: Path) -> List[Path]:
 
 
 def emit_bronze_lineage(ctx, include_checksums: bool = True, checksum_max_files: int = 200):
-    out_events = ctx.repo_root / "docs" / "lineage" / "lineage_events"
+    out_events = ctx.lineage_dir / "lineage_events"
     out_events.mkdir(parents=True, exist_ok=True)
 
-    out_md = ctx.repo_root / "docs" / "lineage" / "dataset_lineage.md"
+    out_md = ctx.lineage_dir / "dataset_lineage.md"
     out_md.parent.mkdir(parents=True, exist_ok=True)
 
-    raw_train = ctx.raw_dir / "parquet_files" / "train"
-    bronze_dir = ctx.repo_root / "data" / "bronze"
+    raw_train = ctx.ingestion_dir / "parquet_files" / "train"
+    bronze_dir = ctx.bronze_dir
 
     gitcommit = _try_git_commit(ctx.repo_root)
 
@@ -61,7 +61,7 @@ def emit_bronze_lineage(ctx, include_checksums: bool = True, checksum_max_files:
             "bytes": stat.st_size,
             "mtime_utc": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
         }
-        if include_checksums and i < checksum_max_files:
+        if include_checksums and (i < checksum_max_files or p.suffix == '.parquet' or p.name == '_ingestion.json'):
             entry["sha256"] = _sha256_file(p)
         fileentries.append(entry)
 
@@ -90,6 +90,15 @@ def emit_bronze_lineage(ctx, include_checksums: bool = True, checksum_max_files:
         },
     }
 
+    if ctx.selection_id:
+        manifest = ctx.ingestion_dir / '_selection.json'
+        event['facets']['selection'] = {
+            'selection_id': ctx.selection_id,
+            'manifest': manifest.relative_to(ctx.repo_root).as_posix(),
+            'manifest_sha256': _sha256_file(manifest),
+            'original_raw_dir': ctx.raw_dir.relative_to(ctx.repo_root).as_posix(),
+        }
+
     outjson = out_events / f"{ctx.run_id}_bronze_lineage.json"
     outjson.write_text(json.dumps(event, indent=2), encoding="utf-8")
 
@@ -105,7 +114,7 @@ def emit_bronze_lineage(ctx, include_checksums: bool = True, checksum_max_files:
     mdlines.append(f"- Output: {bronze_dir.relative_to(ctx.repo_root).as_posix()}")
     mdlines.append("")
     mdlines.append("### Artefatos")
-    mdlines.append(f"- JSON do evento: docs/lineage/lineage_events/{outjson.name}")
+    mdlines.append(f"- JSON do evento: {outjson.relative_to(ctx.repo_root).as_posix()}")
     mdlines.append(f"- Arquivos em bronze: {len(bronze_files)}")
     mdlines.append("")
     mdlines.append("### Lista top 50")

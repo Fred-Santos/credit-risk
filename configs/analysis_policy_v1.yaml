@@ -1,0 +1,14 @@
+version: 1
+scope: retrospective_published_gold_analysis
+population: all_case_ids_in_explicit_publication
+valid_labels: [0, 1]
+small_group_min_cases: 500
+small_group_min_target_1: 20
+small_group_interpretation: reading_flags_not_significance_or_suppression
+partial_month: observed_date_bounds_do_not_span_calendar_month
+label_maturity: not_audited_no_point_in_time_or_operational_default_claim
+segments: [no_history, one_observation, two_to_five, six_or_more]
+max_changed_cases_to_collect: 50
+amount_comparison: individual_changed_cases_no_population_monetary_sum
+charts: static_png_and_svg_from_aggregated_results
+source_mutation: forbidden

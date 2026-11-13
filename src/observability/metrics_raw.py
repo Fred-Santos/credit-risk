@@ -73,7 +73,7 @@ def record_raw_metrics(
     sample_fraction: float = 0.02,
     max_tables_for_row_estimates: int = 50,
 ):
-    out_dir = ctx.repo_root / "docs" / "observability" / "metrics"
+    out_dir = ctx.observability_dir / "metrics"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     latest_path = out_dir / "latest_raw_metrics.json"

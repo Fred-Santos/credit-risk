@@ -5,8 +5,8 @@ from typing import List
 
 
 def build_bronze_inventory(ctx) -> str:
-    bronze_dir = ctx.repo_root / "data" / "bronze"
-    outpath = ctx.repo_root / "docs" / "governance" / "datasets_inventory_bronze.md"
+    bronze_dir = ctx.bronze_dir
+    outpath = ctx.docs_root / "governance" / "datasets_inventory_bronze.md"
     outpath.parent.mkdir(parents=True, exist_ok=True)
 
     tables = sorted([p for p in bronze_dir.rglob("*") if p.is_file() and p.suffix.lower() in (".parquet", ".csv")])

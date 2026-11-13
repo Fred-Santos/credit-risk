@@ -1,0 +1,49 @@
+version: 1
+scope: retrospective_credit_analytics
+silver_contract_sha256: ee3d965149cb56d749cddbb8d03bce4b896dba988d709fd10f2abc385ce73b46
+abt_grain: one_row_per_case_id
+history_aggregation: all_observations_per_case_before_join
+amount_arithmetic: deterministic_double_fold_sorted_by_num_group1_no_rounding
+amount_oracle_absolute_tolerance: 0.00000001
+amount_oracle_relative_tolerance: 0.000000000001
+missing_history: zero_counts_false_flag_null_amounts_and_revision
+all_null_amounts: zero_non_null_count_null_sum_mean_min_max
+label_denominator: target_in_0_or_1_null_excluded
+zero_denominator: null_rate
+empty_population: no_synthetic_period_rows
+temporal_availability: retrospective_not_point_in_time
+incremental_scope: case_ids_changed_in_any_silver_table_and_old_new_months
+case_removal: fail_no_implicit_delete
+schemas:
+  abt:
+    case_id: bigint
+    date_decision: date
+    MONTH: bigint
+    WEEK_NUM: bigint
+    target: bigint
+    static_annuity: double
+    has_static: boolean
+    has_previous_applications: boolean
+    previous_application_count: bigint
+    previous_amount_non_null_count: bigint
+    previous_amount_sum: double
+    previous_amount_mean: double
+    previous_amount_min: double
+    previous_amount_max: double
+    case_source_revision: bigint
+    static_source_revision: bigint
+    previous_max_source_revision: bigint
+    has_revised_source: boolean
+    _abt_contract_version: int
+  monthly_metrics:
+    MONTH: bigint
+    case_count: bigint
+    valid_label_count: bigint
+    target_1_count: bigint
+    target_1_rate: double
+    static_covered_count: bigint
+    static_coverage_rate: double
+    history_covered_count: bigint
+    history_coverage_rate: double
+    history_row_count: bigint
+    history_amount_non_null_count: bigint

@@ -52,10 +52,10 @@ def emit_raw_lineage(ctx, include_checksums: bool = True, checksum_max_files: in
       - o que foi materializado (outputs: arquivos em data/raw)
       - como reproduzir/auditar (run_id, timestamps, git commit, tamanhos, hashes)
     """
-    out_events = ctx.repo_root / "docs" / "lineage" / "lineage_events"
+    out_events = ctx.lineage_dir / "lineage_events"
     out_events.mkdir(parents=True, exist_ok=True)
 
-    out_md = ctx.repo_root / "docs" / "lineage" / "dataset_lineage.md"
+    out_md = ctx.lineage_dir / "dataset_lineage.md"
     out_md.parent.mkdir(parents=True, exist_ok=True)
 
     git_commit = _try_git_commit(ctx.repo_root)
@@ -149,7 +149,7 @@ def emit_raw_lineage(ctx, include_checksums: bool = True, checksum_max_files: in
     md_lines.append("- **Input:** kaggle://home-credit-credit-risk-model-stability\n")
     md_lines.append(f"- **Output (raw):** `{ctx.raw_dir.relative_to(ctx.repo_root).as_posix()}`\n")
     md_lines.append("\n## Artefatos\n")
-    md_lines.append(f"- JSON do evento: `docs/lineage/lineage_events/{out_json.name}`\n")
+    md_lines.append(f"- JSON do evento: `{out_json.relative_to(ctx.repo_root).as_posix()}`\n")
     md_lines.append(f"- Arquivos em raw: {len(files)}\n")
     md_lines.append("\n## Lista (top 50)\n")
     for p in file_entries[:50]:

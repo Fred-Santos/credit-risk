@@ -1,0 +1,296 @@
+version: 1
+scope: raw_snapshot_and_sample
+source: home-credit-credit-risk-model-stability
+baseline_inspection: 20261112T181943Z_8cf3dbbd
+policies:
+  schema_changes: fail
+  record_failure: block_publication_no_silent_drop
+  optional_nulls: preserve
+  auxiliary_dates: preserve_as_string_until_validated
+  target_use: retrospective_only
+  revisions: separate_event_contract_required
+sources:
+  feature_definitions.csv:
+    sha256: 628f1f75ae2842de0dbd6559e31855e0edff87da16d382d55725d6a2afba6dd4
+    bytes: 34047
+  parquet_files/train/train_applprev_1_0.parquet:
+    sha256: 0301380ee0092b0d3215329896b850e6321ff1fc73ff889c07778c7034472dee
+    bytes: 106951598
+  parquet_files/train/train_applprev_1_1.parquet:
+    sha256: cae63fdb5d8de8ba0c61eca8a9f15be4d15d24e320bf3ad8bc1c78f877d1a5d2
+    bytes: 72860971
+  parquet_files/train/train_base.parquet:
+    sha256: 29d94662545eece908f20e44e6592336c9c40916dcfdad7735de92b8e9edf908
+    bytes: 7048047
+  parquet_files/train/train_static_0_0.parquet:
+    sha256: c993192e68853259183babe05870b173b2695799c9ea56a7824ee6cf6b083366
+    bytes: 113858592
+  parquet_files/train/train_static_0_1.parquet:
+    sha256: 78adb27582754d3c986b692dbe6ca03ef43806d5265e65d9f460eef8554d3d2d
+    bytes: 74691173
+tables:
+  train_base:
+    files:
+    - parquet_files/train/train_base.parquet
+    grain: one_credit_case
+    key:
+    - case_id
+    required_non_null:
+    - case_id
+    - date_decision
+    - MONTH
+    - WEEK_NUM
+    - target
+    minimum_rows: 1
+    temporal_availability: unverified_for_decision_time; retrospective_analysis_only
+    schema:
+      case_id: bigint
+      date_decision: string
+      MONTH: bigint
+      WEEK_NUM: bigint
+      target: bigint
+  train_static_0:
+    files:
+    - parquet_files/train/train_static_0_0.parquet
+    - parquet_files/train/train_static_0_1.parquet
+    grain: one_static_record_per_credit_case
+    key:
+    - case_id
+    required_non_null:
+    - case_id
+    minimum_rows: 1
+    temporal_availability: unverified_for_decision_time; retrospective_analysis_only
+    schema:
+      case_id: bigint
+      actualdpdtolerance_344P: double
+      amtinstpaidbefduel24m_4187115A: double
+      annuity_780A: double
+      annuitynextmonth_57A: double
+      applicationcnt_361L: double
+      applications30d_658L: double
+      applicationscnt_1086L: double
+      applicationscnt_464L: double
+      applicationscnt_629L: double
+      applicationscnt_867L: double
+      avgdbddpdlast24m_3658932P: double
+      avgdbddpdlast3m_4187120P: double
+      avgdbdtollast24m_4525197P: double
+      avgdpdtolclosure24_3658938P: double
+      avginstallast24m_3658937A: double
+      avglnamtstart24m_4525187A: double
+      avgmaxdpdlast9m_3716943P: double
+      avgoutstandbalancel6m_4187114A: double
+      avgpmtlast12m_4525200A: double
+      bankacctype_710L: string
+      cardtype_51L: string
+      clientscnt12m_3712952L: double
+      clientscnt3m_3712950L: double
+      clientscnt6m_3712949L: double
+      clientscnt_100L: double
+      clientscnt_1022L: double
+      clientscnt_1071L: double
+      clientscnt_1130L: double
+      clientscnt_136L: double
+      clientscnt_157L: double
+      clientscnt_257L: double
+      clientscnt_304L: double
+      clientscnt_360L: double
+      clientscnt_493L: double
+      clientscnt_533L: double
+      clientscnt_887L: double
+      clientscnt_946L: double
+      cntincpaycont9m_3716944L: double
+      cntpmts24_3658933L: double
+      commnoinclast6m_3546845L: double
+      credamount_770A: double
+      credtype_322L: string
+      currdebt_22A: double
+      currdebtcredtyperange_828A: double
+      datefirstoffer_1144D: string
+      datelastinstal40dpd_247D: string
+      datelastunpaid_3546854D: string
+      daysoverduetolerancedd_3976961L: double
+      deferredmnthsnum_166L: double
+      disbursedcredamount_1113A: double
+      disbursementtype_67L: string
+      downpmt_116A: double
+      dtlastpmtallstes_4499206D: string
+      eir_270L: double
+      equalitydataagreement_891L: boolean
+      equalityempfrom_62L: boolean
+      firstclxcampaign_1125D: string
+      firstdatedue_489D: string
+      homephncnt_628L: double
+      inittransactionamount_650A: double
+      inittransactioncode_186L: string
+      interestrate_311L: double
+      interestrategrace_34L: double
+      isbidproduct_1095L: boolean
+      isbidproductrequest_292L: boolean
+      isdebitcard_729L: boolean
+      lastactivateddate_801D: string
+      lastapplicationdate_877D: string
+      lastapprcommoditycat_1041M: string
+      lastapprcommoditytypec_5251766M: string
+      lastapprcredamount_781A: double
+      lastapprdate_640D: string
+      lastcancelreason_561M: string
+      lastdelinqdate_224D: string
+      lastdependentsnum_448L: double
+      lastotherinc_902A: double
+      lastotherlnsexpense_631A: double
+      lastrejectcommoditycat_161M: string
+      lastrejectcommodtypec_5251769M: string
+      lastrejectcredamount_222A: double
+      lastrejectdate_50D: string
+      lastrejectreason_759M: string
+      lastrejectreasonclient_4145040M: string
+      lastrepayingdate_696D: string
+      lastst_736L: string
+      maininc_215A: double
+      mastercontrelectronic_519L: double
+      mastercontrexist_109L: double
+      maxannuity_159A: double
+      maxannuity_4075009A: double
+      maxdbddpdlast1m_3658939P: double
+      maxdbddpdtollast12m_3658940P: double
+      maxdbddpdtollast6m_4187119P: double
+      maxdebt4_972A: double
+      maxdpdfrom6mto36m_3546853P: double
+      maxdpdinstldate_3546855D: string
+      maxdpdinstlnum_3546846P: double
+      maxdpdlast12m_727P: double
+      maxdpdlast24m_143P: double
+      maxdpdlast3m_392P: double
+      maxdpdlast6m_474P: double
+      maxdpdlast9m_1059P: double
+      maxdpdtolerance_374P: double
+      maxinstallast24m_3658928A: double
+      maxlnamtstart6m_4525199A: double
+      maxoutstandbalancel12m_4187113A: double
+      maxpmtlast3m_4525190A: double
+      mindbddpdlast24m_3658935P: double
+      mindbdtollast24m_4525191P: double
+      mobilephncnt_593L: double
+      monthsannuity_845L: double
+      numactivecreds_622L: double
+      numactivecredschannel_414L: double
+      numactiverelcontr_750L: double
+      numcontrs3months_479L: double
+      numincomingpmts_3546848L: double
+      numinstlallpaidearly3d_817L: double
+      numinstls_657L: double
+      numinstlsallpaid_934L: double
+      numinstlswithdpd10_728L: double
+      numinstlswithdpd5_4187116L: double
+      numinstlswithoutdpd_562L: double
+      numinstmatpaidtearly2d_4499204L: double
+      numinstpaid_4499208L: double
+      numinstpaidearly3d_3546850L: double
+      numinstpaidearly3dest_4493216L: double
+      numinstpaidearly5d_1087L: double
+      numinstpaidearly5dest_4493211L: double
+      numinstpaidearly5dobd_4499205L: double
+      numinstpaidearly_338L: double
+      numinstpaidearlyest_4493214L: double
+      numinstpaidlastcontr_4325080L: double
+      numinstpaidlate1d_3546852L: double
+      numinstregularpaid_973L: double
+      numinstregularpaidest_4493210L: double
+      numinsttopaygr_769L: double
+      numinsttopaygrest_4493213L: double
+      numinstunpaidmax_3546851L: double
+      numinstunpaidmaxest_4493212L: double
+      numnotactivated_1143L: double
+      numpmtchanneldd_318L: double
+      numrejects9m_859L: double
+      opencred_647L: boolean
+      paytype1st_925L: string
+      paytype_783L: string
+      payvacationpostpone_4187118D: string
+      pctinstlsallpaidearl3d_427L: double
+      pctinstlsallpaidlat10d_839L: double
+      pctinstlsallpaidlate1d_3546856L: double
+      pctinstlsallpaidlate4d_3546849L: double
+      pctinstlsallpaidlate6d_3546844L: double
+      pmtnum_254L: double
+      posfpd10lastmonth_333P: double
+      posfpd30lastmonth_3976960P: double
+      posfstqpd30lastmonth_3976962P: double
+      previouscontdistrict_112M: string
+      price_1097A: double
+      sellerplacecnt_915L: double
+      sellerplacescnt_216L: double
+      sumoutstandtotal_3546847A: double
+      sumoutstandtotalest_4493215A: double
+      totaldebt_9A: double
+      totalsettled_863A: double
+      totinstallast1m_4525188A: double
+      twobodfilling_608L: string
+      typesuite_864L: string
+      validfrom_1069D: string
+    reference:
+      table: train_base
+      columns:
+      - case_id
+      full_coverage: true
+  train_applprev_1:
+    files:
+    - parquet_files/train/train_applprev_1_0.parquet
+    - parquet_files/train/train_applprev_1_1.parquet
+    grain: one_previous_application_observation_per_case_and_num_group1
+    key:
+    - case_id
+    - num_group1
+    required_non_null:
+    - case_id
+    - num_group1
+    minimum_rows: 0
+    temporal_availability: unverified_for_decision_time; retrospective_analysis_only
+    schema:
+      case_id: bigint
+      actualdpd_943P: double
+      annuity_853A: double
+      approvaldate_319D: string
+      byoccupationinc_3656910L: double
+      cancelreason_3545846M: string
+      childnum_21L: double
+      creationdate_885D: string
+      credacc_actualbalance_314A: double
+      credacc_credlmt_575A: double
+      credacc_maxhisbal_375A: double
+      credacc_minhisbal_90A: double
+      credacc_status_367L: string
+      credacc_transactions_402L: double
+      credamount_590A: double
+      credtype_587L: string
+      currdebt_94A: double
+      dateactivated_425D: string
+      district_544M: string
+      downpmt_134A: double
+      dtlastpmt_581D: string
+      dtlastpmtallstes_3545839D: string
+      education_1138M: string
+      employedfrom_700D: string
+      familystate_726L: string
+      firstnonzeroinstldate_307D: string
+      inittransactioncode_279L: string
+      isbidproduct_390L: boolean
+      isdebitcard_527L: boolean
+      mainoccupationinc_437A: double
+      maxdpdtolerance_577P: double
+      num_group1: bigint
+      outstandingdebt_522A: double
+      pmtnum_8L: double
+      postype_4733339M: string
+      profession_152M: string
+      rejectreason_755M: string
+      rejectreasonclient_4145042M: string
+      revolvingaccount_394A: double
+      status_219L: string
+      tenor_203L: double
+    reference:
+      table: train_base
+      columns:
+      - case_id
+      full_coverage: false

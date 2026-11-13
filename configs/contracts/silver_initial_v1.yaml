@@ -1,0 +1,34 @@
+version: 1
+scope: silver_initial_persisted
+snapshot_contract_sha256: 091e65bbee8e1c0907dd9bf23cf9b07dae512f62c3ecd99935a53c728c722cb6
+silver_policy_sha256: 240fada60e8b7dde4a32c7fcd70f8029ea5335735f8eb54a11e172a41b6d1de2
+schema_derivation: snapshot_with_policy_dates_and_bronze_metadata_v1
+table_bindings:
+  credit_cases: train_base
+  credit_static: train_static_0
+  previous_applications: train_applprev_1
+policies:
+  schema_drift: fail
+  missing_or_extra_tables: fail
+  required_nulls: fail
+  optional_nulls: preserve
+  rule_failure: block_whole_validation_no_drop
+  metadata_strings: non_blank
+  auxiliary_date_availability: measure_only_retrospective
+  history_maximum_per_case: not_imposed
+domains:
+  target: [0, 1]
+  WEEK_NUM_minimum: 0
+  MONTH_matches_date_decision: true
+  num_group1_minimum: 0
+relationships:
+  credit_static:
+    parent: credit_cases
+    columns: [case_id]
+    cardinality: one_to_one
+    full_parent_coverage: true
+  previous_applications:
+    parent: credit_cases
+    columns: [case_id]
+    cardinality: many_to_one
+    full_parent_coverage: false

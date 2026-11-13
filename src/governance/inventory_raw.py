@@ -27,7 +27,7 @@ def _load_feature_definitions(p: Path) -> Dict[str, str]:
 
 
 def build_datasets_inventory(ctx) -> str:
-    out_path = ctx.repo_root / "docs" / "governance" / "datasets_inventory.md"
+    out_path = ctx.docs_root / "governance" / "datasets_inventory.md"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     feat_path = _find_feature_definitions(ctx.raw_dir)

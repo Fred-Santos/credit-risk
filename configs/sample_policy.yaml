@@ -1,0 +1,16 @@
+version: 1
+algorithm: sha256_seed_colon_case_id_v1
+seed: credit-risk-mvp-v1
+max_cases: 50000
+week_min: 0
+week_max: 91
+batches:
+  - id: b00_w000_051
+    min_week: 0
+    max_week: 51
+  - id: b01_w052_077
+    min_week: 52
+    max_week: 77
+  - id: b02_w078_091
+    min_week: 78
+    max_week: 91

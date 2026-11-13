@@ -1,0 +1,11 @@
+version: 2
+scope: managed_silver_publication
+parent_contract_sha256: 14d41984e2c5199a999d4891fe0da89937d4303ecfcb03bf8bfbcfba465bf769
+schema_derivation: silver_initial_plus_f04_event_state_and_authorized_marker
+added_columns:
+  _silver_contract_version: int
+backfill:
+  _silver_contract_version: 2
+unexpected_columns: fail
+incompatible_types: fail
+missing_required_columns: fail

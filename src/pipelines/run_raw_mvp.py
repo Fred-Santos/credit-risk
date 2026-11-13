@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from pyspark.sql import SparkSession
+from src.utils.spark import create_spark_session
 
 from src.utils.run_context import RunContext
 from src.profiling.data_dictionary_raw import generate_data_dictionary
@@ -20,12 +20,7 @@ def main():
     if not ctx.raw_dir.exists():
         raise RuntimeError(f"Raw dir não existe: {ctx.raw_dir}")
 
-    spark = (
-        SparkSession.builder
-        .appName("credit-risk-raw-mvp")
-        .master("local[*]")
-        .getOrCreate()
-    )
+    spark = create_spark_session(repo_root, app_name="credit-risk-raw-mvp")
 
     try:
         generate_data_dictionary(ctx, spark)

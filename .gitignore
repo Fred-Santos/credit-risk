@@ -5,6 +5,9 @@ data/raw/
 data/bronze/
 data/silver/
 data/gold/
+data/samples/
+data/events/
+data/object-store/
 
 # ==========================
 # Spark
@@ -22,6 +25,10 @@ __pycache__/
 
 # Virtual environments
 .venv/
+.runtime/
+.kaggle/
+kaggle.json
+access_token
 .env
 env/
 venv/
@@ -55,6 +62,7 @@ MANIFEST
 # Logs
 # ==========================
 logs/
+artifacts/
 *.log
 
 # ==========================
