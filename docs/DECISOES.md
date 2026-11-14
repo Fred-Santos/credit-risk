@@ -169,3 +169,106 @@ alegar significância. Limites observados de datas sinalizam janela parcial,
 sem inferir perda na origem. Cobertura, completude, maturação não auditada,
 recorte e disponibilidade temporal são explicitados antes da interpretação.
 Método e conclusões em [análise](analise/RESULTADOS.md).
+
+D42 — F08: SeaweedFS 4.53 Apache 2.0 nativo em loopback, com binário verificado
+por SHA-256, autenticação privada e estado persistente ignorado pelo Git.
+Garage foi considerado; MinIO Community estava arquivado na consulta. A escolha
+prioriza a operação local e as provas executadas, sem alegar teste dos demais.
+[Alternativas e fontes](objetos/DECISAO_E_ARQUITETURA.md).
+
+D43 — F08: fábrica Spark separada, Hadoop S3A 3.3.4 e AWS SDK 1.12.262 fixados;
+S3SingleDriverLogStore, um host/driver escritor cooperante. Controle de exclusão
+fica local; objetos de dados e publicação usam API/chaves, sem rename POSIX.
+Manifestos imutáveis, hashes e PUT condicional de CURRENT preservam a publicação
+anterior durante falhas privadas. ETag controla a precondição; SHA-256 confere bytes.
+Não estender essa prova a múltiplos hosts/JVMs ou equivalência completa AWS.
+
+D44 — F08: conservar filesystem como referência e espelhar entradas por SHA;
+executar replay/MERGE/reconstrução nativamente em Delta S3A e depois derivar
+Silver v2/Gold em prefixos privados. Comparar todas as tabelas com F04/F06.
+Manter o relatório F07 ligado às publicações locais originais; consumo S3 usa
+seu leitor explícito. Parada preserva backend; remoção validada só em fixture
+internamente criada. Retenção 30 dias/pins indefinidos, sem VACUUM real.
+[Provas e recursos](evidencias/F08_OBJETOS.md), [operação](objetos/OPERACAO.md).
+
+D45 — F09.1: separar execução operacional das demonstrações que injetam falhas.
+Usar update até lote explícito, replay idempotente e rebuild isolado por run_id,
+com entradas locais aprovadas e registry operacional separado de F08. Validar
+reconstrução antes de publicar; neste comando a Gold é materializada integralmente.
+Recusar limite anterior ao estado consumido. A preparação de entradas permanece
+nos comandos existentes; não há ingestão CDC. [Operação](operacao/COMANDO_UNICO.md)
+e [evidência F09.1](evidencias/F09_COMANDO_UNICO.md).
+
+D46 — F09.2: supervisionar a operação inteira, incluindo configuração e
+inicialização, com operation_id estável e run_id por tentativa de processamento.
+Retentar somente falhas temporárias reconhecidas, até três tentativas; não
+repetir contrato inválido, fonte ausente, acesso negado, conflito ou erro desconhecido.
+Preservar o erro primário e bloquear retry quando o encerramento falhar.
+Um código não zero após ativação não significa rollback automático.
+[Estados/erros](operacao/ESTADOS_E_ERROS.md) e
+[evidência](evidencias/F09_ESTADOS_E_ERROS.md).
+
+D47 — F09.3: medir durações com relógio monotônico, preservando horários UTC
+para rastreio. Separar operação, tentativa e executor; somar intervalos exclusivos
+e registrar esperas/cleanup. Reutilizar contadores conferidos com commits, sem
+novos counts Spark para a consolidação. Distinguir entregas de linhas finais,
+objetos de arquivos e marcadores S3A, bytes retidos de tráfego/escrita nova.
+Amostragem RSS Linux inclui processo/descendentes, com custo e limites declarados.
+Janela de coleta inclui guarda final da entrada; etapas dos componentes mantêm
+validações embutidas, sem alegar tempo puro de transformação ou overhead isolado.
+[Métricas](operacao/METRICAS.md), [evidência](evidencias/F09_METRICAS.md).
+
+D48 — F09.4: auditar uma operação/publicação explícita por leitura, conferindo
+relatórios, coorte, lotes/recibos, espelho e tabelas Delta. Separar run de consumo,
+audit_run_id e tentativas aprovadas de criação observadas nos logs locais.
+Mapear colunas Gold explicitamente, fixando a implementação conhecida e
+rejeitando modelo desconhecido; não alegar parser SQL, autoria assinada ou catálogo
+global de acessos. F07 continua ligado ao filesystem F06. Inventário estável por
+identidade, com arquivo novo por auditoria. [Operação](operacao/LINEAGE_E_INVENTARIO.md)
+e [evidência](evidencias/F09_LINEAGE.md).
+
+D49 — F09.5: resumo pontual independente dos produtores, separando última
+execução conhecida de publicação aprovada observada. Não iniciar S3 nem usar
+cache como comprovação de CURRENT. Diferenciar metadados de leitura Delta e
+aprovação de qualidade armazenada de nova computação SQL. Limites iniciais de
+2× duração e 1,5× RSS derivam de baselines F09.3 fixadas por hash, somente para
+modo/lote/coorte comparáveis; não são SLA nem bloqueiam cargas. Consultas sem
+verificação nova geram relatório inclusive com avisos; verificação requerida
+e indisponível retorna 1. [Operação](operacao/RESUMO_OPERACIONAL.md) e
+[evidência](evidencias/F09_RESUMO_OPERACIONAL.md).
+
+D50 — F09.6: testar fluxo completo em namespace S3 descartável com entradas
+locais aprovadas. Injetar defeitos na saída privada do produtor e interrupção
+real após commit, mantendo validadores/oráculos reais. Classificar exceções
+Silver/Gold como quality_rejected (3, sem retry), preservar seu relatório e
+ligar tentativa ao run_report por hash. Isolar relatórios da matriz do histórico
+normal, confinados ao repositório. Rebuild mantém operação lógica no retry.
+Não exigir Home Credit na CI: o ensaio local é separado e F10 usará fixtures
+sintéticas. [Matriz](operacao/MATRIZ_OPERACIONAL.md),
+[evidência](evidencias/F09_MATRIZ_OPERACIONAL.md).
+
+D51 — F10: catalogar responsabilidades sem renomear testes vinculados às
+evidências. Exigir integração sem skips, matriz T01–T24 completa e e2e sintético
+com oráculo manual. CI usa fonte exportada, dependências fixadas e upload por
+lista fechada, sem Kaggle. Preservar notebook histórico; limpar outputs e
+recalcular referências somente na cópia, com manifesto dos dois hashes.
+A configuração remota não equivale a uma execução no GitHub.
+[Execução e CI](testes/EXECUCAO_E_CI.md).
+
+D52 — F10.5: selecionar metadados do lote antes da leitura tipada S3A. Manter
+verificação do espelho completo, contratos e reconstrução; conferir igualdade
+das cinco tabelas em namespace temporário. Uma medição por variante, sem
+aumentar recorte, cache, paralelismo ou partições; ganho observado não é SLA.
+[Aceitação F10](evidencias/F10_ACEITACAO.md).
+
+D53 — F11: apresentar o produto por problema, contratos, execução e limites,
+com demo curta de Silver tipada inventada e prova RAW→S3 separada no e2e F10.
+Executar publicação, commit privado, retomada e leitura histórica com S3/Delta
+reais; gráficos derivados dos CSVs consultados. Não confundir mock de falha com
+substituição de validador. Preservar outputs históricos e seus hashes originais.
+
+D54 — F11: distribuir um pacote local de código sanitizado, documentação
+selecionada e resultados inventados, com inventário por hash. Não incluir dados
+Home Credit, relatórios reais individuais, logs, runtime ou credenciais. Declarar
+autorrevisão por comandos, sem avaliador externo ou job remoto. Encerrar escopo
+local sem pressupor commit/tag, push, divulgação externa ou recursos AWS.

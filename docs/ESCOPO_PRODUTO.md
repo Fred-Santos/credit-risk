@@ -129,7 +129,12 @@ Contratos, recorte, Bronze reconciliada, protocolo de eventos e Silver inicial
 com aceite operacional estão validados no escopo atual. F04 validou lotes,
 revisões, merge, idempotência/atraso e reconstrução equivalente. F05 validou
 publicação/recuperação, F06 entregou ABT e indicadores reconciliados e F07
-entregou análise com gráficos e reprodução. Próxima entrega técnica: seleção
-do armazenamento de objetos em F08.1, conforme o
+entregou análise com gráficos e reprodução. F08 validou SeaweedFS/S3A, replay
+incremental e três publicações reconciliadas, com recuperação e reinício;
+a linha de base F08 teve 129 verificações globais sem ignorados. F09 consolidou
+comando, supervisão, métricas, lineage e resumo, com matriz real de sucesso/falhas
+e recuperação. F10 aprovou 153 testes obrigatórios em ambiente novo e T01–T24,
+configurou CI sintética e validou o export sem dados ou outputs. F11 concluiu a
+entrega técnica com demo, pacote e autorrevisão; 72/72 itens, conforme o
 [roteiro](ROTEIRO_EXECUCAO_LAKEHOUSE.md). Condições de ambiente/fonte continuam em
 [AMBIENTE_LOCAL.md](AMBIENTE_LOCAL.md) e [SOURCE.md](governance/SOURCE.md).

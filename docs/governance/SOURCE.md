@@ -117,8 +117,10 @@ redistribuição de RAW, ABT individual ou resultados externos sem revisão. Ess
 verificação permanece no aceite de publicação F10.6/F11. Os contratos v1 e o
 recorte já foram validados, conforme [evidência](../evidencias/F00_CONTRATOS_RECORTE.md).
 A Bronze do recorte já foi executada e repetida sem novas gravações; ver
-[evidência](../evidencias/F02_BRONZE_RECORTE.md). A próxima entrega define o
-contrato de eventos/revisões, antes de alinhar regras e reconciliar valores.
+[evidência](../evidencias/F02_BRONZE_RECORTE.md). O contrato de eventos, a reconciliação e as fases seguintes foram concluídos
+no escopo local. F11 entrega uma demonstração inventada; dados reais e outputs
+históricos não acompanham o pacote sintético. A divulgação externa dessa fonte
+continua sujeita à revisão já registrada.
 
 Referências de leitura relacionadas: [descrição dos dados Home Credit](https://www.kaggle.com/c/home-credit-credit-risk-model-stability/data)
 e [licença CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "T01",
+      "tests": [
+        "test_pipeline_reliability.PipelineTests.test_empty_raw_rejected",
+        "test_bronze_quality_contract.BronzeContractSparkTests.test_unreadable_dataset_blocks_with_report",
+        "test_bronze_quality_contract.BronzeContractSparkTests.test_missing_auxiliary_and_unexpected_dataset_block"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T02",
+      "tests": [
+        "test_bronze_ingestion.BronzeRecoverySparkTests.test_first_load_repeat_and_original_metadata"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T03",
+      "tests": [
+        "test_bronze_ingestion.BronzeRecoverySparkTests.test_real_write_failure_is_not_published_and_retry_skips_commits"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T04",
+      "tests": [
+        "test_download_home_credit.AcquisitionTests.test_modified_source_is_preserved_and_rejected",
+        "test_sample_contracts.ContractConfigurationTests.test_source_edition_change_is_rejected"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T05",
+      "tests": [
+        "test_bronze_ingestion.BronzeRecoverySparkTests.test_other_process_lock_blocks_writer_and_death_releases_it",
+        "test_publication_delta.IsolatedPublicationTests.test_publication_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/publication_integration.py",
+          "method": "test_single_writer_and_reader_lock"
+        }
+      ]
+    },
+    {
+      "id": "T06",
+      "tests": [
+        "test_silver_input.SilverInputSparkTests.test_duplicate_across_shards_blocks_after_union"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T07",
+      "tests": [
+        "test_bronze_quality_contract.BronzeContractSparkTests.test_schema_drift_and_incompatible_type_block",
+        "test_bronze_quality_contract.BronzeContractSparkTests.test_calendar_target_and_missing_static_coverage_block",
+        "test_bronze_quality_contract.BronzeContractSparkTests.test_global_duplicates_and_orphans_block"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T08",
+      "tests": [
+        "test_silver_transforms.SilverTransformsSparkTests.test_invalid_dates_block_under_ansi_and_legacy_settings",
+        "test_silver_transforms.SilverTransformsSparkTests.test_one_invalid_table_blocks_entire_snapshot_with_counts"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T09",
+      "tests": [
+        "test_incremental_delta.IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_merge_matches_hand_oracle_and_reconstruction"
+        }
+      ]
+    },
+    {
+      "id": "T10",
+      "tests": [
+        "test_incremental_delta.IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_same_batch_retry_preserves_receipt_values_and_versions"
+        }
+      ]
+    },
+    {
+      "id": "T11",
+      "tests": [
+        "test_incremental_delta.IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_shuffled_deduplication_respects_composite_key_and_max_revision"
+        },
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_merge_matches_hand_oracle_and_reconstruction"
+        }
+      ]
+    },
+    {
+      "id": "T12",
+      "tests": [
+        "test_incremental_delta.IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_old_revision_conflict_rejects_whole_packet_before_state_changes"
+        }
+      ]
+    },
+    {
+      "id": "T13",
+      "tests": [
+        "test_gold_delta.IsolatedGoldTests.test_gold_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_auxiliary_corrections_and_late_case"
+        }
+      ]
+    },
+    {
+      "id": "T14",
+      "tests": [
+        "test_publication_delta.IsolatedPublicationTests.test_publication_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/publication_integration.py",
+          "method": "test_initial_read_and_authorized_migration"
+        },
+        {
+          "file": "tests/publication_integration.py",
+          "method": "test_schema_drift_blocks_before_writes"
+        }
+      ]
+    },
+    {
+      "id": "T15",
+      "tests": [
+        "test_publication_delta.IsolatedPublicationTests.test_publication_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/publication_integration.py",
+          "method": "test_before_after_commit_and_between_tables_resume"
+        },
+        {
+          "file": "tests/publication_integration.py",
+          "method": "test_manifest_and_pointer_crash_windows"
+        }
+      ]
+    },
+    {
+      "id": "T16",
+      "tests": [
+        "test_gold_delta.IsolatedGoldTests.test_gold_delta_in_clean_jvm",
+        "test_publication_delta.IsolatedPublicationTests.test_publication_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_failure_between_silver_and_gold_keeps_approved_pair"
+        },
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_real_bad_gold_quality_cannot_publish"
+        }
+      ]
+    },
+    {
+      "id": "T17",
+      "tests": [
+        "test_gold_delta.IsolatedGoldTests.test_gold_delta_in_clean_jvm",
+        "test_publication_delta.IsolatedPublicationTests.test_publication_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_month_move_removes_empty_period_and_rollback_restores_pair"
+        }
+      ]
+    },
+    {
+      "id": "T18",
+      "tests": [
+        "test_incremental_delta.IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/incremental_integration.py",
+          "method": "test_merge_matches_hand_oracle_and_reconstruction"
+        }
+      ]
+    },
+    {
+      "id": "T19",
+      "tests": [
+        "test_gold_delta.IsolatedGoldTests.test_gold_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_hand_oracle_history_aggregation_preserves_case_grain"
+        }
+      ]
+    },
+    {
+      "id": "T20",
+      "tests": [
+        "test_gold_delta.IsolatedGoldTests.test_gold_delta_in_clean_jvm"
+      ],
+      "nested": [
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_auxiliary_corrections_and_late_case"
+        },
+        {
+          "file": "tests/gold_integration.py",
+          "method": "test_history_only_change_reaches_abt"
+        }
+      ]
+    },
+    {
+      "id": "T21",
+      "tests": [
+        "test_analysis_delta.IsolatedAnalysisTests.test_analysis_in_clean_process"
+      ],
+      "nested": [
+        {
+          "file": "tests/analysis_integration.py",
+          "method": "test_null_labels_and_empty_population_do_not_invent_zero_rates"
+        }
+      ]
+    },
+    {
+      "id": "T22",
+      "tests": [
+        "test_object_store_delta.IsolatedObjectStorageTests.test_s3a_delta_in_clean_process"
+      ],
+      "nested": [
+        {
+          "file": "tests/object_store_integration.py",
+          "method": "test_06_service_outage_after_private_commit_and_restart"
+        },
+        {
+          "file": "tests/object_store_integration.py",
+          "method": "test_10_temporary_lab_restart_and_removal"
+        }
+      ]
+    },
+    {
+      "id": "T23",
+      "tests": [
+        "test_paths.PathConfigurationTests.test_custom_paths_reach_execution_context",
+        "test_paths.PathConfigurationTests.test_invalid_and_overlapping_paths_are_rejected",
+        "test_operation_runner.SupervisorProcessTests.test_supervisor_error_and_retry_contracts"
+      ],
+      "nested": []
+    },
+    {
+      "id": "T24",
+      "tests": [
+        "test_e2e_synthetic.SyntheticEndToEndTests.test_raw_to_published_s3_with_invented_data",
+        "test_test_runner.TestRunnerContractTests.test_required_integration_rejects_skip"
+      ],
+      "nested": []
+    }
+  ]
+}

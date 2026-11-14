@@ -1,0 +1,33 @@
+# Matriz de aceitação T01–T24
+
+Os cenários exigidos estão definidos na seção 5 do [roteiro](../ROTEIRO_EXECUCAO_LAKEHOUSE.md).
+O mapa executável [acceptance_matrix.json](../../tests/acceptance_matrix.json) identifica testes externos e métodos das integrações isoladas. `check_acceptance.py` exige os 24 IDs, métodos existentes, catálogo completo e relatório integral aprovado sem skips. A presença do método sozinha não comprova execução: a aprovação depende também do wrapper que executa sua suíte integral.
+
+| Cenário | Verificação automatizada |
+|---|---|
+| T01 | [PipelineTests.test_empty_raw_rejected](../../tests/test_pipeline_reliability.py); [BronzeContractSparkTests.test_unreadable_dataset_blocks_with_report](../../tests/test_bronze_quality_contract.py); [BronzeContractSparkTests.test_missing_auxiliary_and_unexpected_dataset_block](../../tests/test_bronze_quality_contract.py) |
+| T02 | [BronzeRecoverySparkTests.test_first_load_repeat_and_original_metadata](../../tests/test_bronze_ingestion.py) |
+| T03 | [BronzeRecoverySparkTests.test_real_write_failure_is_not_published_and_retry_skips_commits](../../tests/test_bronze_ingestion.py) |
+| T04 | [AcquisitionTests.test_modified_source_is_preserved_and_rejected](../../tests/test_download_home_credit.py); [ContractConfigurationTests.test_source_edition_change_is_rejected](../../tests/test_sample_contracts.py) |
+| T05 | [BronzeRecoverySparkTests.test_other_process_lock_blocks_writer_and_death_releases_it](../../tests/test_bronze_ingestion.py); [IsolatedPublicationTests.test_publication_delta_in_clean_jvm](../../tests/test_publication_delta.py); [test_single_writer_and_reader_lock](../../tests/publication_integration.py) |
+| T06 | [SilverInputSparkTests.test_duplicate_across_shards_blocks_after_union](../../tests/test_silver_input.py) |
+| T07 | [BronzeContractSparkTests.test_schema_drift_and_incompatible_type_block](../../tests/test_bronze_quality_contract.py); [BronzeContractSparkTests.test_calendar_target_and_missing_static_coverage_block](../../tests/test_bronze_quality_contract.py); [BronzeContractSparkTests.test_global_duplicates_and_orphans_block](../../tests/test_bronze_quality_contract.py) |
+| T08 | [SilverTransformsSparkTests.test_invalid_dates_block_under_ansi_and_legacy_settings](../../tests/test_silver_transforms.py); [SilverTransformsSparkTests.test_one_invalid_table_blocks_entire_snapshot_with_counts](../../tests/test_silver_transforms.py) |
+| T09 | [IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm](../../tests/test_incremental_delta.py); [test_merge_matches_hand_oracle_and_reconstruction](../../tests/incremental_integration.py) |
+| T10 | [IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm](../../tests/test_incremental_delta.py); [test_same_batch_retry_preserves_receipt_values_and_versions](../../tests/incremental_integration.py) |
+| T11 | [IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm](../../tests/test_incremental_delta.py); [test_shuffled_deduplication_respects_composite_key_and_max_revision](../../tests/incremental_integration.py); [test_merge_matches_hand_oracle_and_reconstruction](../../tests/incremental_integration.py) |
+| T12 | [IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm](../../tests/test_incremental_delta.py); [test_old_revision_conflict_rejects_whole_packet_before_state_changes](../../tests/incremental_integration.py) |
+| T13 | [IsolatedGoldTests.test_gold_delta_in_clean_jvm](../../tests/test_gold_delta.py); [test_auxiliary_corrections_and_late_case](../../tests/gold_integration.py) |
+| T14 | [IsolatedPublicationTests.test_publication_delta_in_clean_jvm](../../tests/test_publication_delta.py); [test_initial_read_and_authorized_migration](../../tests/publication_integration.py); [test_schema_drift_blocks_before_writes](../../tests/publication_integration.py) |
+| T15 | [IsolatedPublicationTests.test_publication_delta_in_clean_jvm](../../tests/test_publication_delta.py); [test_before_after_commit_and_between_tables_resume](../../tests/publication_integration.py); [test_manifest_and_pointer_crash_windows](../../tests/publication_integration.py) |
+| T16 | [IsolatedGoldTests.test_gold_delta_in_clean_jvm](../../tests/test_gold_delta.py); [IsolatedPublicationTests.test_publication_delta_in_clean_jvm](../../tests/test_publication_delta.py); [test_failure_between_silver_and_gold_keeps_approved_pair](../../tests/gold_integration.py); [test_real_bad_gold_quality_cannot_publish](../../tests/gold_integration.py) |
+| T17 | [IsolatedGoldTests.test_gold_delta_in_clean_jvm](../../tests/test_gold_delta.py); [IsolatedPublicationTests.test_publication_delta_in_clean_jvm](../../tests/test_publication_delta.py); [test_month_move_removes_empty_period_and_rollback_restores_pair](../../tests/gold_integration.py) |
+| T18 | [IsolatedIncrementalTests.test_incremental_delta_in_clean_jvm](../../tests/test_incremental_delta.py); [test_merge_matches_hand_oracle_and_reconstruction](../../tests/incremental_integration.py) |
+| T19 | [IsolatedGoldTests.test_gold_delta_in_clean_jvm](../../tests/test_gold_delta.py); [test_hand_oracle_history_aggregation_preserves_case_grain](../../tests/gold_integration.py) |
+| T20 | [IsolatedGoldTests.test_gold_delta_in_clean_jvm](../../tests/test_gold_delta.py); [test_auxiliary_corrections_and_late_case](../../tests/gold_integration.py); [test_history_only_change_reaches_abt](../../tests/gold_integration.py) |
+| T21 | [IsolatedAnalysisTests.test_analysis_in_clean_process](../../tests/test_analysis_delta.py); [test_null_labels_and_empty_population_do_not_invent_zero_rates](../../tests/analysis_integration.py) |
+| T22 | [IsolatedObjectStorageTests.test_s3a_delta_in_clean_process](../../tests/test_object_store_delta.py); [test_06_service_outage_after_private_commit_and_restart](../../tests/object_store_integration.py); [test_10_temporary_lab_restart_and_removal](../../tests/object_store_integration.py) |
+| T23 | [PathConfigurationTests.test_custom_paths_reach_execution_context](../../tests/test_paths.py); [PathConfigurationTests.test_invalid_and_overlapping_paths_are_rejected](../../tests/test_paths.py); [SupervisorProcessTests.test_supervisor_error_and_retry_contracts](../../tests/test_operation_runner.py) |
+| T24 | [SyntheticEndToEndTests.test_raw_to_published_s3_with_invented_data](../../tests/test_e2e_synthetic.py); [TestRunnerContractTests.test_required_integration_rejects_skip](../../tests/test_test_runner.py) |
+
+Resultado executado, contagem e ambiente estão na [evidência F10](../evidencias/F10_ACEITACAO.md). T22 também possui a [matriz real F09.6](../evidencias/F09_MATRIZ_OPERACIONAL.md); T24 combina bootstrap independente, suíte completa e e2e sintético. O job remoto não foi executado nesta sessão.

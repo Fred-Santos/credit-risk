@@ -355,3 +355,44 @@ Parquet de teste; revisar essa seleção antes de executá-la para um novo recor
 - [Regras da competição](https://www.kaggle.com/c/home-credit-credit-risk-model-stability/rules): seções relevantes recuperadas na etapa F00; avaliação atual em SOURCE.
 - [Delta Lake — merge e atualizações](https://docs.delta.io/delta-update/): semântica de merge, deduplicação e evolução de esquema.
 - [Delta Lake — leitura, escrita e versões](https://docs.delta.io/delta-batch/): time travel, retenção, validação e evolução de esquema.
+
+
+## Atualização F08 — 13/11/2026
+
+O diagnóstico inicial acima permanece como registro histórico. F08 escolheu
+SeaweedFS 4.53 nativo e validou S3A/Delta, espelho de entradas por hash, replay
+incremental e três publicações Silver/Gold equivalentes à referência filesystem.
+Falha/retry, rollback, reinício e consumidor independente passaram; a regressão
+global passou com 129 verificações sem ignorados. Andamento atual: **54/72**,
+F00–F08 aceitas. Operação unificada e observabilidade seguem em F09.1.
+Consulte [evidência F08](evidencias/F08_OBJETOS.md),
+[arquitetura](objetos/DECISAO_E_ARQUITETURA.md) e
+[roteiro atual](ROTEIRO_EXECUCAO_LAKEHOUSE.md).
+
+
+## Atualização F09 — 13/11/2026
+
+Comando operacional, estados/erros e retry, métricas, lineage/inventário, resumo
+e matriz de recuperação foram validados. Andamento atual: **60/72**, F00–F09
+aceitas no escopo local. A matriz usou entradas aprovadas e destinos privados,
+sem alterar publicações reais. Próxima: F10.1, organizar suítes e consolidar CI
+e aceitação. [Evidência F09.6](evidencias/F09_MATRIZ_OPERACIONAL.md).
+
+## Atualização F10 — 13/11/2026
+
+**66/72 itens**, F00–F10 aceitas no escopo local. Suíte integral em ambiente
+novo: 153 testes obrigatórios, zero ignorados; matriz T01–T24 e e2e sintético
+aprovados. CI configurada, sem job remoto executado. A seleção antes da leitura
+reduziu pacotes tipados de sete para um; cinco tabelas ficaram iguais. Export
+sanitizado auditado e histórico preservado. Próxima: F11.1, revisão da entrega.
+[Evidência F10](evidencias/F10_ACEITACAO.md).
+
+## Encerramento F11 — 13/11/2026
+
+**72/72 itens e 12/12 fases aceitos no escopo local.** README, arquitetura,
+contratos/guia e caminhos revisados; demo sintética S3/Delta com correção,
+falha/retomada e histórico; reprodução em cópia nova com seis CSVs idênticos.
+Pacote de fonte sanitizada e demo inventada auditado. Autorrevisão declarada,
+sem avaliador externo, job remoto, commit/tag, publicação ou AWS provisionada.
+[Evidência F11](evidencias/F11_ENTREGA.md), [nota técnica](entrega/CONCLUSAO_TECNICA.md)
+e [backlog/inventário AWS](entrega/EVOLUCAO_E_AWS.md).

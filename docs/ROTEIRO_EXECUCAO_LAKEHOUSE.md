@@ -24,7 +24,7 @@ escopo analítico. Expandir para todas as tabelas também é uma evolução opci
 
 ## 2. Como controlar o andamento
 
-Há **72 itens de execução**, distribuídos em 12 fases. F00–F07 foram
+Há **72 itens de execução**, distribuídos em 12 fases. F00–F11 foram
 aceitas no escopo local. Fonte real, contratos, recorte, ingestão Bronze,
 qualidade, revisões e reconciliação de valores/proveniência estão validados.
 F03 também reúne regras, leitura, tratamentos, materialização Delta, contratos
@@ -34,15 +34,23 @@ reconstrução equivalente. F05 validou evolução, publicação, recuperação 
 retenção locais. F06 publicou ABT por caso e indicadores SQL, com correções
 auxiliares, atraso, falha/retomada e histórico reconciliados. F07 entregou
 relatório, gráficos e conclusões verificadas, com reprodução em processos novos.
+F08 validou armazenamento de objetos local, replay nativo S3A, publicações
+reconciliadas e persistência após reinício.
+F09 consolidou comando, supervisão, métricas, lineage e resumo, com matriz real
+de falhas e recuperação em destinos privados.
+F10 consolidou 153 testes obrigatórios em ambiente instalado do zero, matriz
+T01–T24, e2e sintético, CI declarada e revisão de acesso/preservação.
+F11 concluiu documentação, demo S3 com falha/retomada e histórico, reprodução
+por comandos e pacote sintético auditado. A revisão foi feita pelo executor.
 
 | Medida atual | Valor |
 |---|---|
-| Itens aceitos deste roteiro | 48/72 |
-| Fases aceitas | 8/12 — F00–F07 no escopo local |
-| Próxima entrega | F08.1 — selecionar armazenamento de objetos local |
-| Dependência externa conhecida | Nenhuma impede a próxima entrega técnica; divulgação externa será revisada antes de publicar |
-| Base de testes atual | 126 verificações do runner, sem ignorados; quatro suítes Delta (15/9/9/8) e uma analítica Spark (6) |
-| Execução atual com dados reais | Relatório dos 50 mil casos/22 meses; SQL e comparações aprovados; duas execuções com JSON/CSV/12 gráficos idênticos; dados e CURRENT preservados |
+| Itens aceitos deste roteiro | 72/72 |
+| Fases aceitas | 12/12 — F00–F11 no escopo local |
+| Próxima entrega | Escopo local encerrado; evoluções no backlog |
+| Dependência externa conhecida | Publicação remota e divulgação de dados reais continuam ações separadas; entrega local usa pacote sintético |
+| Base de testes atual | F10: 153 testes obrigatórios, zero ignorados, ambiente novo; matriz T01–T24 aprovada; CI configurada, sem execução remota nesta sessão |
+| Execução atual com dados reais | Replay e três publicações S3 equivalentes a F04/F06; 50 mil casos/22 meses; falha/retry, rollback, consumidor independente e reinício aprovados; filesystem preservado |
 
 Marcar `[x]` somente com o critério atendido e uma evidência registrada. Para
 trabalho iniciado ou impedido, usar o diário abaixo, mantendo `[ ]`. Teste
@@ -80,6 +88,16 @@ controle. Evitar implementar várias fases sem fechar os critérios anteriores.
 | 13/11/2026 | F05.1–F05.6 | Aceitos no filesystem local | Contrato v2, manifestos/CURRENT, falhas/retry, rollback e retenção; nove cenários Delta e dois testes de política aprovados; três snapshots reais publicados em 223,773 s | [Evidência F05](evidencias/F05_PUBLICACAO.md) | Implementar F06 em seguida |
 | 13/11/2026 | F06.1–F06.6 | Aceitos no filesystem local | ABT 50 mil casos e indicadores 22 meses; correção auxiliar, atraso, SQL independente, falha/retry e histórico aprovados; 123 verificações globais sem ignorados | [Evidência F06](evidencias/F06_GOLD.md) | F07.1 — fechar perguntas analíticas |
 | 13/11/2026 | F07.1–F07.6 | Aceitos no filesystem local | Relatório HTML/Markdown, CSV, gráficos, P01–P06 e SQL independente; duas execuções reproduziram 19 arquivos de resultados byte a byte; 126 verificações globais aprovadas | [Evidência F07](evidencias/F07_ANALISE.md) | F08.1 — selecionar objetos locais |
+| 13/11/2026 | F08.1–F08.6 | Aceitos no escopo local de um host/driver | SeaweedFS 4.53, replay Delta S3A e três publicações reconciliadas; falha/retry, rollback, persistência e consumidor independente; 129 verificações sem ignorados; processo 18 min 8 s, pico RSS somado 6,08 GiB | [Evidência F08](evidencias/F08_OBJETOS.md), [arquitetura](objetos/DECISAO_E_ARQUITETURA.md) e [operação](objetos/OPERACAO.md) | F09.1 — comando único |
+| 13/11/2026 | F09.1 | Aceito sobre entradas locais aprovadas | Update até o segundo lote, replay sem commits, limite regressivo recusado e rebuild isolado com cinco tabelas iguais; CURRENT F08 preservado; três testes unitários | [Evidência](evidencias/F09_COMANDO_UNICO.md) e [operação](operacao/COMANDO_UNICO.md) | F09.2 — estados e erros |
+| 13/11/2026 | F09.2 | Aceito no runtime local | Supervisor com estados, códigos, tentativas limitadas e identidade lógica; oito testes direcionados, sucesso real Spark/S3, entrada ausente e interrupção real do endpoint aprovados | [Evidência](evidencias/F09_ESTADOS_E_ERROS.md) e [operação](operacao/ESTADOS_E_ERROS.md) | F09.3 — métricas |
+| 13/11/2026 | F09.3 | Aceito no runtime local | Durações monotônicas, contadores de lotes, arquivos/objetos/bytes e RSS amostrado; update/replay/fonte ausente reais aprovados; coleta adicional separada e custos embutidos declarados | [Evidência](evidencias/F09_METRICAS.md) e [métricas](operacao/METRICAS.md) | F09.4 — lineage e inventário |
+| 13/11/2026 | F09.4 | Aceito por publicação explícita | Auditoria real de atualização/replay e reprodução estável; cinco tabelas, 15 nós de origem/trabalho, 19 ligações e 30 colunas Gold; IDs documentados, CURRENT preservados | [Evidência](evidencias/F09_LINEAGE.md) e [inventário](operacao/LINEAGE_E_INVENTARIO.md) | F09.5 — resumo operacional |
+| 13/11/2026 | F09.5 | Aceito como consulta pontual | Resumo JSON/Markdown com execução, publicação, falhas, qualidade e alertas calibrados F09.3; oito testes novos e cinco casos reais online/Delta/cache/offline; CURRENT preservados | [Evidência](evidencias/F09_RESUMO_OPERACIONAL.md) e [operação](operacao/RESUMO_OPERACIONAL.md) | F09.6 — matriz operacional |
+| 13/11/2026 | F09.6 | Aceito; F09 concluída no escopo local | Sucesso, fonte ausente, schema inválido, qualidade reprovada e serviço parado após commit privado; diagnóstico e retry reais; CURRENT reais preservados; fixture removida | [Evidência](evidencias/F09_MATRIZ_OPERACIONAL.md) e [matriz](operacao/MATRIZ_OPERACIONAL.md) | F10.1 — organizar testes |
+| 13/11/2026 | F10.1–F10.6 | Aceitos; F10 concluída no escopo local | 153 testes obrigatórios sem ignorados em instalação nova, e2e sintético, T01–T24, CI declarada, leitura 7→1 com cinco tabelas iguais, export sanitizado e históricos preservados | [Evidência F10](evidencias/F10_ACEITACAO.md) | F11.1 — reescrever README |
+
+| 13/11/2026 | F11.1–F11.6 | Aceitos; escopo local encerrado | README/arquitetura/guia revisados; demo real S3 com dados inventados, falha/retomada/histórico; autorrevisão em cópia nova com seis CSVs iguais; pacote de 194 arquivos auditado e inventário AWS sem provisionamento | [Evidência F11](evidencias/F11_ENTREGA.md) | Backlog opcional; publicação exige ação própria |
 
 Uma evidência deve informar comando, ambiente, código/commit, parâmetros,
 resultado esperado e obtido, `run_id` e localização do relatório quando cabível.
@@ -126,8 +144,8 @@ dependem de autenticação na API e acesso aos arquivos.
 | M2 — fluxo básico até Silver | F02–F03 aceitas |
 | M3 — comportamento Lakehouse demonstrado | F04–F05 aceitas |
 | M4 — produto analítico | F06–F07 aceitas |
-| M5 — solução local completa | F08–F10 aceitas |
-| M6 — portfólio publicável | F11 aceita |
+| M5 — solução local completa | F08–F10 aceitas; 153 testes obrigatórios e matriz T01–T24 aprovados |
+| M6 — portfólio publicável | F11 aceita: pacote sintético preparado; working tree e dados reais não liberados para publicação direta |
 
 ## 4. Fases e ações
 
@@ -250,34 +268,36 @@ Estudar capítulo 10: indicadores e interpretação analítica. Depende de F06.
 
 Saída: relatório retrospectivo com gráficos e perguntas respondidas, limitado
 às publicações aprovadas. A execução medida levou 49,844 s, pico RSS somado
-2,29 GiB. Dashboard continua opcional; objetos locais seguem em F08.
+2,29 GiB. Dashboard continua opcional; objetos locais foram validados em F08.
 
 ### F08 — Concluir armazenamento de objetos local
 
 Estudar capítulo 11: armazenamento e operação. Depende da prova funcional F03–F07;
 pesquisa pode antecipar.
 
-- [ ] **F08.1 — Selecionar implementação.** Comparar opções abertas por compatibilidade Spark/Delta, manutenção, condições de uso, recursos e operação local; registrar decisão e posição final de cada camada.
-- [ ] **F08.2 — Configurar serviço e acesso.** Declarar inicialização/encerramento, persistência, endpoint e credenciais locais fora do Git. Validar portas, armazenamento em disco e acesso somente no alcance necessário ao laboratório.
-- [ ] **F08.3 — Adaptar I/O e publicação.** Eliminar dependência indevida de `Path`, lock ou rename POSIX nos caminhos de objetos. Testar conector, commit Delta, listagem e publicação do manifesto conforme garantias reais do serviço.
-- [ ] **F08.4 — Executar cenários no destino.** Repetir primeira carga, merge, retry, falhas, qualidade e leitura histórica sobre objetos. Confirmar que falhas de acesso/serviço não avançam a publicação aprovada.
-- [ ] **F08.5 — Reconciliar filesystem e objetos.** Comparar dados de negócio e indicadores da mesma entrada; validar reinício do serviço e persistência. Medir tempo, RAM, disco e impacto do histórico; não exigir igualdade de versões Delta entre reconstruções independentes.
-- [ ] **F08.6 — Documentar operação e manutenção.** Registrar subir/parar, restaurar publicação, retenção, manutenção e remoção do laboratório. Testar os procedimentos com fixtures e descrever o que fica persistido após parar serviços.
+- [x] **F08.1 — Selecionar implementação.** Comparar opções abertas por compatibilidade Spark/Delta, manutenção, condições de uso, recursos e operação local; registrar decisão e posição final de cada camada.
+- [x] **F08.2 — Configurar serviço e acesso.** Declarar inicialização/encerramento, persistência, endpoint e credenciais locais fora do Git. Validar portas, armazenamento em disco e acesso somente no alcance necessário ao laboratório.
+- [x] **F08.3 — Adaptar I/O e publicação.** Eliminar dependência indevida de `Path`, lock ou rename POSIX nos caminhos de objetos. Testar conector, commit Delta, listagem e publicação do manifesto conforme garantias reais do serviço.
+- [x] **F08.4 — Executar cenários no destino.** Repetir primeira carga, merge, retry, falhas, qualidade e leitura histórica sobre objetos. Confirmar que falhas de acesso/serviço não avançam a publicação aprovada.
+- [x] **F08.5 — Reconciliar filesystem e objetos.** Comparar dados de negócio e indicadores da mesma entrada; validar reinício do serviço e persistência. Medir tempo, RAM, disco e impacto do histórico; não exigir igualdade de versões Delta entre reconstruções independentes.
+- [x] **F08.6 — Documentar operação e manutenção.** Registrar subir/parar, restaurar publicação, retenção, manutenção e remoção do laboratório. Testar os procedimentos com fixtures e descrever o que fica persistido após parar serviços.
 
-Saída: arquitetura local final validada, sem presumir que API compatível com S3
-significa equivalência completa à AWS.
+Saída aceita em [F08](evidencias/F08_OBJETOS.md): arquitetura local validada
+para um host/driver cooperante, com camadas e procedimentos na
+[operação](objetos/OPERACAO.md). API compatível com S3 não implica equivalência
+completa à AWS. Próxima: F09.1.
 
 ### F09 — Consolidar orquestração e observabilidade
 
 Estudar capítulo 11: orquestração e observabilidade. A instrumentação começa
 antes; aceite depende de F08.
 
-- [ ] **F09.1 — Criar comando único de execução.** Implementar dependências RAW → Bronze → Silver → Gold → publicação, com parâmetros de lote, recorte e modo. Separar atualização normal, replay e reconstrução explícita.
-- [ ] **F09.2 — Padronizar estados e erros.** Registrar início, fim, etapa, sucesso/falha e causa; retornar código de saída adequado. Definir retry apenas para falhas recuperáveis e limite de tentativas.
-- [ ] **F09.3 — Consolidar métricas.** Medir duração por etapa e total, entradas, inserts, updates, ignorados, rejeitados, arquivos/bytes e consumo de recursos. Distinguir custo de medir métricas do custo da transformação.
-- [ ] **F09.4 — Consolidar lineage e inventário.** Relacionar fontes, lotes, tabelas, colunas relevantes da ABT, versões e consumidores. Unificar nomes como `run_id` e documentar o significado de cada identificador.
-- [ ] **F09.5 — Produzir resumo operacional.** Exibir última publicação aprovada, última execução, falhas e relatório de qualidade, sem exigir um serviço de monitoramento permanente. Definir limites locais de alerta com base nas medições.
-- [ ] **F09.6 — Testar operação completa.** Executar sucesso, fonte ausente, schema inválido, qualidade reprovada e serviço indisponível. Confirmar diagnóstico, rastreabilidade, status e manutenção da última publicação válida.
+- [x] **F09.1 — Criar comando único de execução.** Implementar dependências RAW → Bronze → Silver → Gold → publicação, com parâmetros de lote, recorte e modo. Separar atualização normal, replay e reconstrução explícita.
+- [x] **F09.2 — Padronizar estados e erros.** Registrar início, fim, etapa, sucesso/falha e causa; retornar código de saída adequado. Definir retry apenas para falhas recuperáveis e limite de tentativas.
+- [x] **F09.3 — Consolidar métricas.** Medir duração por etapa e total, entradas, inserts, updates, ignorados, rejeitados, arquivos/bytes e consumo de recursos. Distinguir custo de medir métricas do custo da transformação.
+- [x] **F09.4 — Consolidar lineage e inventário.** Relacionar fontes, lotes, tabelas, colunas relevantes da ABT, versões e consumidores. Unificar nomes como `run_id` e documentar o significado de cada identificador.
+- [x] **F09.5 — Produzir resumo operacional.** Exibir última publicação aprovada, última execução, falhas e relatório de qualidade, sem exigir um serviço de monitoramento permanente. Definir limites locais de alerta com base nas medições.
+- [x] **F09.6 — Testar operação completa.** Executar sucesso, fonte ausente, schema inválido, qualidade reprovada e serviço indisponível. Confirmar diagnóstico, rastreabilidade, status e manutenção da última publicação válida.
 
 Saída: uma execução pode ser iniciada, acompanhada, explicada e recuperada.
 
@@ -285,33 +305,40 @@ Saída: uma execução pode ser iniciada, acompanhada, explicada e recuperada.
 
 Estudar capítulo 12: testes e CI. Testes acompanham todas as fases; aceite depende de F09.
 
-- [ ] **F10.1 — Organizar suíte por responsabilidade.** Separar unidade, integração Spark/Delta e ponta a ponta; usar fixtures sintéticas identificadas e oráculos independentes. Isolar credenciais e diretórios temporários.
-- [ ] **F10.2 — Configurar CI.** Declarar ambiente compatível, verificação de código adotada e testes obrigatórios. CI deve falhar se integração obrigatória for ignorada por falta de dependência; não baixar dados restritos nem depender do Kaggle.
-- [ ] **F10.3 — Executar matriz de testes.** Registrar resultado de cada cenário da seção 5 e vínculo com os testes automatizados ou procedimentos manuais. Ausência de cenário exigido impede aceite.
-- [ ] **F10.4 — Executar fluxo em ambiente limpo.** Usar apenas instruções e manifestos, sem variáveis ou estado implícito de notebook. Testar fixtures em CI e o recorte real localmente conforme condições de acesso.
-- [ ] **F10.5 — Medir e ajustar desempenho.** Identificar gargalo real antes de mudar paralelismo, arquivos, cache ou partições. Registrar antes/depois e conferir igualdade dos resultados; ampliar recorte apenas se couber no orçamento de recursos.
-- [ ] **F10.6 — Revisar dados e acesso.** Conferir arquivos rastreados, credenciais, permissões, resultados publicáveis e outputs dos notebooks. Validar que dados ignorados e logs locais não entram por engano no pacote do portfólio.
+- [x] **F10.1 — Organizar suíte por responsabilidade.** Separar unidade, integração Spark/Delta e ponta a ponta; usar fixtures sintéticas identificadas e oráculos independentes. Isolar credenciais e diretórios temporários.
+- [x] **F10.2 — Configurar CI.** Declarar ambiente compatível, verificação de código adotada e testes obrigatórios. CI deve falhar se integração obrigatória for ignorada por falta de dependência; não baixar dados restritos nem depender do Kaggle.
+- [x] **F10.3 — Executar matriz de testes.** Registrar resultado de cada cenário da seção 5 e vínculo com os testes automatizados ou procedimentos manuais. Ausência de cenário exigido impede aceite.
+- [x] **F10.4 — Executar fluxo em ambiente limpo.** Usar apenas instruções e manifestos, sem variáveis ou estado implícito de notebook. Testar fixtures em CI e o recorte real localmente conforme condições de acesso.
+- [x] **F10.5 — Medir e ajustar desempenho.** Identificar gargalo real antes de mudar paralelismo, arquivos, cache ou partições. Registrar antes/depois e conferir igualdade dos resultados; ampliar recorte apenas se couber no orçamento de recursos.
+- [x] **F10.6 — Revisar dados e acesso.** Conferir arquivos rastreados, credenciais, permissões, resultados publicáveis e outputs dos notebooks. Validar que dados ignorados e logs locais não entram por engano no pacote do portfólio.
 
-Saída: todas as verificações obrigatórias aprovadas e evidências atuais, sem
-substituir integração real por mocks ou testes ignorados.
+Saída aceita: 153 testes sem ignorados em ambiente novo; T01–T24 aprovados,
+e2e sintético e igualdade das cinco tabelas reais antes/depois do ajuste.
+CI declarada, sem job remoto executado; export sanitizado validado e notebook
+histórico preservado. [Evidência F10](evidencias/F10_ACEITACAO.md),
+[execução e CI](testes/EXECUCAO_E_CI.md), [matriz](testes/MATRIZ_ACEITACAO.md).
 
 ### F11 — Preparar entrega do portfólio
 
 Estudar capítulo 12: evidências, reprodução e entrega do portfólio. Depende de F10.
 
-- [ ] **F11.1 — Reescrever README.** Apresentar problema, público, fonte, arquitetura, execução, resultados, limitações e estágio real. Remover comandos inexistentes e promessas de produção/ML fora do escopo.
-- [ ] **F11.2 — Consolidar documentação.** Revisar diagrama, dicionário ABT, contratos, decisões, operação e guia de estudo; verificar links e distinguir caminhos existentes de arquivos futuros.
-- [ ] **F11.3 — Montar demonstração.** Preparar sequência curta com carga, consulta Gold, correção simulada, falha/retomada e reprodução anterior. Registrar saídas e imagens reais, sem inventar métricas.
-- [ ] **F11.4 — Fazer reprodução por instruções.** Executar o roteiro como um terceiro, registrando dúvidas e corrigindo lacunas. Se não houver avaliador externo, declarar a autorrevisão em vez de alegar validação independente.
-- [ ] **F11.5 — Registrar conclusão técnica.** Conferir os critérios finais da seção 6, versões, evidências e pendências opcionais; gerar nota de entrega. Commit/tag e publicação remota só ocorrem quando fizerem parte da ação autorizada, sem pressupor publicação neste planejamento.
-- [ ] **F11.6 — Encerrar controle e planejar evolução.** Atualizar contagem, marcos e decisões, listar aprendizados e backlog separado. Preparar inventário de dependências para migração AWS futura, sem provisionar recursos.
+- [x] **F11.1 — Reescrever README.** Apresentar problema, público, fonte, arquitetura, execução, resultados, limitações e estágio real. Remover comandos inexistentes e promessas de produção/ML fora do escopo.
+- [x] **F11.2 — Consolidar documentação.** Revisar diagrama, dicionário ABT, contratos, decisões, operação e guia de estudo; verificar links e distinguir caminhos existentes de arquivos futuros.
+- [x] **F11.3 — Montar demonstração.** Preparar sequência curta com carga, consulta Gold, correção simulada, falha/retomada e reprodução anterior. Registrar saídas e imagens reais, sem inventar métricas.
+- [x] **F11.4 — Fazer reprodução por instruções.** Executar o roteiro como um terceiro, registrando dúvidas e corrigindo lacunas. Se não houver avaliador externo, declarar a autorrevisão em vez de alegar validação independente.
+- [x] **F11.5 — Registrar conclusão técnica.** Conferir os critérios finais da seção 6, versões, evidências e pendências opcionais; gerar nota de entrega. Commit/tag e publicação remota só ocorrem quando fizerem parte da ação autorizada, sem pressupor publicação neste planejamento.
+- [x] **F11.6 — Encerrar controle e planejar evolução.** Atualizar contagem, marcos e decisões, listar aprendizados e backlog separado. Preparar inventário de dependências para migração AWS futura, sem provisionar recursos.
 
-Saída: projeto compreensível, demonstrável e reproduzível como laboratório de
-portfólio. Fim do escopo local.
+Saída aceita: documentação revisada, demo inventada aprovada e reproduzida
+com seis CSVs idênticos, pacote sintético auditado e backlog/inventário AWS.
+[Evidência F11](evidencias/F11_ENTREGA.md), [nota técnica](entrega/CONCLUSAO_TECNICA.md)
+e [demonstração](entrega/DEMONSTRACAO.md). Fim do escopo local; nenhum job remoto,
+publicação externa, commit/tag ou recurso AWS foi pressuposto.
 
 ## 5. Matriz mínima de validações e testes
 
-Os nomes abaixo são cenários planejados, não alegações de testes já implementados.
+Os 24 cenários estão vinculados aos testes na [matriz de aceitação F10](testes/MATRIZ_ACEITACAO.md).
+Resultado integral: 153 testes sem ignorados e 24 cenários aprovados em ambiente novo.
 
 | ID | Cenário | Resultado obrigatório | Fase |
 |---|---|---|---|
@@ -376,29 +403,14 @@ sem apagar histórico. Uma decisão revisada deve indicar o que substituiu e por
 | Modelo preditivo | Base estável, desenho temporal e avaliação separados |
 | Migração AWS com Terraform | Projeto local concluído e plano específico aprovado |
 
-## 8. Próxima sessão
+## 8. Encerramento e próximos trabalhos opcionais
 
-**Próxima entrega:** F08.1 — selecionar implementação de armazenamento de
-objetos local. Comparar manutenção, condições de uso, compatibilidade com
-Spark/Delta e recursos antes de iniciar serviço e adaptar I/O/publicação.
-As provas atuais usam filesystem POSIX; conector e API compatível com S3
-precisam de validação própria, incluindo falhas e histórico.
+**72/72 itens aceitos, F00–F11 concluídas no escopo local.** Não há próxima fase
+obrigatória. A [nota técnica](entrega/CONCLUSAO_TECNICA.md) resume os critérios;
+[evolução e inventário AWS](entrega/EVOLUCAO_E_AWS.md) separam o backlog.
 
-F03 aceitou a Silver inicial; F04 comprovou incremento em outro namespace.
-F05 validou [evolução e publicação](PUBLICACAO_E_RECUPERACAO.md), F06 entregou
-[ABT e indicadores](gold/ABT_E_INDICADORES.md), e F07 entregou a
-[análise com resultados e limites](analise/RESULTADOS.md). As evidências de
-[F05](evidencias/F05_PUBLICACAO.md), [F06](evidencias/F06_GOLD.md) e
-[F07](evidencias/F07_ANALISE.md) fixam comandos, versões, recursos e testes.
-
-A entrada explícita do recorte e sua ingestão já estão implementadas. Execução
-e limites em [BRONZE_DO_RECORTE.md](BRONZE_DO_RECORTE.md).
-
-O artefato atual é identificado na [evidência do recorte](evidencias/F00_CONTRATOS_RECORTE.md).
-Os lotes completos foram gerados e aplicados em F04, com correção, duplicação,
-atraso e conflito declarado. A referência JSONL de pequenos pacotes continua
-isolada; o replay real usa Parquet distribuído. Resultados, recursos e
-preservação em [F04_INCREMENTAL.md](evidencias/F04_INCREMENTAL.md).
-
-A revisão da divulgação externa continua antes da publicação. O rascunho de
-contato está preservado, sem envio, e não paralisa o desenvolvimento local.
+O pacote de entrega contém código sanitizado e demo inventada. O notebook
+histórico, dados e resultados reais permanecem locais com seus vínculos originais.
+Nenhum push, commit/tag, job remoto, envio de autorização ou provisionamento AWS
+foi executado. Disponibilização externa e eventual revisão das condições da fonte
+são ações próprias, sem apagar ou invalidar o encerramento do laboratório local.

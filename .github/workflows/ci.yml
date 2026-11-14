@@ -1,0 +1,56 @@
+name: Lakehouse synthetic acceptance
+'on':
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lakehouse-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      JAVA_HOME: ${{ runner.temp }}/credit-risk-source/.runtime/java/jdk-17.0.21+9-jre
+      SPARK_LOCAL_IP: 127.0.0.1
+      KAGGLE_CONFIG_DIR: ${{ runner.temp }}/credit-risk-source/.kaggle
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - name: Export isolated source without data, credentials or notebook outputs
+        run: python3 scripts/export_source.py --output "$RUNNER_TEMP/credit-risk-source"
+      - name: Check sanitized source inventory
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: python3 scripts/audit_source.py --bundle . --report artifacts/tests/access_review.json
+      - name: Install pinned runtimes and dependencies
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: |
+          bash scripts/bootstrap_environment.sh
+          bash scripts/bootstrap_analysis.sh
+          bash scripts/bootstrap_objects.sh
+      - name: Syntax, configuration and catalogue checks
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: bash scripts/project.sh scripts/check_code.py
+      - name: Required synthetic tests, including Spark, Delta, S3 and end-to-end
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: bash scripts/project.sh scripts/run_tests.py --integration-required --report artifacts/tests/report.json
+      - name: Verify all 24 acceptance scenarios
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: bash scripts/project.sh scripts/check_acceptance.py --report artifacts/tests/report.json --output artifacts/tests/acceptance_matrix.json
+      - name: Upload only synthetic acceptance reports
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: synthetic-acceptance
+          path: |
+            ${{ runner.temp }}/credit-risk-source/artifacts/tests/report.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/tests/e2e_result.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/tests/acceptance_matrix.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/tests/code_checks.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/tests/access_review.json
+            ${{ runner.temp }}/credit-risk-source/source_manifest.json
+          if-no-files-found: warn
+          retention-days: 7

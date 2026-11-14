@@ -94,7 +94,7 @@ observadas na sessão.
 [RunContext](../src/utils/run_context.py) carrega os valores e os compartilha com
 qualidade, métricas, dicionário, inventário e lineage. O MVP aceita caminhos
 locais relativos dentro do repositório; camadas não podem compartilhar ou conter
-o caminho de outra camada. Objetos locais serão integrados em F08.
+o caminho de outra camada. Objetos locais usam o protocolo separado validado em F08.
 
 Não aumentar paralelismo, memória ou partições apenas por haver mais recursos.
 Primeiro medir o recorte real; os valores iniciais são um ponto de partida.
@@ -186,7 +186,7 @@ Isso garante integridade local; não comprova automaticamente que a origem remot
 não foi atualizada desde a aquisição.
 
 A implementação de lock/publicação foi feita para filesystem Linux/WSL. Ela
-precisará de adaptação para armazenamento de objetos. O download autenticado
+foi preservada; a F08 acrescentou protocolo S3 separado para as novas saídas. O download autenticado
 foi validado para os seis arquivos selecionados, com nomes e tamanhos conferidos
 contra a API e reexecução sem novo download.
 
@@ -235,5 +235,42 @@ por si só o Lakehouse completo. O andamento continua em
 Os comandos encerram a sessão Spark ao finalizar. Não há serviço Docker deste
 projeto para manter ativo. Dados de teste temporários são removidos; `.runtime`,
 `.venv`, autenticação local e arquivos reais adquiridos permanecem em disco.
-Não apagar esses diretórios durante execuções. A reprodução em ambiente limpo
-e o procedimento de manutenção completo serão novamente conferidos em F10/F11.
+Não apagar esses diretórios durante execuções. A reprodução em ambiente limpo foi conferida em F10.
+O procedimento de entrega foi consolidado em F11; veja [reprodução](entrega/REPRODUCAO.md).
+
+## 9. Armazenamento de objetos F08
+
+```bash
+bash scripts/bootstrap_objects.sh
+bash scripts/objects.sh -m src.object_store.service start
+bash scripts/objects.sh -m src.object_store.service status
+bash scripts/objects.sh -m src.object_store.service stop
+```
+
+SeaweedFS 4.53 nativo fica em `.runtime/object-store`; o cliente boto3 e suas
+dependências, em `.runtime/object-python`, com requirements.objects.lock.
+O conector é Hadoop S3A 3.3.4/AWS Java SDK 1.12.262; a fábrica Spark original
+e seu lock foram preservados. Dependências gráficas e S3 são independentes.
+
+Endpoint local 127.0.0.1:18333. Credenciais aleatórias e configuração de
+autenticação 0600 ficam fora do Git; dados persistem em
+`data/object-store/seaweedfs`. São dez portas de loopback incluindo HTTP e gRPC;
+a [operação](objetos/OPERACAO.md) lista todas e explica os controles internos.
+Não há Docker, daemon do sistema ou acesso remoto configurado para o serviço.
+
+O processo real F08 levou 18 min 8 s, pico RSS somado 6,08 GiB incluindo servidor,
+com 892.605.589 bytes de arquivos lógicos no backend. A
+[evidência](evidencias/F08_OBJETOS.md) distingue esses bytes dos objetos,
+cache e blocos físicos. A execução usa um host/driver escritor por vez.
+Parar conserva objetos e metadados; o teste de remoção usa outro serviço em
+raiz temporária própria. Antes do runner completo, preparar também este bootstrap.
+
+## 10. Validação em ambiente novo — F10
+
+Os bootstraps foram executados em diretório exportado sem runtime, dados,
+credenciais ou estado de notebook. A suíte integral aprovou 153 testes sem
+ignorados, incluindo dados inventados até Gold S3. O workflow usa o Java
+portátil explicitamente, para não herdar a versão padrão do runner.
+[Instruções de CI](testes/EXECUCAO_E_CI.md) e
+[evidência da reprodução](evidencias/F10_ACEITACAO.md).
+A CI está configurada e foi reproduzida localmente; nenhum job remoto foi executado.

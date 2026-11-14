@@ -1,0 +1,10 @@
+version: 1
+scope: local_observational_not_sla
+duration_factor: 2.0
+rss_factor: 1.5
+baseline_evidence: docs/evidencias/F09_METRICAS.md
+baselines:
+  - report: artifacts/f09/operations/20261113T173937Z_821632d2.json
+    sha256: 27d5dc1d4d27e400ed94bd4f746bed7bfcc2be1e0470ec802822ed89011bc2fb
+  - report: artifacts/f09/operations/20261113T174309Z_698759ab.json
+    sha256: 2febda33c69c90c4378b04b888d6ed8568904fd415f97535caa9143fa7643ae3

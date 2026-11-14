@@ -1,218 +1,155 @@
 # Credit Risk Lakehouse
 
-Laboratório local de Engenharia e Análise de Dados com Home Credit, PySpark e
-Delta Lake. O objetivo é entregar uma ABT por caso de crédito e análises
-retrospectivas, com cargas incrementais simuladas, correções rastreáveis e
-reprodução de resultados por publicação.
+Laboratório de Engenharia e Análise de Dados com Python, PySpark, Delta Lake e
+armazenamento S3 local. Constrói uma base analítica por caso de crédito, calcula
+indicadores mensais e demonstra como corrigir, publicar e reproduzir resultados.
+Destina-se a quem estuda dados e a quem quer avaliar as decisões de engenharia.
 
-## Estágio atual
+A pergunta de negócio é: como descrever população, desfecho e cobertura das
+informações de crédito sem duplicar casos ao juntar tabelas históricas? A pergunta
+de engenharia é: quais arquivos, regras e versões produziram cada resultado?
 
-**48/72 itens aceitos; F00–F07 concluídas no escopo local. Próxima: F08.1,
-seleção do armazenamento de objetos local.**
+## Estado da entrega
 
-O ambiente Linux/WSL usa Python 3.11.14, Java 17, Spark 3.5.7 e Delta 3.3.2.
-Seis arquivos Home Credit foram adquiridos via API e inspecionados: base e
-estática com 1.526.659 casos e histórico com 6.525.979 linhas. Um recorte
-fixo de 50 mil casos conserva 215.390 observações históricas relacionadas.
+**F00–F11 concluídas: 72/72 itens aceitos no escopo local.** A documentação,
+a demonstração e a reprodução por comandos foram conferidas em autorrevisão. O [roteiro](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md)
+controla o aceite; as evidências registram comandos, resultados e limites.
+A CI está configurada e foi reproduzida localmente. Não houve job remoto,
+commit/tag, push, envio de mensagens ou publicação externa nesta entrega.
 
-A Bronze preserva valores e proveniência, com qualidade e reconciliação integral.
-A Silver inicial converteu 23 datas sem perdas, materializou três tabelas Delta
-e recebeu aceite operacional após 29 checks. F04 preservou esse pacote e
-aplicou 315.398 entregas simuladas em outro estado: casos novos, duas correções
-auxiliares, duplicatas, revisão antiga e atraso. O estado final coincidiu
-integralmente com uma reconstrução independente.
+## O que foi construído
 
-F05 adicionou migração explícita para Silver v2, manifestos aprovados, ponteiro
-CURRENT, retomada após falhas, rollback e retenção. Publicou os snapshots
-baseline, corrected e late em 3 min 44 s, com pico RSS somado de 3,26 GiB.
-Dados reais permanecem preservados; a prova destrutiva de VACUUM usa apenas fixture.
+```mermaid
+flowchart LR
+    R[RAW e hashes] --> B[Bronze reconciliada]
+    B --> S[Silver Delta e revisões]
+    S --> G[Gold: ABT e indicadores]
+    G --> P[Manifesto aprovado e CURRENT]
+    P --> C[Consumo por publicação]
+    O[Supervisor e métricas] -.-> S
+    O -.-> P
+```
 
-F06 publicou uma **ABT com 50.000 casos e 19 colunas** e indicadores SQL de
-**22 meses**, com volume, proporção de target=1 e cobertura. Correções somente
-nas auxiliares atualizam os casos afetados. Cada ABT incremental foi comparada
-integralmente à recomputação; indicadores foram conferidos diretamente na
-Silver. Falha após MERGE, retomada sem novo commit, retry e reprodução histórica
-passaram. Execução completa: 3 min 13 s, pico RSS somado de 2,95 GiB.
+A ingestão preserva valores e proveniência. Contratos verificam schema, chaves,
+nulos, referências e datas. O incremento aplica revisões por chave, rejeita
+conflitos e confere o resultado contra reconstrução integral. A Gold agrega o
+histórico antes de juntar as fontes: uma linha da ABT corresponde a um caso.
 
-A publicação analítica atual é `6f4406dd0180850e23d5283e`; seu manifesto fixa
-três Silver e duas Gold. Os resultados são retrospectivos: não há validação de
-disponibilidade dos atributos no instante da decisão. Objetos locais e operação
-integrada seguem em F08/F09.
+Delta garante transações por tabela. O protocolo de publicação da aplicação
+reúne três Silver e duas Gold em um manifesto aprovado; o consumidor só passa
+para o conjunto novo após validação. Falhas privadas conservam a publicação
+anterior. Os leitores podem consultar manifestos antigos explicitamente.
 
-F07 entregou o **[relatório analítico com gráficos e tabelas](docs/analise/RESULTADOS.md)**,
-respondendo às seis perguntas sobre volume, desfecho, cobertura, correção,
-reprodução e confiabilidade. O relatório preserva denominadores, sinaliza
-grupos pequenos e separa correção de montantes da chegada de um caso atrasado.
-Duas execuções em processos novos reproduziram JSON, seis CSVs e 12 gráficos
-PNG/SVG byte a byte. A primeira execução completa levou 49,844 s, com pico
-RSS somado de aproximadamente 2,29 GiB, sem modificar dados ou CURRENT.
+F03–F07 preservam referências em filesystem. F08 executa Delta via Hadoop S3A no
+SeaweedFS; F09 acrescenta operação supervisionada. O controle de escritor vale
+para um host/driver cooperante. [Arquitetura](docs/entrega/ARQUITETURA.md).
 
-O runner global aprovou **126 verificações, sem ignorados**, incluindo quatro
-suítes Delta isoladas (15/9/9/8 cenários) e seis cenários analíticos Spark. RAW, recorte,
-Bronze, pacotes/aceites F03 e publicações F05 tiveram integridade conferida.
+## Executar sem acesso ao Home Credit
 
-## Documentação
-
-- [Contrato de eventos, revisões e demonstração local](docs/contratos/EVENTOS_REVISOES.md).
-- [Qualidade Bronze e critérios de publicação](docs/QUALIDADE_BRONZE.md).
-- [Reconciliação de valores e proveniência](docs/RECONCILIACAO_BRONZE.md).
-- [Catálogo e política planejada da Silver](docs/silver/CATALOGO_REGRAS_SILVER.md).
-- [Leitor lógico da Bronze aprovada](docs/silver/LEITURA_BRONZE.md).
-- [Tratamentos Silver e controle de perdas](docs/silver/TRATAMENTOS.md).
-- [Tabelas Delta iniciais e leitura por versão](docs/silver/DELTA_INICIAL.md).
-- [Contrato do estado Silver persistido](docs/contratos/SILVER_INICIAL.md).
-- [Execução repetível e aceite Silver inicial](docs/silver/EXECUCAO_INICIAL.md) e [evidência F03.6](docs/evidencias/F03_EXECUCAO_SILVER.md).
-- [Lotes, revisões e merge incremental](docs/silver/INCREMENTAL.md) e [evidência F04](docs/evidencias/F04_INCREMENTAL.md).
-- [Evolução, publicação, recuperação e retenção](docs/PUBLICACAO_E_RECUPERACAO.md) e [evidência F05](docs/evidencias/F05_PUBLICACAO.md).
-- [Contrato ABT/indicadores](docs/contratos/ABT.md), [operação Gold](docs/gold/ABT_E_INDICADORES.md) e [evidência F06](docs/evidencias/F06_GOLD.md).
-- [Perguntas e método analítico](docs/analise/PERGUNTAS_E_METODO.md), [relatório e conclusões](docs/analise/RESULTADOS.md), [execução F07](docs/analise/EXECUCAO.md) e [evidência](docs/evidencias/F07_ANALISE.md).
-- [Execução local e autenticação Kaggle](docs/AMBIENTE_LOCAL.md).
-- [Escopo do produto](docs/ESCOPO_PRODUTO.md).
-- [Roteiro e controle de progresso](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md).
-- [Curso aplicado de Engenharia e Análise de Dados](docs/GUIA_ESTUDO_LAKEHOUSE.md): 12 capítulos com conceitos, ferramentas, código e evidências do projeto.
-- [Fonte e condições de uso](docs/governance/SOURCE.md).
-- [Decisões](docs/DECISOES.md) e [evidência do ambiente](docs/evidencias/F01_AMBIENTE.md).
-- [Aquisição e inspeção dos dados reais](docs/evidencias/F00_F02_FONTE_REAL.md).
-- [Contratos](docs/contratos/README.md), [recorte/lotes](docs/RECORTE_E_LOTES.md) e [evidência da materialização](docs/evidencias/F00_CONTRATOS_RECORTE.md).
-- [Bronze do recorte](docs/BRONZE_DO_RECORTE.md) e [evidências de recuperação](docs/evidencias/F02_BRONZE_RECORTE.md).
-
-## Preparar e validar
-
-Na raiz do projeto, em Linux x86_64 com Python 3 e acesso à internet:
+Em Linux x86_64, com Python 3, bash e acesso de rede para baixar dependências:
 
 ```bash
 bash scripts/bootstrap_environment.sh
 bash scripts/bootstrap_analysis.sh
-bash scripts/project.sh -m src.pipelines.check_environment
+bash scripts/bootstrap_objects.sh
+```
+
+Os scripts instalam Python 3.11.14, Java 17.0.21+9, Spark 3.5.7, Delta 3.3.2 e
+SeaweedFS 4.53 em diretórios locais, usando versões e hashes declarados. Não
+substituem o Python do sistema. Spark usa `local[2]` e driver de 2 GiB; deixe
+memória adicional para JVM, Python e serviço S3. Isso descreve a configuração,
+não um mínimo de hardware validado.
+
+Para a demonstração curta com dados inventados, use um destino ainda inexistente:
+
+```bash
+bash scripts/objects.sh scripts/demo_portfolio.py --output artifacts/minha-demo
+bash scripts/analysis.sh scripts/render_demo.py --output artifacts/minha-demo
+```
+
+Consulte os CSVs, `report.json` e `correction.png` nessa pasta. A demonstração
+começa em Silver tipada, publica Gold, corrige auxiliares, injeta falha após
+commit privado, retoma e lê a versão inicial. O prefixo S3 de teste é removido.
+[Sequência e resultados esperados](docs/entrega/DEMONSTRACAO.md).
+
+Para executar o fluxo sintético completo desde RAW:
+
+```bash
+bash scripts/project.sh scripts/run_tests.py --suite e2e --integration-required
+```
+
+Para checks e regressão integral:
+
+```bash
+bash scripts/project.sh scripts/check_code.py
 bash scripts/project.sh scripts/run_tests.py --integration-required
+bash scripts/project.sh scripts/check_acceptance.py --report artifacts/tests/report.json
 ```
 
-O bootstrap prepara Python e Java isolados, sem substituir o Python do sistema.
-Dependências estão fixadas em requirements.lock. A prova usa somente dois casos
-sintéticos descartáveis para testar o runtime; a ABT e as análises usam Home Credit por publicações aprovadas. As dependências
-de gráficos são isoladas em .runtime/analysis com requirements.analysis.lock.
+A F10 aprovou **153 testes obrigatórios, zero ignorados**, em ambiente instalado
+do zero, incluindo Spark, Delta e S3 reais. A [matriz T01–T24](docs/testes/MATRIZ_ACEITACAO.md)
+está aprovada. Os cenários internos dos subprocessos não são somados novamente
+a esse total. [CI e isolamento](docs/testes/EXECUCAO_E_CI.md).
 
-## Adquirir os dados reais
+## Dados reais e resultados locais
 
-Usar a conta inscrita na competição:
+A fonte usada no desenvolvimento é Home Credit. O acesso autenticado e os
+arquivos selecionados foram verificados; os dados não acompanham o repositório.
+As condições registradas não autorizam redistribuição geral. Consulte
+[fonte e limites](docs/governance/SOURCE.md) antes de adquirir ou divulgar dados.
+A demonstração e a CI usam somente dados inventados.
 
-```bash
-bash scripts/project.sh -m kaggle auth login --no-launch-browser
-bash scripts/project.sh -m kaggle competitions files home-credit-credit-risk-model-stability --page-size 200
-bash scripts/project.sh -m src.pipelines.download_home_credit --plan
-bash scripts/project.sh -m src.pipelines.download_home_credit
-```
+| Produto local aprovado | Resultado observado |
+|---|---|
+| Recorte determinístico | 50.000 casos e 215.390 observações históricas relacionadas |
+| Gold | ABT de 50.000 linhas e 19 colunas; 22 meses de indicadores |
+| Análise retrospectiva | 1.578 target=1 entre 50.000 rótulos válidos; cobertura histórica 80,152% |
+| Recuperação | Reenvio, correção, atraso, falha/retomada e leitura histórica verificados |
+| Ajuste F10 | Leitura tipada de sete pacotes para um; cinco tabelas iguais; 259,7→185,2 s no ensaio |
 
-São selecionados seis arquivos, sem baixar a competição inteira ou apagar dados
-existentes. Depois da aquisição, confirmar esquemas/chaves/período, fechar os
-contratos e construir o recorte antes de ampliar o processamento. Os detalhes
-estão no documento de ambiente.
+O ganho de tempo foi medido uma vez por variante; não é SLA ou benchmark
+estatístico. A taxa de desfecho e a cobertura descrevem esse recorte, sem
+inferência sobre uma carteira real. Unidades monetárias não foram confirmadas.
+As chegadas, correções e revisões incrementais são simulações declaradas.
 
-Para repetir a inspeção exata, sem modificar a RAW:
+[Resultados e método analítico](docs/analise/RESULTADOS.md),
+[dicionário ABT](docs/contratos/ABT.md), [evidência F10](docs/evidencias/F10_ACEITACAO.md).
+O relatório F07 continua ligado às publicações filesystem que o originaram;
+a existência do S3 não muda seu consumidor automaticamente.
 
-```bash
-bash scripts/project.sh -m src.profiling.inspect_home_credit
-```
+A reprodução real exige acesso próprio à fonte e as etapas de
+[aquisição e ambiente](docs/AMBIENTE_LOCAL.md), [recorte](docs/RECORTE_E_LOTES.md)
+e [operação](docs/operacao/COMANDO_UNICO.md). O comando operacional consome
+entradas locais já aprovadas; não baixa os dados por conta própria.
 
-Dados e credenciais ficam fora do Git. Reprodução histórica e qualidade já foram
-demonstradas até Gold no filesystem; arquitetura com objetos permanece no roteiro.
+## Estudar e conferir
 
-## Materializar ou verificar o recorte
+Comece pelo [guia de estudo](docs/GUIA_ESTUDO_LAKEHOUSE.md): são 12 capítulos
+sobre tecnologias, ferramentas e processos, usando o código e as evidências do
+projeto como exemplos. Para uma leitura rápida, siga arquitetura → contratos →
+demonstração → matriz de testes.
 
-```bash
-bash scripts/project.sh -m src.pipelines.build_sample
-```
+| Assunto | Referência |
+|---|---|
+| Regras e modelo | [Contratos](docs/contratos/README.md), [ABT](docs/contratos/ABT.md) |
+| Operação | [Comando](docs/operacao/COMANDO_UNICO.md), [erros/retry](docs/operacao/ESTADOS_E_ERROS.md), [métricas](docs/operacao/METRICAS.md) |
+| Rastreio | [Lineage](docs/operacao/LINEAGE_E_INVENTARIO.md), [resumo](docs/operacao/RESUMO_OPERACIONAL.md) |
+| Armazenamento | [Decisão S3 local](docs/objetos/DECISAO_E_ARQUITETURA.md), [manutenção](docs/objetos/OPERACAO.md) |
+| Decisões e avanço | [Decisões](docs/DECISOES.md), [roteiro](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md) |
 
-O comando valida a edição da origem, aplica os contratos, seleciona casos por
-hash e preserva seus relacionados. Publica um snapshot separado com manifesto;
-reexecuções consistentes reutilizam a saída. A atribuição dos três lotes é
-simulada. A RAW original permanece em seu caminho de origem.
+A ABT é retrospectiva: não comprova disponibilidade dos atributos no momento da
+decisão e não é uma base de treino validada. Não há modelo preditivo, streaming,
+CDC da origem, cluster distribuído, serviço de produção ou recursos AWS provisionados.
+O notebook histórico conserva outputs por ser entrada vinculada por hash; o
+export de código os remove na cópia. Não publique o working tree original sem
+a revisão de divulgação. A licença do código não concede direitos sobre o dataset.
 
-## Ingerir o recorte na Bronze
+## Entrega F11
 
-```bash
-bash scripts/project.sh -m src.pipelines.run_bronze_mvp --sample 7d58bbdaa00cbabfbce54d26
-```
-
-Use o identificador retornado pelo construtor se houver outra seleção. A saída
-fica em `data/bronze/samples/<selection_id>/`; relatórios ficam em `artifacts/bronze/`.
-O marcador `_READY.json` só é gravado após as verificações. O modo explícito
-`--raw` tem outro namespace e não é necessário para este fluxo.
-
-## Executar e aceitar a Silver inicial
-
-```bash
-bash scripts/project.sh -m src.pipelines.run_silver_initial \
-  --sample 7d58bbdaa00cbabfbce54d26
-```
-
-O comando confere a Bronze aprovada, trata datas com guarda de perda, cria ou
-reutiliza o pacote Delta e valida seus contratos. O padrão `--existing reuse`
-revalida sem overwrite; `--existing error` recusa um pacote já existente.
-O JSON final informa relatório, recibo de aceite, identidade e reutilização.
-
-Relatórios ficam em `artifacts/silver_runs/<run_id>.json`; recibos ficam em
-`data/silver/samples/<selection_id>/acceptances/<run_id>.json`. Uma falha retorna
-código não zero e preserva os pacotes e aceites anteriores. O manifesto técnico
-permanece imutável; o recibo aprova apenas o estado inicial da Silver.
-
-## Executar a demonstração incremental
-
-```bash
-bash scripts/project.sh -m src.pipelines.run_incremental_demo \
-  --sample 7d58bbdaa00cbabfbce54d26
-```
-
-O comando gera ou verifica os pacotes Parquet, aplica os lotes em estado Delta
-próprio, testa reenvios/atraso e reconcilia com a reconstrução integral.
-Relatórios ficam em `artifacts/f04/runs/`. O estado F04 começa vazio e preserva
-a Silver inicial; os recibos por lote ainda não são uma publicação global Gold.
-Medições, limitações e execução com o wrapper de recursos estão na evidência.
-
-## Publicar Silver gerenciada e Gold
-
-Com os relatórios de entrada aprovados disponíveis:
-
-```bash
-bash scripts/project.sh -m src.pipelines.run_publication_demo \
-  --sample 7d58bbdaa00cbabfbce54d26 \
-  --f04-report artifacts/f04/runs/20261113T020347Z_1609747b.json
-bash scripts/project.sh -m src.pipelines.run_gold_demo \
-  --sample 7d58bbdaa00cbabfbce54d26 \
-  --f05-report artifacts/f05/runs/20261113T033217Z_04372370.json
-```
-
-Esses comandos verificam as entradas, publicam os três cenários e exercitam
-falha/retomada e histórico. Se outra execução F05 for usada, forneça seu relatório
-explícito à F06. Para consumir ABT/indicadores com versões coerentes, siga
-[Gold por publicação](docs/gold/ABT_E_INDICADORES.md).
-
-## Gerar o relatório analítico
-
-```bash
-bash scripts/analysis.sh -m src.pipelines.run_analysis \
-  --sample 7d58bbdaa00cbabfbce54d26 \
-  --publication 6f4406dd0180850e23d5283e \
-  --baseline c711e23bdd5145ae78537a61 \
-  --corrected e709bcefce9adab4b7d60562
-```
-
-O comando lê os três manifestos explícitos e produz um bundle por tentativa,
-com HTML offline, tabelas CSV, gráficos PNG/SVG e metadata. Não transforma a Gold
-ou troca CURRENT. Caminhos, aceite, reprodução e limites estão na
-[execução analítica](docs/analise/EXECUCAO.md). O
-[relatório já executado](docs/analise/RESULTADOS.md) está disponível localmente.
-
-## Escopo e limites
-
-O projeto representa um laboratório de portfólio. Modelo preditivo, feature store,
-retreinamento e migração AWS ficam para entregas posteriores. Chegada incremental,
-correções e falhas artificiais serão explicitamente identificadas como simulações.
-Não há resultados financeiros ou operação de produção alegados.
-
-O código está sob [licença MIT](LICENSE). Os dados Home Credit seguem as condições
-próprias registradas na documentação da fonte. A inscrição informada pelo usuário
-mantém a fonte no desenvolvimento; o alcance da divulgação externa será revisado
-antes da publicação dos dados ou derivados.
-
-Frederico Costa
+A [demonstração](docs/entrega/DEMONSTRACAO.md) passou e foi repetida em cópia nova:
+os seis CSVs coincidiram por hash. O [pacote sintético local](artifacts/f11/credit-risk-portfolio-synthetic-final.tar.gz)
+contém 194 arquivos auditados, sem dados restritos, credenciais ou outputs históricos.
+[Evidência F11](docs/evidencias/F11_ENTREGA.md),
+[conclusão técnica](docs/entrega/CONCLUSAO_TECNICA.md) e
+[aprendizados/backlog/AWS](docs/entrega/EVOLUCAO_E_AWS.md).
+O pacote é gerado localmente e não acompanha um clone Git por estar em artifacts.

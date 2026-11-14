@@ -79,6 +79,15 @@ Veja [AMBIENTE_LOCAL.md](../AMBIENTE_LOCAL.md) para preparar o ambiente e a
 [evidência F01](../evidencias/F01_AMBIENTE.md) para conferir a prova executada.
 Ambiente compatível sustenta todas as etapas posteriores.
 
+## Dependências de objetos no mesmo projeto
+
+F08 usa `requirements.objects.lock` e `scripts/objects.sh`. O bootstrap instala
+boto3 e transitivas em `.runtime/object-python`, sem alterar o lock principal ou
+a camada gráfica. Um SDK Python conversa com a API S3, enquanto a leitura de
+tabelas Spark depende de JARs Java Hadoop/AWS. Isso explica por que instalar
+boto3 sozinho não habilita `s3a://` no Spark. O binário SeaweedFS tem versão e
+SHA-256 próprios. O [capítulo 11](11_OPERACAO_E_STORAGE.md) conecta esses papéis.
+
 ## Atividade e conferência
 
 Descreva o que seria necessário para repetir uma execução além de possuir o
@@ -90,3 +99,12 @@ também são necessários contratos e evidências da saída. Um notebook aberto 
 uma máquina não registra automaticamente esse conjunto.
 
 Próximo: [4 — Spark e Parquet](04_SPARK_E_PARQUET.md).
+
+## Reproduzir a validação sem dados privados
+
+F10 acrescenta um [export de fonte](../testes/EXECUCAO_E_CI.md) sem dados,
+credenciais ou outputs de notebook. Ele instala as dependências declaradas
+num diretório novo e executa testes com dados inventados. Isso verifica que
+a execução depende de arquivos e comandos conhecidos, sem herdar o kernel
+do autor. O manifesto identifica os arquivos e os hashes alterados na cópia;
+o notebook histórico original conserva seu hash e suas evidências.

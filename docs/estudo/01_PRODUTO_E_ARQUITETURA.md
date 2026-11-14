@@ -52,7 +52,8 @@ manutenção; o recorte e a política de retenção fazem parte dessa escolha.
 
 Python organiza os programas. Spark processa as tabelas. Parquet guarda dados
 tabulares em arquivos. Delta registra os estados das tabelas Silver. YAML
-guarda configurações e contratos. Git registra mudanças de código. Cada papel
+guarda configurações e contratos. Git registra mudanças de código. SeaweedFS
+atende a API S3 local; Hadoop S3A conecta Spark aos objetos. Cada papel
 será estudado com sua implementação nos capítulos seguintes.
 
 Uma configuração de pastas chamada Bronze/Silver/Gold, isoladamente, não prova
@@ -75,7 +76,9 @@ F00 definiu o produto; F01 preparou o ambiente; F02 validou ingestão e Bronze;
 F03 concluiu a Silver inicial e F04 validou o incremento com correções simuladas
 e reconstrução equivalente. F05 acrescentou migração, publicação e recuperação;
 F06 entrega ABT e indicadores; F07 entrega análise, gráficos e reprodução do
-relatório. Objetos locais continuam nas etapas seguintes. O uso de dados de uma competição
+relatório. F08 validou replay e publicações Delta em objetos locais com
+reconciliação, falha/retry e reinício. F09 consolidou a operação; F10 aprovou testes em ambiente novo e declarou CI
+com dados inventados. F11 preparou a entrega local com demo sintética e autorrevisão. O uso de dados de uma competição
 limita as conclusões sobre uma carteira operacional real.
 
 Evidência: [abertura do escopo](../evidencias/F00_ABERTURA.md) e
@@ -83,7 +86,8 @@ Evidência: [abertura do escopo](../evidencias/F00_ABERTURA.md) e
 [incremento F04](../evidencias/F04_INCREMENTAL.md),
 [publicação F05](../evidencias/F05_PUBLICACAO.md) e
 [Gold F06](../evidencias/F06_GOLD.md) e
-[análise F07](../analise/RESULTADOS.md).
+[análise F07](../analise/RESULTADOS.md) e
+[objetos F08](../evidencias/F08_OBJETOS.md).
 
 ## Atividade e conferência
 

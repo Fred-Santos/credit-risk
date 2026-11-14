@@ -77,6 +77,17 @@ proteção dos arquivos enquanto as ações Spark efetivamente leem os dados.
 Construir um plano dentro do contexto e executá-lo depois pode deixar a leitura
 fora dessa proteção.
 
+## Ler os mesmos formatos em objetos
+
+F08 conserva Spark e Parquet, mas troca o acesso físico: Hadoop S3A traduz
+`s3a://bucket/chave` em requisições ao servidor S3 local. Delta continua a
+controlar versões por `_delta_log`. A fábrica específica
+[spark.py](../../src/object_store/spark.py) declara endpoint, autenticação,
+conector e LogStore. Isso permite reutilizar os tratamentos de negócio;
+I/O e publicação precisam respeitar as operações do serviço. O replay e as
+quinze tabelas publicadas foram reconciliados com o filesystem na
+[evidência F08](../evidencias/F08_OBJETOS.md).
+
 ## Evidência e atividade
 
 A [leitura Bronze](../evidencias/F03_LEITURA_BRONZE.md) verificou 315.390 linhas
