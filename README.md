@@ -1,84 +1,280 @@
 # Credit Risk Lakehouse
 
-Laboratório de Engenharia e Análise de Dados com Python, PySpark, Delta Lake e
-armazenamento S3 local. Constrói uma base analítica por caso de crédito, calcula
-indicadores mensais e demonstra como corrigir, publicar e reproduzir resultados.
-Destina-se a quem estuda dados e a quem quer avaliar as decisões de engenharia.
+Pipeline local de dados de crédito com **Python, PySpark, Delta Lake e S3 local
+(SeaweedFS)**. Adquire dados reais do Home Credit, preserva a origem, valida
+contratos, processa revisões incrementais e publica uma base analítica por caso
+(ABT) e indicadores mensais.
 
-A pergunta de negócio é: como descrever população, desfecho e cobertura das
-informações de crédito sem duplicar casos ao juntar tabelas históricas? A pergunta
-de engenharia é: quais arquivos, regras e versões produziram cada resultado?
-
-## Estado da entrega
-
-**F00–F11 concluídas: 72/72 itens aceitos no escopo local.** A documentação,
-a demonstração e a reprodução por comandos foram conferidas em autorrevisão. O [roteiro](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md)
-controla o aceite; as evidências registram comandos, resultados e limites.
-A CI está configurada e foi reproduzida localmente. Não houve job remoto,
-commit/tag, push, envio de mensagens ou publicação externa nesta entrega.
-
-## O que foi construído
+A reprodução abaixo parte da aquisição autenticada e termina em tabelas Delta
+publicadas. Não depende de notebook, de IDs de uma execução anterior ou de dados
+incluídos no repositório.
 
 ```mermaid
 flowchart LR
-    R[RAW e hashes] --> B[Bronze reconciliada]
-    B --> S[Silver Delta e revisões]
+    K[Home Credit / Kaggle] --> R[RAW com checksums]
+    R --> C[Recorte determinístico]
+    C --> B[Bronze reconciliada]
+    B --> E[Landing de lotes e revisões]
+    E --> S[Silver Delta incremental]
     S --> G[Gold: ABT e indicadores]
-    G --> P[Manifesto aprovado e CURRENT]
-    P --> C[Consumo por publicação]
-    O[Supervisor e métricas] -.-> S
-    O -.-> P
+    G --> P[Publicação aprovada no S3 local]
+    P --> L[Consumo por manifesto e versões]
 ```
 
-A ingestão preserva valores e proveniência. Contratos verificam schema, chaves,
-nulos, referências e datas. O incremento aplica revisões por chave, rejeita
-conflitos e confere o resultado contra reconstrução integral. A Gold agrega o
-histórico antes de juntar as fontes: uma linha da ABT corresponde a um caso.
+## Dados e escopo executado
 
-Delta garante transações por tabela. O protocolo de publicação da aplicação
-reúne três Silver e duas Gold em um manifesto aprovado; o consumidor só passa
-para o conjunto novo após validação. Falhas privadas conservam a publicação
-anterior. Os leitores podem consultar manifestos antigos explicitamente.
+Fonte: competição **Home Credit — Credit Risk Model Stability**, no Kaggle.
+É necessário acesso próprio à competição e autenticação da API. Os dados e
+credenciais ficam locais, fora do Git. [Fonte e condições de uso](docs/governance/SOURCE.md).
 
-F03–F07 preservam referências em filesystem. F08 executa Delta via Hadoop S3A no
-SeaweedFS; F09 acrescenta operação supervisionada. O controle de escritor vale
-para um host/driver cooperante. [Arquitetura](docs/entrega/ARQUITETURA.md).
+| Entrada lógica | Papel |
+|---|---|
+| `train_base` | Caso, data de decisão e rótulo `target` |
+| `train_static_0` | Atributos em relação 1:1 com o caso |
+| `train_applprev_1` | Histórico em relação 0:N com o caso |
 
-## Executar sem acesso ao Home Credit
+A aquisição baixa seis arquivos: as três tabelas completas selecionadas, com seus
+shards, e `feature_definitions.csv`. Depois, a pipeline seleciona **50 mil casos
+por hash e seed fixos**, preservando todas as linhas auxiliares relacionadas.
+A RAW permanece intacta. A política está em [sample_policy.yaml](configs/sample_policy.yaml).
 
-Em Linux x86_64, com Python 3, bash e acesso de rede para baixar dependências:
+Os dados de negócio são reais. As chegadas em lotes, duas correções auxiliares,
+reenvios e um caso atrasado são **simulações declaradas** sobre esse recorte.
+Não há CDC fornecido pela competição. A ABT é retrospectiva; não é uma base de
+treino com disponibilidade temporal dos atributos validada.
+
+## Requisitos
+
+- Linux x86_64 ou WSL2, Bash, Python 3 e acesso à rede para dependências e dados.
+- Conta Kaggle com acesso à competição.
+- Memória e disco para RAW, recorte, estados Delta, reconstruções e objetos locais.
+
+Os scripts instalam Python 3.11.14, Java 17.0.21+9, Spark 3.5.7, Delta 3.3.2 e
+SeaweedFS 4.53 em `.venv/` e `.runtime/`, com versões e hashes declarados.
+Não é necessário instalar Spark separadamente ou usar Docker.
+
+A configuração padrão usa `local[2]`, driver de 2 GiB e quatro partições de
+shuffle. Um ensaio anterior de replay S3 consumiu pico RSS somado de 6,08 GiB e
+levou aproximadamente 18 minutos; isso é referência observada, não requisito
+mínimo nem previsão para a sequência completa. [Ambiente](docs/AMBIENTE_LOCAL.md).
+
+## Reproduzir com Home Credit real
+
+Execute na raiz do repositório, no mesmo terminal Bash. Cada etapa deve terminar
+com código zero antes da próxima. Não execute dois processos Spark em paralelo.
+Os comandos guardam as respostas JSON desta reprodução em uma pasta própria;
+os logs de diagnóstico continuam aparecendo no terminal.
+
+### 1. Instalar e conferir o ambiente
 
 ```bash
 bash scripts/bootstrap_environment.sh
 bash scripts/bootstrap_analysis.sh
 bash scripts/bootstrap_objects.sh
+
+export JAVA_HOME="$PWD/.runtime/java/jdk-17.0.21+9-jre"
+bash scripts/project.sh -m src.pipelines.check_environment
 ```
 
-Os scripts instalam Python 3.11.14, Java 17.0.21+9, Spark 3.5.7, Delta 3.3.2 e
-SeaweedFS 4.53 em diretórios locais, usando versões e hashes declarados. Não
-substituem o Python do sistema. Spark usa `local[2]` e driver de 2 GiB; deixe
-memória adicional para JVM, Python e serviço S3. Isso descreve a configuração,
-não um mínimo de hardware validado.
+O check deve concluir a prova de escrita, merge e leitura histórica Delta.
+Relatório: `artifacts/environment_check.json`.
 
-Para a demonstração curta com dados inventados, use um destino ainda inexistente:
+Prepare a pasta da reprodução e uma função para ler campos das respostas:
 
 ```bash
-bash scripts/objects.sh scripts/demo_portfolio.py --output artifacts/minha-demo
-bash scripts/analysis.sh scripts/render_demo.py --output artifacts/minha-demo
+set -euo pipefail
+REPRO_DIR=$(mktemp -d "$PWD/artifacts/repro-home-credit-XXXXXXXX")
+
+json_field() {
+  .venv/bin/python - "$1" "$2" <<'PY'
+import json
+import sys
+from pathlib import Path
+value = json.loads(Path(sys.argv[1]).read_text())
+for key in sys.argv[2].split('.'):
+    value = value[key]
+print(value)
+PY
+}
 ```
 
-Consulte os CSVs, `report.json` e `correction.png` nessa pasta. A demonstração
-começa em Silver tipada, publica Gold, corrige auxiliares, injeta falha após
-commit privado, retoma e lê a versão inicial. O prefixo S3 de teste é removido.
-[Sequência e resultados esperados](docs/entrega/DEMONSTRACAO.md).
+### 2. Autenticar e adquirir a RAW
 
-Para executar o fluxo sintético completo desde RAW:
+Se as credenciais já estiverem configuradas, siga para o download. Caso contrário,
+execute e cole o token Kaggle no prompt oculto do terminal:
 
 ```bash
-bash scripts/project.sh scripts/run_tests.py --suite e2e --integration-required
+bash scripts/project.sh scripts/configure_kaggle_token.py
 ```
 
-Para checks e regressão integral:
+```bash
+bash scripts/project.sh -m src.pipelines.download_home_credit
+```
+
+A aquisição publica arquivos sem sobrescrever a origem e registra checksums em
+`data/raw/_acquisition/`. Reexecuções verificam e reutilizam arquivos existentes.
+Fonte alterada ou arquivo sem manifesto bloqueiam o processamento para investigação.
+
+### 3. Materializar o recorte e a Bronze
+
+```bash
+bash scripts/project.sh -m src.pipelines.build_sample \
+  > "$REPRO_DIR/sample.json"
+SAMPLE=$(json_field "$REPRO_DIR/sample.json" selection_id)
+
+bash scripts/project.sh -m src.pipelines.run_bronze_mvp \
+  --sample "$SAMPLE" > "$REPRO_DIR/bronze.json"
+
+cat "$REPRO_DIR/sample.json"
+cat "$REPRO_DIR/bronze.json"
+```
+
+O recorte valida os contratos da origem e da seleção. A Bronze precisa retornar
+`status: passed`, com qualidade e reconciliação de valores/proveniência aprovadas.
+O `selection_id` é calculado a partir da fonte, configuração e implementação;
+não copie um ID de outra instalação.
+
+### 4. Preparar e validar os incrementos
+
+```bash
+bash scripts/project.sh -m src.pipelines.run_incremental_demo \
+  --sample "$SAMPLE" > "$REPRO_DIR/incremental.json"
+F04_REPORT=$(json_field "$REPRO_DIR/incremental.json" report)
+
+cat "$REPRO_DIR/incremental.json"
+```
+
+Esse comando materializa a landing imutável, aplica sete pacotes em Silver local
+e confere deduplicação, precedência, retry, atraso e equivalência com reconstrução.
+O relatório precisa indicar `status: passed`. Ele é a entrada explícita da
+operação S3; esta etapa não publica Gold.
+
+### 5. Processar Silver e Gold no S3 local
+
+```bash
+bash scripts/objects.sh -m src.pipelines.operate_lakehouse \
+  --sample "$SAMPLE" \
+  --source-report "$F04_REPORT" \
+  --mode rebuild \
+  --max-attempts 2 --retry-delay 2 \
+  > "$REPRO_DIR/operation.json"
+
+cat "$REPRO_DIR/operation.json"
+```
+
+`rebuild` cria um estado novo para a operação e processa todos os pacotes.
+O supervisor inicia o SeaweedFS, cria a sessão Spark/S3A, espelha as entradas,
+executa Silver, compara com reconstrução independente e publica Gold após as
+validações. O serviço iniciado pela operação é parado ao final; os objetos
+persistem em `data/object-store/seaweedfs`.
+
+Sucesso exige **`status: passed` e `exit_code: 0`**. Inspecione o relatório
+operacional e o relatório do processamento referenciado por ele:
+
+```bash
+OPERATION_REPORT=$(json_field "$REPRO_DIR/operation.json" report)
+cat "$OPERATION_REPORT"
+```
+
+O relatório de processamento registra `publication_id`, `registry`, contagens,
+versões Delta e provas de reconstrução. A publicação contém **três tabelas Silver
+e duas Gold**: `gold.abt` e `gold.monthly_metrics`. O registro fica sob
+`operational-publications/<selection_id>` no prefixo S3 configurado.
+
+### 6. Conferir as tabelas publicadas
+
+A verificação abaixo acessa os objetos e valida arquivos, UUIDs, versões e linhas
+com Spark. O serviço precisa estar ativo para essa consulta:
+
+```bash
+bash scripts/objects.sh -m src.object_store.service start
+bash scripts/objects.sh -m src.pipelines.operational_status \
+  --sample "$SAMPLE" --verify-tables
+bash scripts/objects.sh -m src.object_store.service stop
+```
+
+A consulta deve terminar com código zero e registrar nível de verificação
+`delta_tables`. Um resumo offline ou somente a existência de arquivos não
+comprova a integridade da publicação.
+
+## Reexecutar e atualizar
+
+Para reaplicar os pacotes ao estado operacional correspondente, preservando
+as regras de revisão e os recibos:
+
+```bash
+bash scripts/objects.sh -m src.pipelines.operate_lakehouse \
+  --sample "$SAMPLE" --source-report "$F04_REPORT" --mode replay
+```
+
+Para acompanhar a chegada por etapas, em uma identidade de estado ainda sem
+lotes posteriores aplicados:
+
+```bash
+bash scripts/objects.sh -m src.pipelines.operate_lakehouse \
+  --sample "$SAMPLE" --source-report "$F04_REPORT" \
+  --mode update --batch b00_w000_051
+```
+
+`update` aplica todos os pacotes até o limite informado. Não aceita regredir
+um estado que já recebeu pacotes posteriores. Uma nova invocação `rebuild`
+cria outra operação; mudanças em código/configuração também podem criar outra
+identidade. [Modos](docs/operacao/COMANDO_UNICO.md) e [retry/erros](docs/operacao/ESTADOS_E_ERROS.md).
+
+## Gerar o relatório analítico com gráficos
+
+A pipeline S3 acima entrega as tabelas publicadas. O gerador HTML atual consome
+um registro separado em filesystem e exige três publicações explícitas para
+comparar baseline, correção e atraso. Para reproduzir também essa entrega,
+continue no mesmo terminal:
+
+```bash
+bash scripts/project.sh -m src.pipelines.run_publication_demo \
+  --sample "$SAMPLE" --f04-report "$F04_REPORT" \
+  > "$REPRO_DIR/publication.json"
+F05_REPORT=$(json_field "$REPRO_DIR/publication.json" report)
+
+bash scripts/project.sh -m src.pipelines.run_gold_demo \
+  --sample "$SAMPLE" --f05-report "$F05_REPORT" \
+  > "$REPRO_DIR/gold.json"
+
+BASELINE=$(json_field "$REPRO_DIR/gold.json" publications.baseline)
+CORRECTED=$(json_field "$REPRO_DIR/gold.json" publications.corrected)
+FINAL=$(json_field "$REPRO_DIR/gold.json" publications.late)
+
+bash scripts/analysis.sh -m src.pipelines.run_analysis \
+  --sample "$SAMPLE" --baseline "$BASELINE" \
+  --corrected "$CORRECTED" --publication "$FINAL" \
+  > "$REPRO_DIR/analysis.json"
+
+cat "$REPRO_DIR/analysis.json"
+```
+
+As demonstrações de publicação exercitam falha controlada, retry e leitura
+histórica. O relatório final informa `output`, com `report.html`, `report.md`,
+seis CSVs, gráficos e `semantic.json`. Consuma apenas uma pasta com
+`_SUCCESS.json` aprovado. Repetir a análise com as mesmas publicações permite
+comparar resultados semânticos; horários e IDs de tentativa podem variar.
+[Detalhes da reprodução analítica](docs/analise/EXECUCAO.md).
+
+## Resultados observados e critérios de sucesso
+
+| Critério | Resultado registrado no recorte validado |
+|---|---|
+| População | 50.000 casos e 215.390 observações históricas relacionadas |
+| Gold | ABT com 50.000 linhas e 19 colunas; indicadores de 22 meses |
+| Qualidade | Contratos e reconciliação de valores/proveniência aprovados |
+| Incremental | Correções, duplicatas, revisão antiga e atraso verificados |
+| Recuperação | Falha/retry e reprodução histórica aprovados |
+
+Esses números descrevem a execução documentada. Uma reprodução deve conferir
+seus próprios relatórios e manifestos. Alterar fonte, recorte, contratos ou
+código pode mudar identidades e resultados. O rótulo descreve o dataset;
+não representa uma taxa operacional de uma carteira real.
+
+## Testes e alternativa sem acesso à competição
+
+Após os três bootstraps, execute os checks e a regressão com integrações reais:
 
 ```bash
 bash scripts/project.sh scripts/check_code.py
@@ -86,70 +282,39 @@ bash scripts/project.sh scripts/run_tests.py --integration-required
 bash scripts/project.sh scripts/check_acceptance.py --report artifacts/tests/report.json
 ```
 
-A F10 aprovou **153 testes obrigatórios, zero ignorados**, em ambiente instalado
-do zero, incluindo Spark, Delta e S3 reais. A [matriz T01–T24](docs/testes/MATRIZ_ACEITACAO.md)
-está aprovada. Os cenários internos dos subprocessos não são somados novamente
-a esse total. [CI e isolamento](docs/testes/EXECUCAO_E_CI.md).
+A evidência F10 registra **153 testes obrigatórios, zero ignorados**, em ambiente
+novo. A CI está declarada; a entrega registra reprodução local, sem job remoto
+executado. [Execução dos testes](docs/testes/EXECUCAO_E_CI.md).
 
-## Dados reais e resultados locais
+Sem credenciais Home Credit, é possível verificar o fluxo completo com fixtures
+inventadas, de RAW até Gold S3:
 
-A fonte usada no desenvolvimento é Home Credit. O acesso autenticado e os
-arquivos selecionados foram verificados; os dados não acompanham o repositório.
-As condições registradas não autorizam redistribuição geral. Consulte
-[fonte e limites](docs/governance/SOURCE.md) antes de adquirir ou divulgar dados.
-A demonstração e a CI usam somente dados inventados.
+```bash
+bash scripts/project.sh scripts/run_tests.py --suite e2e --integration-required
+```
 
-| Produto local aprovado | Resultado observado |
+Essa alternativa valida o software; a reprodução dos dados reais é a sequência
+principal deste README.
+
+## Decisões e limites
+
+Delta fornece transações por tabela. O protocolo da aplicação reúne três Silver
+e duas Gold em manifesto aprovado e só então ativa o ponteiro CURRENT.
+Uma falha privada mantém a última publicação aprovada; uma falha após a ativação
+exige consultar CURRENT antes de concluir qual publicação está vigente.
+
+A solução foi validada em um host/driver com escritores cooperantes. Não há
+cluster distribuído, streaming, modelo preditivo, agendador ou recursos AWS
+provisionados. A expansão para todas as tabelas requer novos contratos,
+tratamentos e definições analíticas. Dados reais e derivados permanecem locais;
+a entrega pública preparada utiliza dados sintéticos.
+
+| Referência | Conteúdo |
 |---|---|
-| Recorte determinístico | 50.000 casos e 215.390 observações históricas relacionadas |
-| Gold | ABT de 50.000 linhas e 19 colunas; 22 meses de indicadores |
-| Análise retrospectiva | 1.578 target=1 entre 50.000 rótulos válidos; cobertura histórica 80,152% |
-| Recuperação | Reenvio, correção, atraso, falha/retomada e leitura histórica verificados |
-| Ajuste F10 | Leitura tipada de sete pacotes para um; cinco tabelas iguais; 259,7→185,2 s no ensaio |
-
-O ganho de tempo foi medido uma vez por variante; não é SLA ou benchmark
-estatístico. A taxa de desfecho e a cobertura descrevem esse recorte, sem
-inferência sobre uma carteira real. Unidades monetárias não foram confirmadas.
-As chegadas, correções e revisões incrementais são simulações declaradas.
-
-[Resultados e método analítico](docs/analise/RESULTADOS.md),
-[dicionário ABT](docs/contratos/ABT.md), [evidência F10](docs/evidencias/F10_ACEITACAO.md).
-O relatório F07 continua ligado às publicações filesystem que o originaram;
-a existência do S3 não muda seu consumidor automaticamente.
-
-A reprodução real exige acesso próprio à fonte e as etapas de
-[aquisição e ambiente](docs/AMBIENTE_LOCAL.md), [recorte](docs/RECORTE_E_LOTES.md)
-e [operação](docs/operacao/COMANDO_UNICO.md). O comando operacional consome
-entradas locais já aprovadas; não baixa os dados por conta própria.
-
-## Estudar e conferir
-
-Comece pelo [guia de estudo](docs/GUIA_ESTUDO_LAKEHOUSE.md): são 12 capítulos
-sobre tecnologias, ferramentas e processos, usando o código e as evidências do
-projeto como exemplos. Para uma leitura rápida, siga arquitetura → contratos →
-demonstração → matriz de testes.
-
-| Assunto | Referência |
-|---|---|
-| Regras e modelo | [Contratos](docs/contratos/README.md), [ABT](docs/contratos/ABT.md) |
-| Operação | [Comando](docs/operacao/COMANDO_UNICO.md), [erros/retry](docs/operacao/ESTADOS_E_ERROS.md), [métricas](docs/operacao/METRICAS.md) |
-| Rastreio | [Lineage](docs/operacao/LINEAGE_E_INVENTARIO.md), [resumo](docs/operacao/RESUMO_OPERACIONAL.md) |
-| Armazenamento | [Decisão S3 local](docs/objetos/DECISAO_E_ARQUITETURA.md), [manutenção](docs/objetos/OPERACAO.md) |
-| Decisões e avanço | [Decisões](docs/DECISOES.md), [roteiro](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md) |
-
-A ABT é retrospectiva: não comprova disponibilidade dos atributos no momento da
-decisão e não é uma base de treino validada. Não há modelo preditivo, streaming,
-CDC da origem, cluster distribuído, serviço de produção ou recursos AWS provisionados.
-O notebook histórico conserva outputs por ser entrada vinculada por hash; o
-export de código os remove na cópia. Não publique o working tree original sem
-a revisão de divulgação. A licença do código não concede direitos sobre o dataset.
-
-## Entrega F11
-
-A [demonstração](docs/entrega/DEMONSTRACAO.md) passou e foi repetida em cópia nova:
-os seis CSVs coincidiram por hash. O [pacote sintético local](artifacts/f11/credit-risk-portfolio-synthetic-final.tar.gz)
-contém 194 arquivos auditados, sem dados restritos, credenciais ou outputs históricos.
-[Evidência F11](docs/evidencias/F11_ENTREGA.md),
-[conclusão técnica](docs/entrega/CONCLUSAO_TECNICA.md) e
-[aprendizados/backlog/AWS](docs/entrega/EVOLUCAO_E_AWS.md).
-O pacote é gerado localmente e não acompanha um clone Git por estar em artifacts.
+| [Arquitetura](docs/entrega/ARQUITETURA.md) | Componentes e garantias |
+| [Contratos](docs/contratos/README.md) / [ABT](docs/contratos/ABT.md) | Grãos, chaves, regras e colunas |
+| [Operação S3](docs/objetos/OPERACAO.md) | Serviço, persistência e manutenção |
+| [Lineage](docs/operacao/LINEAGE_E_INVENTARIO.md) | Origem e versões dos resultados |
+| [Matriz de aceitação](docs/testes/MATRIZ_ACEITACAO.md) | Cenários T01–T24 |
+| [Roteiro e evidências](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md) | 72 itens aceitos no escopo local |
+| [Guia de estudo](docs/GUIA_ESTUDO_LAKEHOUSE.md) | Leitura guiada da implementação |
