@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
-      JAVA_HOME: ${{ runner.temp }}/credit-risk-source/.runtime/java/jdk-17.0.21+9-jre
       SPARK_LOCAL_IP: 127.0.0.1
-      KAGGLE_CONFIG_DIR: ${{ runner.temp }}/credit-risk-source/.kaggle
     steps:
+      - name: Configure runtime paths for subsequent steps
+        run: |
+          printf 'JAVA_HOME=%s/credit-risk-source/.runtime/java/jdk-17.0.21+9-jre\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'KAGGLE_CONFIG_DIR=%s/credit-risk-source/.kaggle\n' "$RUNNER_TEMP" >> "$GITHUB_ENV"
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
