@@ -1,4 +1,7 @@
-# Curso aplicado — Engenharia e Análise de Dados com Credit Risk Lakehouse
+# Percurso didático da implementação
+
+Material opcional de aprofundamento. Para avaliar ou executar a solução, comece
+pelo [índice da documentação](README.md).
 
 Este guia ensina as tecnologias, ferramentas e processos usados no projeto,
 usando sua implementação como estudo de caso. Ao concluir o percurso, você deve
@@ -163,15 +166,12 @@ Modelo preditivo, feature store, retreinamento e AWS ficam para evolução poste
 
 | Documento | Quando usar |
 |---|---|
-| Este guia e seus 12 capítulos | Aprender e conectar conceitos, ferramentas e implementação |
-| [Roteiro de execução](ROTEIRO_EXECUCAO_LAKEHOUSE.md) | Conferir tarefas, dependências e estado atual |
+| Este guia e seus 13 capítulos | Aprender e conectar conceitos, ferramentas e implementação |
+| [Índice da documentação](README.md) | Consultar arquitetura, reprodução, resultados e evidências |
 | [Decisões](DECISOES.md) | Consultar por que uma alternativa foi escolhida |
 | [Objetos F08](evidencias/F08_OBJETOS.md), [análise F07](evidencias/F07_ANALISE.md), [Gold](evidencias/F06_GOLD.md) e [publicação](evidencias/F05_PUBLICACAO.md) | Conferir comandos e resultados medidos; cada capítulo indica a sua |
-| [Referência detalhada](REFERENCIA_ESTUDO_LAKEHOUSE.md) | Aprofundar um assunto nas aulas técnicas preservadas |
 
-As aulas da referência foram escritas em momentos diferentes do desenvolvimento.
-Para o estado atual, use este percurso, o roteiro e a evidência da entrega.
-Os capítulos recebem explicação e leitura guiada conforme novas etapas forem
-implementadas; o material de aprendizagem precisa acompanhar o projeto.
+Os capítulos distinguem o MVP da expansão. Para números e limites atuais,
+consulte as evidências E00–E08 e o README; as evidências F registram o MVP.
 
 **Comece pelo [capítulo 1 — Produto e arquitetura](estudo/01_PRODUTO_E_ARQUITETURA.md).**

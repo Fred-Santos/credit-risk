@@ -1,43 +1,43 @@
 # Registro de decisões — Credit Risk Lakehouse
 
-Atualizado em 12/11/2026. Projeto afetado em todas as entradas: `credit-risk`.
-Status da decisão não equivale a implementação ou validação.
+Revisado em 20/11/2026. Este registro explica escolhas, alternativas e limites
+da implementação. A execução de cada comportamento deve ser conferida nas
+evidências vinculadas; uma decisão documental não substitui sua validação.
 
-| ID | Decisão | Status | Motivo e alternativas | Pendência / próximo passo |
-|---|---|---|---|---|
-| D01 | Priorizar engenharia e análise retrospectiva de crédito | Aprovada pelo usuário | Portfólio de Engenharia e Análise; alternativa seria manter ML como centro | Executar o escopo funcional |
-| D02 | Gold com ABT, indicadores e análises de consumo | Aprovada pelo usuário | Entregar detalhe e interpretação; alternativa seria encerrar na Silver | Confirmar grão e campos da fonte adotada |
-| D03 | Usar Spark/PySpark e Delta como formato inicial único | Aprovada pelo usuário | Aproveitar código e demonstrar transações; Iceberg seria alternativa por requisito específico | Validar versões e ambiente |
-| D04 | Preservar trabalho RAW/Bronze e adaptar incrementalmente | Aprovada pelo usuário | Evitar reescrita sem necessidade; converter tudo de início ampliaria risco | Adaptar aquisição/contratos se houver nova fonte |
-| D05 | Identificar replay, correções e atrasos simulados | Aprovada pelo usuário | Arquivos estáticos não são CDC; alternativa seria buscar fonte com mudanças reais | Definir lotes e precedência |
-| D06 | Provar Delta no filesystem e depois integrar objetos locais | Aprovada pelo usuário | Validar em etapas; alternativa seria iniciar toda a infraestrutura junta | Selecionar serviço e garantir commit/publicação no destino |
-| D07 | Adiar ML, feature store, retreinamento e AWS | Aprovada pelo usuário | Foco e conclusão da entrega local; alternativas ficam no backlog | Revisar após aceite do MVP |
-| D08 | Revisar alcance da divulgação externa Home Credit | Atualizada por D10 | A redação anterior impedia todo processamento; foi corrigida após esclarecer participação na competição | Revisar antes de publicar dados ou derivados |
-| D09 | Manter Home Credit; não adotar substituta | Atualizada por D10 | Preservar fonte e trabalho existente | Seguir o escopo de D10 |
-| D10 | Usar dados reais Home Credit na ABT/análises e fixtures somente nos testes | Aprovada pelo usuário; aquisição e inspeção inicial executadas | Inscrição informada e acesso autenticado confirmado | Fechar contratos e recorte; revisar divulgação externa antes de publicar |
-| D11 | Ambiente nativo isolado Linux/WSL: Python 3.11.14, Java 17, Spark 3.5.7 e Delta 3.3.2 | Implementada e validada na prova inicial | Matriz compatível e aproveitamento do código; alternativa Docker adicionaria serviço sem necessidade nesta fase | Revalidar com recorte real e armazenamento de objetos nas etapas seguintes |
-| D12 | Contrato v1 para snapshot RAW/recorte, com edição fixada e schema completo | Definida e implementada na execução autorizada | Bloquear mudanças silenciosas; alternativa de aceitar colunas ausentes/novas automaticamente foi descartada | Contratos de eventos/revisões e Silver continuam posteriores |
-| D13 | Até 50 mil casos por SHA-256 de seed fixa e case_id; preservar relacionados | Definida e implementada na execução autorizada | Repetibilidade e limite de recursos; primeiras linhas ou amostragem por fração não atendem ao mesmo controle | Reavaliar volume após medir o fluxo completo; manter coorte fixa no experimento |
-| D14 | Três lotes simulados por WEEK_NUM: 0–51, 52–77 e 78–91 | Definida e validada na atribuição | Calendário contíguo e explícito; não pressupor chegadas reais | Implementar entrega dos lotes e revisões em F04 |
-| D15 | Recorte imutável em pasta separada, publicado após checks e reconciliação | Implementada e validada no filesystem local | Preservar RAW e detectar alteração de saídas; alternativa de sobrescrever o recorte foi descartada | Entrada Bronze adaptada; rever garantias para objetos em F08 |
-| D16 | Entrada Bronze explícita por seleção ou modo RAW, com namespaces e relatórios separados | Implementada e validada na execução autorizada | Preservar origem/configuração e evitar mistura de coortes; alternativa de trocar globalmente data.raw foi descartada | Usar o namespace aprovado no consumo Silver |
-| D17 | Manifesto de arquivo v2 com checksums de saída e gate local _READY após validações | Implementada e validada no filesystem local | Reconhecer commits no retry e impedir aprovação da execução parcial | Contrato de revisões, regras e reconciliação completa seguem em F02.4–F02.6; publicação entre tabelas Delta em F05 |
-| D18 | Contrato de eventos separado, com chave de negócio, evento por revisão e entrega por lote/posição | Implementada e validada em F02.4 | Manter repetições auditáveis; conflito na mesma revisão rejeita o lote, inclusive em versões antigas | Gerador completo e merge Silver seguem em F04; não há CDC real na fonte |
-| D19 | Landing local imutável JSONL para pequenos pacotes de referência, isolada por seleção/stream | Implementada e validada com linhas reais e correção declarada | Testar o protocolo sem reescrever RAW/snapshot ou ocupar os IDs dos lotes completos | Leitura integral em memória não atende ao replay completo; adaptar transporte/validação distribuída em F04 e storage em F08 |
-| D20 | Derivar qualidade Bronze do contrato congelado, somando metadados técnicos; histórico vazio permitido com schema | Implementada e validada em F02.5 | Evitar schemas divergentes e distinguir ausência legítima de observações de carga ausente; eventos mantêm grão próprio | Qualidade não prova igualdade de valores: reconciliação completa em F02.6 |
-| D21 | Reconciliar multiconjuntos por exceptAll nos dois sentidos, sem casts, e auditar proveniência antes do gate | Implementada e validada em F02.6 | Detectar mudanças de valor/multiplicidade que qualidade e contagens não detectam; RAW selecionada e recorte comparados à Bronze | Igualdade de valores Spark e checksums físicos têm funções distintas; merge Silver e ABT seguem posteriores |
+| ID | Decisão | Contexto e justificativa |
+|---|---|---|
+| D01 | Priorizar engenharia e análise retrospectiva de crédito | Portfólio de Engenharia e Análise; alternativa seria manter ML como centro |
+| D02 | Gold com ABT, indicadores e análises de consumo | Entregar detalhe e interpretação; alternativa seria encerrar na Silver |
+| D03 | Usar Spark/PySpark e Delta como formato inicial único | Aproveitar código e demonstrar transações; Iceberg seria alternativa por requisito específico |
+| D04 | Preservar trabalho RAW/Bronze e adaptar incrementalmente | Evitar reescrita sem necessidade; converter tudo de início ampliaria risco |
+| D05 | Identificar replay, correções e atrasos simulados | Arquivos estáticos não são CDC; alternativa seria buscar fonte com mudanças reais |
+| D06 | Provar Delta no filesystem e depois integrar objetos locais | Validar em etapas; alternativa seria iniciar toda a infraestrutura junta |
+| D07 | Adiar ML, feature store, retreinamento e AWS | Foco e conclusão da entrega local; alternativas ficam no backlog |
+| D08 | Revisar alcance da divulgação externa Home Credit | Registro histórico substituído por D10; ver condições atuais em [SOURCE](governance/SOURCE.md). |
+| D09 | Manter Home Credit; não adotar substituta | Registro histórico substituído por D10; ver condições atuais em [SOURCE](governance/SOURCE.md). |
+| D10 | Usar dados reais Home Credit na ABT/análises e fixtures somente nos testes | Dados reais na execução local; fixtures sintéticas permitem testes sem acesso à competição. Restrições em [SOURCE](governance/SOURCE.md). |
+| D11 | Ambiente nativo isolado Linux/WSL: Python 3.11.14, Java 17, Spark 3.5.7 e Delta 3.3.2 | Matriz compatível e aproveitamento do código; alternativa Docker adicionaria serviço sem necessidade nesta fase |
+| D12 | Contrato v1 para snapshot RAW/recorte, com edição fixada e schema completo | Bloquear mudanças silenciosas; alternativa de aceitar colunas ausentes/novas automaticamente foi descartada |
+| D13 | MVP: até 50 mil casos por SHA-256 de seed fixa e case_id; preservar relacionados | Repetibilidade e limite de recursos; primeiras linhas ou amostragem por fração não atendem ao mesmo controle A expansão usa seleção temporal sem esse limite. |
+| D14 | Três lotes simulados por WEEK_NUM: 0–51, 52–77 e 78–91 | Calendário contíguo e explícito; não pressupor chegadas reais |
+| D15 | Recorte imutável em pasta separada, publicado após checks e reconciliação | Preservar RAW e detectar alteração de saídas; alternativa de sobrescrever o recorte foi descartada |
+| D16 | Entrada Bronze explícita por seleção ou modo RAW, com namespaces e relatórios separados | Preservar origem/configuração e evitar mistura de coortes; alternativa de trocar globalmente data.raw foi descartada |
+| D17 | Manifesto de arquivo v2 com checksums de saída e gate local _READY após validações | Reconhecer commits no retry e impedir aprovação da execução parcial |
+| D18 | Contrato de eventos separado, com chave de negócio, evento por revisão e entrega por lote/posição | Manter repetições auditáveis; conflito na mesma revisão rejeita o lote, inclusive em versões antigas |
+| D19 | Landing local imutável JSONL para pequenos pacotes de referência, isolada por seleção/stream | Testar o protocolo sem reescrever RAW/snapshot ou ocupar os IDs dos lotes completos |
+| D20 | Derivar qualidade Bronze do contrato congelado, somando metadados técnicos; histórico vazio permitido com schema | Evitar schemas divergentes e distinguir ausência legítima de observações de carga ausente; eventos mantêm grão próprio |
+| D21 | Reconciliar multiconjuntos por exceptAll nos dois sentidos, sem casts, e auditar proveniência antes do gate | Detectar mudanças de valor/multiplicidade que qualidade e contagens não detectam; RAW selecionada e recorte comparados à Bronze |
 
-D10 atualiza D08/D09 após a informação sobre inscrição: mantém Home Credit e
-separa desenvolvimento da revisão de divulgação externa. Não houve troca de
-dataset nem envio da solicitação. D01–D07 permanecem válidas; as alternativas
-UCI ficam apenas como referência histórica.
+As decisões D01–D21 registram a fundação do MVP. A expansão posterior
+integrou 17 fontes e adotou recorte temporal; veja o [índice da documentação](README.md#expansão).
+Os códigos D e F preservam a ligação com as evidências históricas.
 
-D22 — F03.1: a Silver inicial preservará todos os campos, valores e tipos
+D22 — F03.1: a Silver inicial preserva todos os campos, valores e tipos
 numéricos do snapshot, incluindo códigos, nulos e negativos. Não aplicar
-sentinelas por aparência nem remover colunas por cardinalidade. Planejar somente
-conversões das 23 datas com guarda de perda. Decisão registrada em
+sentinelas por aparência nem remover colunas por cardinalidade. Aplicar somente
+as conversões das 23 datas com guarda de perda. Decisão registrada em
 [catálogo Silver](silver/CATALOGO_REGRAS_SILVER.md) e no YAML da política;
-perfil real validado, implementação ainda em F03.2–F03.6. Uma futura mudança
+implementação e validação registradas nas evidências F03. Uma futura mudança
 semântica exigirá evidência e revisão explícita da política.
 
 Detalhamento funcional: [ESCOPO_PRODUTO.md](ESCOPO_PRODUTO.md).
@@ -49,14 +49,14 @@ global depois; sem união permissiva. Implementada e validada com dados reais
 e testes negativos. O lock exige cooperação local e não fornece isolamento
 distribuído; o consumidor deve executar dentro do `with`.
 
-Controle de execução: [ROTEIRO_EXECUCAO_LAKEHOUSE.md](ROTEIRO_EXECUCAO_LAKEHOUSE.md).
+Validação da entrega: [evidências do MVP](README.md#evidências-do-mvp).
 
 D24 — F03.3: executar apenas as 23 conversões de datas aprovadas, exigindo formato
 ISO, parse válido e equivalência de ida e volta. Qualquer perda de preenchido
 bloqueia o snapshot inteiro, com métricas e sem descarte/quarentena automática.
 Comparar todas as colunas com a Bronze após restaurar a representação das datas,
 preservando valores, tipos restantes, nulos, grãos e metadados. Implementada e
-validada no recorte real; gravação Delta continua em F03.4.
+validada no recorte real; persistência documentada em [Delta inicial](silver/DELTA_INICIAL.md).
 
 D25 — F03.4: materializar um pacote inicial imutável por identidade de entrada,
 política, código e runtime. Gravar três tabelas Delta independentes, registrar
@@ -72,7 +72,7 @@ Estática exige cobertura completa e 1:1; histórico admite ausência e 0:N linh
 por caso. Índice num_group1 não negativo, sem teto derivado da amostra. Datas
 auxiliares posteriores à decisão são diagnóstico, sem exclusão automática ou
 promessa point-in-time. Implementada e validada com 29 checks reais aprovados;
-aceite operacional segue em F03.6.
+aceite operacional registrado em [F03](evidencias/F03_EXECUCAO_SILVER.md).
 
 D27 — F03.6: consolidar leitura, transformação, criação/reutilização e contratos
 em `run_silver_initial`, com `--sample` obrigatório e `--existing reuse|error`.
@@ -80,7 +80,7 @@ Registrar um recibo imutável por execução aprovada, separado do pacote técni
 vinculado ao relatório por hash. Conferir estabilidade de código/configuração
 antes do aceite. Falha preserva pacotes e aceites anteriores; retry revalida os
 dados antes de reutilizar. Não há ponteiro `latest`: publicação histórica entre
-gerações e camadas continua em F05. Implementação e operação em
+gerações e camadas está documentada em [F05](evidencias/F05_PUBLICACAO.md). Implementação e operação em
 [EXECUCAO_INICIAL.md](silver/EXECUCAO_INICIAL.md); resultados em
 [F03_EXECUCAO_SILVER.md](evidencias/F03_EXECUCAO_SILVER.md).
 
@@ -110,8 +110,8 @@ conferidas com o commit real e os contratos persistidos após cada lote.
 D32 — F04: reconstruir pelo máximo de revisão agrupado por chave, join e distinct
 do estado, sem reutilizar a janela ou o merge incremental. Comparar todas as
 colunas nos dois sentidos. Diagnósticos mensais e de cobertura só verificam
-idempotência nesta fase; indicadores Gold continuam em F06. Publicação global,
-evolução e prova completa de recuperação continuam em F05.
+idempotência nesta fase; indicadores Gold foram entregues em F06. Publicação,
+evolução e recuperação estão documentadas em F05.
 
 Detalhamento de F04: [Silver incremental](silver/INCREMENTAL.md).
 
@@ -243,7 +243,7 @@ real após commit, mantendo validadores/oráculos reais. Classificar exceções
 Silver/Gold como quality_rejected (3, sem retry), preservar seu relatório e
 ligar tentativa ao run_report por hash. Isolar relatórios da matriz do histórico
 normal, confinados ao repositório. Rebuild mantém operação lógica no retry.
-Não exigir Home Credit na CI: o ensaio local é separado e F10 usará fixtures
+Não exigir Home Credit na CI: o ensaio local é separado e F10 usa fixtures
 sintéticas. [Matriz](operacao/MATRIZ_OPERACIONAL.md),
 [evidência](evidencias/F09_MATRIZ_OPERACIONAL.md).
 

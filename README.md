@@ -22,6 +22,14 @@ flowchart LR
     P --> L[Consumo por manifesto e versões]
 ```
 
+## Documentação
+
+Para avaliar a solução, siga [arquitetura](docs/entrega/ARQUITETURA.md),
+[reprodução](docs/entrega/REPRODUCAO.md) e
+[resultados e limitações](docs/analise/PUBLICO_EXPANSAO.md).
+O [índice completo](docs/README.md) reúne contratos, decisões, operação e evidências.
+O [percurso didático](docs/GUIA_ESTUDO_LAKEHOUSE.md) é uma leitura opcional.
+
 ## Dados e escopo executado
 
 Fonte: competição **Home Credit — Credit Risk Model Stability**, no Kaggle.
@@ -44,7 +52,7 @@ selecionados pela data de decisão; seus históricos relacionados são preservad
 A finalidade é retrospectiva. O leitor ML permanece bloqueado
 (`ml_ready=false`): disponibilidade histórica, maturação do target e identidade
 global de clientes entre períodos ainda precisam de comprovação.
-[Roteiro e evidências da expansão](docs/ROTEIRO_EXPANSAO_HOME_CREDIT.md).
+[Evidências da expansão](docs/README.md#expansão).
 
 ### MVP preservado e reproduzido abaixo
 
@@ -328,7 +336,7 @@ os comandos da expansão estão nas evidências E02–E07.
 ## Decisões e limites
 
 A expansão para todas as tabelas de treino, novas janelas de 2020 e preparação
-para ML está organizada no [roteiro de expansão](docs/ROTEIRO_EXPANSAO_HOME_CREDIT.md).
+para ML está documentada no [índice da expansão](docs/README.md#expansão).
 A expansão já tem [17 Silver Delta](docs/evidencias/E03_SILVER_EXPANSAO.md) e
 [duas ABTs retrospectivas](docs/evidencias/E05_ABTS_TEMPORAIS.md): 259.695 casos
 para desenvolvimento e 187.610 para avaliação, com 166 atributos e labels
@@ -358,5 +366,5 @@ a entrega pública preparada utiliza dados sintéticos.
 | [Operação S3](docs/objetos/OPERACAO.md) | Serviço, persistência e manutenção |
 | [Lineage](docs/operacao/LINEAGE_E_INVENTARIO.md) | Origem e versões dos resultados |
 | [Matriz de aceitação](docs/testes/MATRIZ_ACEITACAO.md) / [expansão](docs/testes/MATRIZ_EXPANSAO.md) | Cenários T01–T24 e X01–X17 |
-| [Roteiro e evidências](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md) | 72 itens aceitos no escopo local |
+| [Evidências da entrega](docs/README.md#evidências-do-mvp) | 72 itens aceitos no escopo local |
 | [Guia de estudo](docs/GUIA_ESTUDO_LAKEHOUSE.md) | Leitura guiada da implementação |

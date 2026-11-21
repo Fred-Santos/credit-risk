@@ -90,3 +90,9 @@ htmlcov/
 .spyderproject
 .spyproject
 .ropeproject
+
+# Planejamento e anotações de estudo locais
+/docs/PLANO_PORTFOLIO_LAKEHOUSE.md
+/docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md
+/docs/ROTEIRO_EXPANSAO_HOME_CREDIT.md
+/docs/REFERENCIA_ESTUDO_LAKEHOUSE.md

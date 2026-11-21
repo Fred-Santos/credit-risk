@@ -297,8 +297,8 @@ A [evidência F03.6](../evidencias/F03_EXECUCAO_SILVER.md) registra falhas e
 preservação dos aceites; a [F04](../evidencias/F04_INCREMENTAL.md) mede o fluxo
 incremental e prova conservação/reconstrução. As evidências
 [F05](../evidencias/F05_PUBLICACAO.md) e [F06](../evidencias/F06_GOLD.md) registram
-publicações e recuperação. O [roteiro](../ROTEIRO_EXECUCAO_LAKEHOUSE.md) define
-a consolidação ainda necessária em F09. A
+publicações e recuperação. A [matriz operacional](../operacao/MATRIZ_OPERACIONAL.md) documenta
+a consolidação executada em F09. A
 [evidência F08](../evidencias/F08_OBJETOS.md) registra o replay nativo S3A, as
 comparações, a recuperação e os recursos medidos.
 

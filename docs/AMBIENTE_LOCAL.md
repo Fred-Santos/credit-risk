@@ -228,7 +228,7 @@ disponível em `src.pipelines.run_raw_mvp`, usando a origem configurada.
 
 Esses comandos ainda não entregam Silver/Gold. A prova Delta também não aceita
 por si só o Lakehouse completo. O andamento continua em
-[ROTEIRO_EXECUCAO_LAKEHOUSE.md](ROTEIRO_EXECUCAO_LAKEHOUSE.md).
+[Índice de evidências](README.md#evidências-do-mvp).
 
 ## 8. Encerrar
 

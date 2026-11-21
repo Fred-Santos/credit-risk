@@ -1,12 +1,14 @@
 # Produto de dados — Credit Risk Lakehouse
 
-Versão 1, em 12/11/2026. Entrega de F00.1.
+Escopo consolidado em 20/11/2026. O MVP de três fontes e a expansão de 17
+fontes foram executados no ambiente local, incluindo publicação S3, operação
+e testes. Os resultados atuais estão no [índice da documentação](README.md).
 
-Status atualizado em F07: fonte Home Credit, contratos, ingestão, Silver,
-publicação e Gold aprovados. As perguntas P01–P06 foram operacionalizadas na
-[matriz analítica](analise/PERGUNTAS_E_METODO.md) e respondidas no
-[relatório retrospectivo](analise/RESULTADOS.md). Objetos locais e operação
-integrada continuam no roteiro.
+O MVP preserva o recorte de 50 mil casos. A expansão usa 447.305 casos de
+janeiro–setembro/2020, com 166 atributos retrospectivos e features separadas
+dos rótulos. As ABTs de desenvolvimento e avaliação temporal não estão
+aprovadas para ML: disponibilidade histórica e maturação do target continuam
+pendentes. Ver [contrato da expansão](contratos/EXPANSAO_SILVER_E_ABT.md).
 
 ## 1. Problema e público
 
@@ -27,7 +29,7 @@ Enunciado do produto:
 
 ## 2. Unidade de análise e grãos
 
-| Saída | Grão pretendido | Validação necessária |
+| Saída | Grão | Validação necessária |
 |---|---|---|
 | ABT | Uma linha por unidade de análise da fonte | Chave única, não nula e sem multiplicação nos joins |
 | Indicadores de desfecho | Período/coorte e segmentos sustentados pela fonte | Mesmo denominador e população nas comparações |
@@ -117,12 +119,12 @@ Se a fonte escolhida tiver apenas um snapshot, não inventar tendência temporal
 de desfecho. Nesse cenário, os meses históricos de pagamento podem sustentar
 análise própria, quando documentados; a sequência de ingestão continua simulada.
 
-## 7. Critério de aceite desta definição
+## 7. Evidências de conclusão
 
-F00.1 é atendida por: público e problema descritos, ABT/indicadores/análises
+A definição inicial contempla: público e problema descritos, ABT/indicadores/análises
 definidos, perguntas ligadas a evidências possíveis, escopo limitado e ausência
-de promessas de impacto não medido. Esse aceite é documental. Não aceita F00.2,
-F00.3 ou qualquer comportamento da pipeline.
+de promessas de impacto não medido. A definição é documental; a comprovação do comportamento depende das
+evidências de execução e dos testes relacionados abaixo.
 
 Fonte mantida: Home Credit, com acesso API e inspeção inicial confirmados.
 Contratos, recorte, Bronze reconciliada, protocolo de eventos e Silver inicial
@@ -136,5 +138,10 @@ comando, supervisão, métricas, lineage e resumo, com matriz real de sucesso/fa
 e recuperação. F10 aprovou 153 testes obrigatórios em ambiente novo e T01–T24,
 configurou CI sintética e validou o export sem dados ou outputs. F11 concluiu a
 entrega técnica com demo, pacote e autorrevisão; 72/72 itens, conforme o
-[roteiro](ROTEIRO_EXECUCAO_LAKEHOUSE.md). Condições de ambiente/fonte continuam em
+[índice de evidências](README.md#evidências-do-mvp). Condições de ambiente/fonte continuam em
 [AMBIENTE_LOCAL.md](AMBIENTE_LOCAL.md) e [SOURCE.md](governance/SOURCE.md).
+
+A expansão foi concluída em E08, com 174 testes aprovados e zero ignorados
+no ambiente local existente. Os resultados e limites dessa execução estão em
+[E08](evidencias/E08_ACEITACAO_EXPANSAO.md); os requisitos adicionais estão na
+[matriz X01–X17](testes/MATRIZ_EXPANSAO.md).

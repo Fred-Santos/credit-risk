@@ -99,5 +99,5 @@ solicitado e a verificação nova não está disponível/aprovada, o CLI retorna
 mesmo que exista cache anteriormente verificado. Não interpretar o código 0 do
 resumo como código de sucesso da última carga.
 
-A [matriz operacional F09.6](../ROTEIRO_EXECUCAO_LAKEHOUSE.md) ainda deve fechar
-os cenários ponta a ponta. Fonte, limites de acesso e retenção continuam vigentes.
+A [matriz operacional F09.6](MATRIZ_OPERACIONAL.md) documenta
+os cenários ponta a ponta executados. Fonte, limites de acesso e retenção continuam vigentes.

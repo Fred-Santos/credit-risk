@@ -1,6 +1,7 @@
 # Matriz de aceitação T01–T24
 
-Os cenários exigidos estão definidos na seção 5 do [roteiro](../ROTEIRO_EXECUCAO_LAKEHOUSE.md).
+Os cenários exigidos estão descritos na tabela abaixo. As execuções estão reunidas
+no [índice de evidências](../README.md#evidências-do-mvp).
 O mapa executável [acceptance_matrix.json](../../tests/acceptance_matrix.json) identifica testes externos e métodos das integrações isoladas. `check_acceptance.py` exige os 24 IDs, métodos existentes, catálogo completo e relatório integral aprovado sem skips. A presença do método sozinha não comprova execução: a aprovação depende também do wrapper que executa sua suíte integral.
 
 | Cenário | Verificação automatizada |
