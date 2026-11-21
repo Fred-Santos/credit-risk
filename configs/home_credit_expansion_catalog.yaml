@@ -1,0 +1,87 @@
+version: 1
+competition: home-credit-credit-risk-model-stability
+scope: all_train_parquet
+generated_at_utc: '2026-11-19T00:53:44.348329+00:00'
+dictionary: feature_definitions.csv
+tables:
+  train_applprev_1:
+  - name: parquet_files/train/train_applprev_1_0.parquet
+    bytes: 106951598
+  - name: parquet_files/train/train_applprev_1_1.parquet
+    bytes: 72860971
+  train_applprev_2:
+  - name: parquet_files/train/train_applprev_2.parquet
+    bytes: 28484608
+  train_base:
+  - name: parquet_files/train/train_base.parquet
+    bytes: 7048047
+  train_credit_bureau_a_1:
+  - name: parquet_files/train/train_credit_bureau_a_1_0.parquet
+    bytes: 64863053
+  - name: parquet_files/train/train_credit_bureau_a_1_1.parquet
+    bytes: 183293106
+  - name: parquet_files/train/train_credit_bureau_a_1_2.parquet
+    bytes: 123506425
+  - name: parquet_files/train/train_credit_bureau_a_1_3.parquet
+    bytes: 71774171
+  train_credit_bureau_a_2:
+  - name: parquet_files/train/train_credit_bureau_a_2_0.parquet
+    bytes: 5786632
+  - name: parquet_files/train/train_credit_bureau_a_2_1.parquet
+    bytes: 10006927
+  - name: parquet_files/train/train_credit_bureau_a_2_10.parquet
+    bytes: 7646586
+  - name: parquet_files/train/train_credit_bureau_a_2_2.parquet
+    bytes: 30669743
+  - name: parquet_files/train/train_credit_bureau_a_2_3.parquet
+    bytes: 47836939
+  - name: parquet_files/train/train_credit_bureau_a_2_4.parquet
+    bytes: 49233367
+  - name: parquet_files/train/train_credit_bureau_a_2_5.parquet
+    bytes: 60984109
+  - name: parquet_files/train/train_credit_bureau_a_2_6.parquet
+    bytes: 45183113
+  - name: parquet_files/train/train_credit_bureau_a_2_7.parquet
+    bytes: 14137608
+  - name: parquet_files/train/train_credit_bureau_a_2_8.parquet
+    bytes: 23832969
+  - name: parquet_files/train/train_credit_bureau_a_2_9.parquet
+    bytes: 32090419
+  train_credit_bureau_b_1:
+  - name: parquet_files/train/train_credit_bureau_b_1.parquet
+    bytes: 4506882
+  train_credit_bureau_b_2:
+  - name: parquet_files/train/train_credit_bureau_b_2.parquet
+    bytes: 2067641
+  train_debitcard_1:
+  - name: parquet_files/train/train_debitcard_1.parquet
+    bytes: 1188384
+  train_deposit_1:
+  - name: parquet_files/train/train_deposit_1.parquet
+    bytes: 1598148
+  train_other_1:
+  - name: parquet_files/train/train_other_1.parquet
+    bytes: 805374
+  train_person_1:
+  - name: parquet_files/train/train_person_1.parquet
+    bytes: 43892239
+  train_person_2:
+  - name: parquet_files/train/train_person_2.parquet
+    bytes: 7559249
+  train_static_0:
+  - name: parquet_files/train/train_static_0_0.parquet
+    bytes: 113858592
+  - name: parquet_files/train/train_static_0_1.parquet
+    bytes: 74691173
+  train_static_cb_0:
+  - name: parquet_files/train/train_static_cb_0.parquet
+    bytes: 30654579
+  train_tax_registry_a_1:
+  - name: parquet_files/train/train_tax_registry_a_1.parquet
+    bytes: 21687764
+  train_tax_registry_b_1:
+  - name: parquet_files/train/train_tax_registry_b_1.parquet
+    bytes: 9915038
+  train_tax_registry_c_1:
+  - name: parquet_files/train/train_tax_registry_c_1.parquet
+    bytes: 29825347

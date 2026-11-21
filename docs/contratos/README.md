@@ -85,3 +85,10 @@ schema válido é permitido. Detalhes em [qualidade Bronze](../QUALIDADE_BRONZE.
 
 F02.4 separou unicidade do snapshot de identidade de revisão/evento.
 Não aplicar uma chave única por caso a todo um histórico de revisões acumuladas.
+
+## Expansão para todas as fontes de treino
+
+As [normas da Silver e ABTs da expansão](EXPANSAO_SILVER_E_ABT.md) definem
+17 tabelas, 166 atributos retrospectivos e labels separadas por população.
+Os contratos do MVP acima permanecem históricos e independentes. A expansão
+ainda não declara elegibilidade point in time nem maturação de target comprovada.

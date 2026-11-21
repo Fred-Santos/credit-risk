@@ -1,0 +1,1909 @@
+version: 1
+scope: retrospective_abt
+grain: one_row_per_case_id
+metadata:
+  case_id: bigint
+  date_decision: date
+  MONTH: bigint
+  WEEK_NUM: bigint
+label_schema:
+  case_id: bigint
+  target: bigint
+features:
+- name: static_0__has_source
+  type: boolean
+  source_table: train_static_0
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__observation_count
+  type: bigint
+  source_table: train_static_0
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__annuity_780A
+  type: double
+  source_table: train_static_0
+  source_column: annuity_780A
+  aggregation: direct
+  description: Monthly annuity amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__credamount_770A
+  type: double
+  source_table: train_static_0
+  source_column: credamount_770A
+  aggregation: direct
+  description: Loan amount or credit card limit.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__maininc_215A
+  type: double
+  source_table: train_static_0
+  source_column: maininc_215A
+  aggregation: direct
+  description: Client's primary income amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__currdebt_22A
+  type: double
+  source_table: train_static_0
+  source_column: currdebt_22A
+  aggregation: direct
+  description: Current debt amount of the client.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__totaldebt_9A
+  type: double
+  source_table: train_static_0
+  source_column: totaldebt_9A
+  aggregation: direct
+  description: Total amount of debt.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__numactivecreds_622L
+  type: double
+  source_table: train_static_0
+  source_column: numactivecreds_622L
+  aggregation: direct
+  description: Number of active credits.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__maxdpdlast3m_392P
+  type: double
+  source_table: train_static_0
+  source_column: maxdpdlast3m_392P
+  aggregation: direct
+  description: Maximum number of days past due in last 3 months.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__credtype_322L
+  type: string
+  source_table: train_static_0
+  source_column: credtype_322L
+  aggregation: direct
+  description: Type of credit.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__isdebitcard_729L
+  type: boolean
+  source_table: train_static_0
+  source_column: isdebitcard_729L
+  aggregation: direct
+  description: Flag indicating if the product is a debit card.
+  unit: boolean
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__applicationcnt_361L
+  type: double
+  source_table: train_static_0
+  source_column: applicationcnt_361L
+  aggregation: direct
+  description: Number of applications associated with the same email address as the
+    client.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_0__lastapplicationdate_877D
+  type: date
+  source_table: train_static_0
+  source_column: lastapplicationdate_877D
+  aggregation: direct
+  description: Date of previous customer's application.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__has_source
+  type: boolean
+  source_table: train_static_cb_0
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__observation_count
+  type: bigint
+  source_table: train_static_cb_0
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__days30_165L
+  type: double
+  source_table: train_static_cb_0
+  source_column: days30_165L
+  aggregation: direct
+  description: Number of credit bureau queries for the last 30 days.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__days90_310L
+  type: double
+  source_table: train_static_cb_0
+  source_column: days90_310L
+  aggregation: direct
+  description: Number of credit bureau queries for the last 90 days.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__numberofqueries_373L
+  type: double
+  source_table: train_static_cb_0
+  source_column: numberofqueries_373L
+  aggregation: direct
+  description: Number of queries to credit bureau.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__education_88M
+  type: string
+  source_table: train_static_cb_0
+  source_column: education_88M
+  aggregation: direct
+  description: Education level of the client.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__maritalst_385M
+  type: string
+  source_table: train_static_cb_0
+  source_column: maritalst_385M
+  aggregation: direct
+  description: Marital status of the client.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__pmtcount_693L
+  type: double
+  source_table: train_static_cb_0
+  source_column: pmtcount_693L
+  aggregation: direct
+  description: Number of tax deductions.
+  unit: source_numeric_units
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__pmtssum_45A
+  type: double
+  source_table: train_static_cb_0
+  source_column: pmtssum_45A
+  aggregation: direct
+  description: Sum of tax deductions for the client.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: static_cb_0__responsedate_1012D
+  type: date
+  source_table: train_static_cb_0
+  source_column: responsedate_1012D
+  aggregation: direct
+  description: Tax authority's response date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__has_source
+  type: boolean
+  source_table: train_person_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__observation_count
+  type: bigint
+  source_table: train_person_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__has_applicant
+  type: boolean
+  source_table: train_person_1
+  source_column: null
+  aggregation: has_applicant
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__birth_259D
+  type: date
+  source_table: train_person_1
+  source_column: birth_259D
+  aggregation: direct_applicant_index_zero
+  description: Date of birth of the person.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__mainoccupationinc_384A
+  type: double
+  source_table: train_person_1
+  source_column: mainoccupationinc_384A
+  aggregation: direct_applicant_index_zero
+  description: Amount of the main income of the client.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__education_927M
+  type: string
+  source_table: train_person_1
+  source_column: education_927M
+  aggregation: direct_applicant_index_zero
+  description: Education level of the person.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__familystate_447L
+  type: string
+  source_table: train_person_1
+  source_column: familystate_447L
+  aggregation: direct_applicant_index_zero
+  description: Family state of the person.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__incometype_1044T
+  type: string
+  source_table: train_person_1
+  source_column: incometype_1044T
+  aggregation: direct_applicant_index_zero
+  description: Type of income of the person
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_1__empl_employedfrom_271D
+  type: date
+  source_table: train_person_1
+  source_column: empl_employedfrom_271D
+  aggregation: direct_applicant_index_zero
+  description: Start date of employment.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__has_source
+  type: boolean
+  source_table: train_applprev_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__observation_count
+  type: bigint
+  source_table: train_applprev_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__credamount_590A__non_null_count
+  type: bigint
+  source_table: train_applprev_1
+  source_column: credamount_590A
+  aggregation: non_null_count
+  description: Loan amount or card limit of previous applications.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__credamount_590A__mean
+  type: double
+  source_table: train_applprev_1
+  source_column: credamount_590A
+  aggregation: mean
+  description: Loan amount or card limit of previous applications.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__credamount_590A__max
+  type: double
+  source_table: train_applprev_1
+  source_column: credamount_590A
+  aggregation: max
+  description: Loan amount or card limit of previous applications.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__actualdpd_943P__non_null_count
+  type: bigint
+  source_table: train_applprev_1
+  source_column: actualdpd_943P
+  aggregation: non_null_count
+  description: Days Past Due (DPD) of previous contract (actual).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__actualdpd_943P__mean
+  type: double
+  source_table: train_applprev_1
+  source_column: actualdpd_943P
+  aggregation: mean
+  description: Days Past Due (DPD) of previous contract (actual).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__actualdpd_943P__max
+  type: double
+  source_table: train_applprev_1
+  source_column: actualdpd_943P
+  aggregation: max
+  description: Days Past Due (DPD) of previous contract (actual).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__mainoccupationinc_437A__non_null_count
+  type: bigint
+  source_table: train_applprev_1
+  source_column: mainoccupationinc_437A
+  aggregation: non_null_count
+  description: Client's main income amount in their previous application.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__mainoccupationinc_437A__mean
+  type: double
+  source_table: train_applprev_1
+  source_column: mainoccupationinc_437A
+  aggregation: mean
+  description: Client's main income amount in their previous application.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__mainoccupationinc_437A__max
+  type: double
+  source_table: train_applprev_1
+  source_column: mainoccupationinc_437A
+  aggregation: max
+  description: Client's main income amount in their previous application.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__creationdate_885D__min
+  type: date
+  source_table: train_applprev_1
+  source_column: creationdate_885D
+  aggregation: min
+  description: Date when previous application was created.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__creationdate_885D__max
+  type: date
+  source_table: train_applprev_1
+  source_column: creationdate_885D
+  aggregation: max
+  description: Date when previous application was created.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__approvaldate_319D__min
+  type: date
+  source_table: train_applprev_1
+  source_column: approvaldate_319D
+  aggregation: min
+  description: Approval Date of Previous Application
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__approvaldate_319D__max
+  type: date
+  source_table: train_applprev_1
+  source_column: approvaldate_319D
+  aggregation: max
+  description: Approval Date of Previous Application
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_1__status_219L__mode
+  type: string
+  source_table: train_applprev_1
+  source_column: status_219L
+  aggregation: mode
+  description: Previous application status.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_2__has_source
+  type: boolean
+  source_table: train_applprev_2
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_2__observation_count
+  type: bigint
+  source_table: train_applprev_2
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_2__group_count
+  type: bigint
+  source_table: train_applprev_2
+  source_column: null
+  aggregation: group_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: applprev_2__credacc_cards_status_52L__mode
+  type: string
+  source_table: train_applprev_2
+  source_column: credacc_cards_status_52L
+  aggregation: mode
+  description: Card status of the previous credit account.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__has_source
+  type: boolean
+  source_table: train_credit_bureau_a_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__observation_count
+  type: bigint
+  source_table: train_credit_bureau_a_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__totalamount_996A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_1
+  source_column: totalamount_996A
+  aggregation: non_null_count
+  description: Total amount of active contracts in the credit bureau.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__totalamount_996A__mean
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: totalamount_996A
+  aggregation: mean
+  description: Total amount of active contracts in the credit bureau.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__totalamount_996A__max
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: totalamount_996A
+  aggregation: max
+  description: Total amount of active contracts in the credit bureau.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__outstandingamount_362A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_1
+  source_column: outstandingamount_362A
+  aggregation: non_null_count
+  description: Active contract's outstanding amount.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__outstandingamount_362A__mean
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: outstandingamount_362A
+  aggregation: mean
+  description: Active contract's outstanding amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__outstandingamount_362A__max
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: outstandingamount_362A
+  aggregation: max
+  description: Active contract's outstanding amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_139P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_139P
+  aggregation: non_null_count
+  description: Maximal days past due for active contract.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_139P__mean
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_139P
+  aggregation: mean
+  description: Maximal days past due for active contract.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_139P__max
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_139P
+  aggregation: max
+  description: Maximal days past due for active contract.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_757P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_757P
+  aggregation: non_null_count
+  description: Maximum days past due for a closed contract.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_757P__mean
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_757P
+  aggregation: mean
+  description: Maximum days past due for a closed contract.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__dpdmax_757P__max
+  type: double
+  source_table: train_credit_bureau_a_1
+  source_column: dpdmax_757P
+  aggregation: max
+  description: Maximum days past due for a closed contract.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__lastupdate_1112D__min
+  type: date
+  source_table: train_credit_bureau_a_1
+  source_column: lastupdate_1112D
+  aggregation: min
+  description: Date of last update for an active contract from credit bureau.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__lastupdate_1112D__max
+  type: date
+  source_table: train_credit_bureau_a_1
+  source_column: lastupdate_1112D
+  aggregation: max
+  description: Date of last update for an active contract from credit bureau.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_1__contractst_545M__mode
+  type: string
+  source_table: train_credit_bureau_a_1
+  source_column: contractst_545M
+  aggregation: mode
+  description: Contract status.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__has_source
+  type: boolean
+  source_table: train_credit_bureau_a_2
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__observation_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__group_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: null
+  aggregation: group_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_1073P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_1073P
+  aggregation: non_null_count
+  description: Days past due of the payment for the active contract (num_group1 -
+    existing contract, num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_1073P__mean
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_1073P
+  aggregation: mean
+  description: Days past due of the payment for the active contract (num_group1 -
+    existing contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_1073P__max
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_1073P
+  aggregation: max
+  description: Days past due of the payment for the active contract (num_group1 -
+    existing contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_303P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_303P
+  aggregation: non_null_count
+  description: Days past due of the payment for terminated contract according to credit
+    bureau (num_group1 - terminated contract, num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_303P__mean
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_303P
+  aggregation: mean
+  description: Days past due of the payment for terminated contract according to credit
+    bureau (num_group1 - terminated contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_dpd_303P__max
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_dpd_303P
+  aggregation: max
+  description: Days past due of the payment for terminated contract according to credit
+    bureau (num_group1 - terminated contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1140A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1140A
+  aggregation: non_null_count
+  description: Overdue payment for an active contract (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1140A__mean
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1140A
+  aggregation: mean
+  description: Overdue payment for an active contract (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1140A__max
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1140A
+  aggregation: max
+  description: Overdue payment for an active contract (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1152A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1152A
+  aggregation: non_null_count
+  description: Overdue payment for a closed contract (num_group1 - terminated contract,
+    num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1152A__mean
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1152A
+  aggregation: mean
+  description: Overdue payment for a closed contract (num_group1 - terminated contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_a_2__pmts_overdue_1152A__max
+  type: double
+  source_table: train_credit_bureau_a_2
+  source_column: pmts_overdue_1152A
+  aggregation: max
+  description: Overdue payment for a closed contract (num_group1 - terminated contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__has_source
+  type: boolean
+  source_table: train_credit_bureau_b_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__observation_count
+  type: bigint
+  source_table: train_credit_bureau_b_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__amount_1115A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_b_1
+  source_column: amount_1115A
+  aggregation: non_null_count
+  description: Credit amount of the active contract provided by the credit bureau.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__amount_1115A__mean
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: amount_1115A
+  aggregation: mean
+  description: Credit amount of the active contract provided by the credit bureau.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__amount_1115A__max
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: amount_1115A
+  aggregation: max
+  description: Credit amount of the active contract provided by the credit bureau.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__debtvalue_227A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_b_1
+  source_column: debtvalue_227A
+  aggregation: non_null_count
+  description: Outstanding amount for existing debt contracts.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__debtvalue_227A__mean
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: debtvalue_227A
+  aggregation: mean
+  description: Outstanding amount for existing debt contracts.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__debtvalue_227A__max
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: debtvalue_227A
+  aggregation: max
+  description: Outstanding amount for existing debt contracts.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__dpdmax_851P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_b_1
+  source_column: dpdmax_851P
+  aggregation: non_null_count
+  description: Maximal past due days for active contracts in the credit bureau.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__dpdmax_851P__mean
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: dpdmax_851P
+  aggregation: mean
+  description: Maximal past due days for active contracts in the credit bureau.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__dpdmax_851P__max
+  type: double
+  source_table: train_credit_bureau_b_1
+  source_column: dpdmax_851P
+  aggregation: max
+  description: Maximal past due days for active contracts in the credit bureau.
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__lastupdate_260D__min
+  type: date
+  source_table: train_credit_bureau_b_1
+  source_column: lastupdate_260D
+  aggregation: min
+  description: Last update date for the active contracts.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__lastupdate_260D__max
+  type: date
+  source_table: train_credit_bureau_b_1
+  source_column: lastupdate_260D
+  aggregation: max
+  description: Last update date for the active contracts.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_1__contractst_516M__mode
+  type: string
+  source_table: train_credit_bureau_b_1
+  source_column: contractst_516M
+  aggregation: mode
+  description: Contract status.
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__has_source
+  type: boolean
+  source_table: train_credit_bureau_b_2
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__observation_count
+  type: bigint
+  source_table: train_credit_bureau_b_2
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__group_count
+  type: bigint
+  source_table: train_credit_bureau_b_2
+  source_column: null
+  aggregation: group_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_dpdvalue_108P__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_dpdvalue_108P
+  aggregation: non_null_count
+  description: Value of past due payment for active contract (num_group1 - existing
+    contract, num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_dpdvalue_108P__mean
+  type: double
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_dpdvalue_108P
+  aggregation: mean
+  description: Value of past due payment for active contract (num_group1 - existing
+    contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_dpdvalue_108P__max
+  type: double
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_dpdvalue_108P
+  aggregation: max
+  description: Value of past due payment for active contract (num_group1 - existing
+    contract, num_group2 - payment).
+  unit: transformed_dpd
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_pmtsoverdue_635A__non_null_count
+  type: bigint
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_pmtsoverdue_635A
+  aggregation: non_null_count
+  description: Active contract that has overdue payments (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_pmtsoverdue_635A__mean
+  type: double
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_pmtsoverdue_635A
+  aggregation: mean
+  description: Active contract that has overdue payments (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_pmtsoverdue_635A__max
+  type: double
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_pmtsoverdue_635A
+  aggregation: max
+  description: Active contract that has overdue payments (num_group1 - existing contract,
+    num_group2 - payment).
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_date_1107D__min
+  type: date
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_date_1107D
+  aggregation: min
+  description: Payment date for an active contract according to credit bureau (num_group1
+    - contract, num_group2 - payment).
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: credit_bureau_b_2__pmts_date_1107D__max
+  type: date
+  source_table: train_credit_bureau_b_2
+  source_column: pmts_date_1107D
+  aggregation: max
+  description: Payment date for an active contract according to credit bureau (num_group1
+    - contract, num_group2 - payment).
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__has_source
+  type: boolean
+  source_table: train_debitcard_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__observation_count
+  type: bigint
+  source_table: train_debitcard_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last180dayaveragebalance_704A__non_null_count
+  type: bigint
+  source_table: train_debitcard_1
+  source_column: last180dayaveragebalance_704A
+  aggregation: non_null_count
+  description: Average balance on debit card in the last 180 days.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last180dayaveragebalance_704A__mean
+  type: double
+  source_table: train_debitcard_1
+  source_column: last180dayaveragebalance_704A
+  aggregation: mean
+  description: Average balance on debit card in the last 180 days.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last180dayaveragebalance_704A__max
+  type: double
+  source_table: train_debitcard_1
+  source_column: last180dayaveragebalance_704A
+  aggregation: max
+  description: Average balance on debit card in the last 180 days.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last30dayturnover_651A__non_null_count
+  type: bigint
+  source_table: train_debitcard_1
+  source_column: last30dayturnover_651A
+  aggregation: non_null_count
+  description: Debit card turnover for the last 30 days.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last30dayturnover_651A__mean
+  type: double
+  source_table: train_debitcard_1
+  source_column: last30dayturnover_651A
+  aggregation: mean
+  description: Debit card turnover for the last 30 days.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__last30dayturnover_651A__max
+  type: double
+  source_table: train_debitcard_1
+  source_column: last30dayturnover_651A
+  aggregation: max
+  description: Debit card turnover for the last 30 days.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__openingdate_857D__min
+  type: date
+  source_table: train_debitcard_1
+  source_column: openingdate_857D
+  aggregation: min
+  description: Debit card opening date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: debitcard_1__openingdate_857D__max
+  type: date
+  source_table: train_debitcard_1
+  source_column: openingdate_857D
+  aggregation: max
+  description: Debit card opening date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__has_source
+  type: boolean
+  source_table: train_deposit_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__observation_count
+  type: bigint
+  source_table: train_deposit_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__amount_416A__non_null_count
+  type: bigint
+  source_table: train_deposit_1
+  source_column: amount_416A
+  aggregation: non_null_count
+  description: Deposit amount.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__amount_416A__mean
+  type: double
+  source_table: train_deposit_1
+  source_column: amount_416A
+  aggregation: mean
+  description: Deposit amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__amount_416A__max
+  type: double
+  source_table: train_deposit_1
+  source_column: amount_416A
+  aggregation: max
+  description: Deposit amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__openingdate_313D__min
+  type: date
+  source_table: train_deposit_1
+  source_column: openingdate_313D
+  aggregation: min
+  description: Deposit account opening date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__openingdate_313D__max
+  type: date
+  source_table: train_deposit_1
+  source_column: openingdate_313D
+  aggregation: max
+  description: Deposit account opening date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__contractenddate_991D__min
+  type: date
+  source_table: train_deposit_1
+  source_column: contractenddate_991D
+  aggregation: min
+  description: End date of deposit contract.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: deposit_1__contractenddate_991D__max
+  type: date
+  source_table: train_deposit_1
+  source_column: contractenddate_991D
+  aggregation: max
+  description: End date of deposit contract.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__has_source
+  type: boolean
+  source_table: train_other_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__observation_count
+  type: bigint
+  source_table: train_other_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitincoming_4809443A__non_null_count
+  type: bigint
+  source_table: train_other_1
+  source_column: amtdebitincoming_4809443A
+  aggregation: non_null_count
+  description: Incoming debit card transactions amount.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitincoming_4809443A__mean
+  type: double
+  source_table: train_other_1
+  source_column: amtdebitincoming_4809443A
+  aggregation: mean
+  description: Incoming debit card transactions amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitincoming_4809443A__max
+  type: double
+  source_table: train_other_1
+  source_column: amtdebitincoming_4809443A
+  aggregation: max
+  description: Incoming debit card transactions amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitoutgoing_4809440A__non_null_count
+  type: bigint
+  source_table: train_other_1
+  source_column: amtdebitoutgoing_4809440A
+  aggregation: non_null_count
+  description: Outgoing debit card transactions amount.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitoutgoing_4809440A__mean
+  type: double
+  source_table: train_other_1
+  source_column: amtdebitoutgoing_4809440A
+  aggregation: mean
+  description: Outgoing debit card transactions amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdebitoutgoing_4809440A__max
+  type: double
+  source_table: train_other_1
+  source_column: amtdebitoutgoing_4809440A
+  aggregation: max
+  description: Outgoing debit card transactions amount.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdepositbalance_4809441A__non_null_count
+  type: bigint
+  source_table: train_other_1
+  source_column: amtdepositbalance_4809441A
+  aggregation: non_null_count
+  description: Deposit balance of client.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdepositbalance_4809441A__mean
+  type: double
+  source_table: train_other_1
+  source_column: amtdepositbalance_4809441A
+  aggregation: mean
+  description: Deposit balance of client.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: other_1__amtdepositbalance_4809441A__max
+  type: double
+  source_table: train_other_1
+  source_column: amtdepositbalance_4809441A
+  aggregation: max
+  description: Deposit balance of client.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__has_source
+  type: boolean
+  source_table: train_person_2
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__observation_count
+  type: bigint
+  source_table: train_person_2
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__group_count
+  type: bigint
+  source_table: train_person_2
+  source_column: null
+  aggregation: group_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__empls_employedfrom_796D__min
+  type: date
+  source_table: train_person_2
+  source_column: empls_employedfrom_796D
+  aggregation: min
+  description: Start of employment (num_group1 - person, num_group2 - employment).
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__empls_employedfrom_796D__max
+  type: date
+  source_table: train_person_2
+  source_column: empls_employedfrom_796D
+  aggregation: max
+  description: Start of employment (num_group1 - person, num_group2 - employment).
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: person_2__empls_economicalst_849M__mode
+  type: string
+  source_table: train_person_2
+  source_column: empls_economicalst_849M
+  aggregation: mode
+  description: The economical status of the person (num_group1 - person, num_group2
+    - employment).
+  unit: coded_category
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__has_source
+  type: boolean
+  source_table: train_tax_registry_a_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__observation_count
+  type: bigint
+  source_table: train_tax_registry_a_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__amount_4527230A__non_null_count
+  type: bigint
+  source_table: train_tax_registry_a_1
+  source_column: amount_4527230A
+  aggregation: non_null_count
+  description: Tax deductions amount tracked by the government registry.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__amount_4527230A__mean
+  type: double
+  source_table: train_tax_registry_a_1
+  source_column: amount_4527230A
+  aggregation: mean
+  description: Tax deductions amount tracked by the government registry.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__amount_4527230A__max
+  type: double
+  source_table: train_tax_registry_a_1
+  source_column: amount_4527230A
+  aggregation: max
+  description: Tax deductions amount tracked by the government registry.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__recorddate_4527225D__min
+  type: date
+  source_table: train_tax_registry_a_1
+  source_column: recorddate_4527225D
+  aggregation: min
+  description: Date of tax deduction record.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_a_1__recorddate_4527225D__max
+  type: date
+  source_table: train_tax_registry_a_1
+  source_column: recorddate_4527225D
+  aggregation: max
+  description: Date of tax deduction record.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__has_source
+  type: boolean
+  source_table: train_tax_registry_b_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__observation_count
+  type: bigint
+  source_table: train_tax_registry_b_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__amount_4917619A__non_null_count
+  type: bigint
+  source_table: train_tax_registry_b_1
+  source_column: amount_4917619A
+  aggregation: non_null_count
+  description: Tax deductions amount tracked by the government registry.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__amount_4917619A__mean
+  type: double
+  source_table: train_tax_registry_b_1
+  source_column: amount_4917619A
+  aggregation: mean
+  description: Tax deductions amount tracked by the government registry.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__amount_4917619A__max
+  type: double
+  source_table: train_tax_registry_b_1
+  source_column: amount_4917619A
+  aggregation: max
+  description: Tax deductions amount tracked by the government registry.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__deductiondate_4917603D__min
+  type: date
+  source_table: train_tax_registry_b_1
+  source_column: deductiondate_4917603D
+  aggregation: min
+  description: Tax deduction date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_b_1__deductiondate_4917603D__max
+  type: date
+  source_table: train_tax_registry_b_1
+  source_column: deductiondate_4917603D
+  aggregation: max
+  description: Tax deduction date.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__has_source
+  type: boolean
+  source_table: train_tax_registry_c_1
+  source_column: null
+  aggregation: has_source
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: boolean
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__observation_count
+  type: bigint
+  source_table: train_tax_registry_c_1
+  source_column: null
+  aggregation: observation_count
+  description: Structural observation/coverage count; not a count of unique loans
+    or clients.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__pmtamount_36A__non_null_count
+  type: bigint
+  source_table: train_tax_registry_c_1
+  source_column: pmtamount_36A
+  aggregation: non_null_count
+  description: Tax deductions amount for credit bureau payments.
+  unit: observation_count
+  null_policy: zero_count_or_false_flag_when_no_source
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__pmtamount_36A__mean
+  type: double
+  source_table: train_tax_registry_c_1
+  source_column: pmtamount_36A
+  aggregation: mean
+  description: Tax deductions amount for credit bureau payments.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__pmtamount_36A__max
+  type: double
+  source_table: train_tax_registry_c_1
+  source_column: pmtamount_36A
+  aggregation: max
+  description: Tax deductions amount for credit bureau payments.
+  unit: transformed_amount_no_currency_proof
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__processingdate_168D__min
+  type: date
+  source_table: train_tax_registry_c_1
+  source_column: processingdate_168D
+  aggregation: min
+  description: Date when the tax deduction is processed.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+- name: tax_registry_c_1__processingdate_168D__max
+  type: date
+  source_table: train_tax_registry_c_1
+  source_column: processingdate_168D
+  aggregation: max
+  description: Date when the tax deduction is processed.
+  unit: transformed_calendar_date
+  null_policy: preserve_null_if_missing_or_all_null
+  temporal_status: retrospective_availability_unproven
+  ml_eligible: false
+  reason: no_historical_available_at_evidence
+eligible_predictors: []
+ml_ready: false
+label_maturation: horizon_and_available_at_not_disclosed
+client_identity: case_id_is_credit_case_not_proven_person_identifier
+evaluation_labels: separate_delta_path_opt_in_reader
+preprocessing: no_fitted_statistics_or_vocabulary
+float_tolerance:
+  absolute: 1.0e-08
+  relative: 1.0e-10
+silver_contract_sha256: b60da0275a7bee05385315d1cf273ce6d0f05fc1619df4a4ee7bfa44ad49b0e5
+feature_policy_sha256: a7048785b72b5d17d160d38781d307d17ebbdda55ee3dc1f0d8454930894d1ce
+dictionary_sha256: 628f1f75ae2842de0dbd6559e31855e0edff87da16d382d55725d6a2afba6dd4

@@ -40,7 +40,17 @@
     "test_source_inspection.SourceInspectionTests": "spark",
     "test_spark_config.SparkConfigurationTests": "unit",
     "test_test_runner.TestRunnerContractTests": "unit",
-    "test_e2e_synthetic.SyntheticEndToEndTests": "e2e"
+    "test_e2e_synthetic.SyntheticEndToEndTests": "e2e",
+    "test_expansion_catalog.ExpansionCatalogTests": "unit",
+    "test_spark_config.SparkProfileSelectionTests": "unit",
+    "test_expansion_bronze.TemporalPolicyTests": "unit",
+    "test_expansion_bronze.TemporalBronzeIntegrationTests": "spark",
+    "test_expansion_stages.ExpansionStageSparkTests": "spark",
+    "test_expansion_stages.ExpansionReaderGuardTests": "unit",
+    "test_expansion_revision_delta.ExpansionIsolatedDeltaTests": "delta",
+    "test_expansion_delivery.ExpansionDeliveryDeltaTests": "delta",
+    "test_expansion_delivery.ExpansionDeliveryObjectTests": "objects",
+    "test_expansion_delivery.ExpansionPublicationPolicyTests": "unit"
   },
   "manual_local": [
     "tests/operational_matrix_local.py"

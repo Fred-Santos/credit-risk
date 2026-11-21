@@ -169,3 +169,27 @@ O serviço é um nó no host local, sem alta disponibilidade ou teste de perda d
 energia. HTTP é restrito ao loopback; não foi configurado acesso remoto/TLS.
 Os testes validam as operações e falhas deste runtime, não todos os recursos
 S3 ou garantias de AWS. A operação completa e sua interface única seguem em F09.
+
+## Publicação da expansão Home Credit
+
+A expansão utiliza o prefixo `lakehouse-expansion-v1`, separado do MVP. O
+[registro E07](../evidencias/E07_PUBLICACAO_EXPANSAO.md) identifica CURRENT,
+manifestos, 42 tabelas e o histórico da correção simulada. O serviço fica em
+loopback e preserva os dois ponteiros anteriores do MVP.
+
+```bash
+bash scripts/objects.sh -m scripts.deliver_expansion consume --selection-id a728cbc74ed5507307b398a5
+```
+
+Para leitura histórica, acrescentar `--publication-id ID`. O leitor padrão
+projeta a Silver base sem target e não retorna labels individuais da avaliação.
+Isso não substitui ACL de arquivos nem concede aprovação point in time para ML.
+Os arquivos Delta são imutáveis, pinados e conferidos por SHA-256; não executar
+VACUUM nas publicações reais. A matriz e o rollback são reproduzidos pelo
+`scripts/run_expansion_delivery.sh`, com os IDs base e da Silver simulada.
+
+A aceitação sintética completa está na [E08](../evidencias/E08_ACEITACAO_EXPANSAO.md).
+O e2e ampliado usa `fixtures/expansion-e2e/<uuid>` e remove somente os objetos
+que ele criou. Se o serviço já estiver ativo, o teste o mantém ativo ao terminar.
+Os testes de recuperação usam seus próprios namespaces; não apontam CURRENT
+dos dados reais para fixtures.

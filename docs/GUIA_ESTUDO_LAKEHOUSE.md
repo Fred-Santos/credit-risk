@@ -50,6 +50,13 @@ próximo. As leituras de aprofundamento são opcionais e ficam no final de cada
 capítulo, para que você não precise alternar entre muitos documentos durante
 uma explicação.
 
+## Continuação: expansão Home Credit
+
+O percurso original acima explica o MVP. O [capítulo 13](estudo/13_EXPANSAO_E_VALIDACAO_TEMPORAL.md)
+acompanha as 17 fontes, os recortes de 2020, as ABTs retrospectivas e as provas
+E00–E08. Ele distingue integração completa de fontes, reprodução do software e
+aprovação temporal para ML; são verificações diferentes.
+
 ## Como estudar um capítulo
 
 Primeiro, leia a explicação e acompanhe o exemplo pequeno. Em seguida, siga a

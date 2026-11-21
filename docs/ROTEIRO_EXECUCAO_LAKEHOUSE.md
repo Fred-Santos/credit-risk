@@ -2,6 +2,10 @@
 
 Atualizado em 13/11/2026. Responsável: Frederico Costa.
 
+Evolução organizada em 18/11/2026: o [roteiro de expansão Home Credit](ROTEIRO_EXPANSAO_HOME_CREDIT.md)
+controla todas as tabelas de treino, as populações de 2020 e a preparação para ML.
+O presente documento preserva o escopo e as evidências do MVP concluído.
+
 Este é o controle da execução. O [curso aplicado](GUIA_ESTUDO_LAKEHOUSE.md)
 ensina conceitos, ferramentas e processos em 12 capítulos, com leitura guiada
 da implementação e das evidências. As indicações de capítulos abaixo seguem

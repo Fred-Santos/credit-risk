@@ -1,0 +1,16 @@
+version: 1
+scope: home_credit_train_2020
+base_table: train_base
+decision_column: date_decision
+selection: all_eligible_cases
+auxiliary_selection: all_rows_for_selected_case_ids
+windows:
+  development:
+    start_inclusive: '2020-01-01'
+    end_exclusive: '2020-06-01'
+  evaluation:
+    start_inclusive: '2020-06-01'
+    end_exclusive: '2020-10-01'
+  public:
+    start_inclusive: '2020-01-01'
+    end_exclusive: '2020-10-01'

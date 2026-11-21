@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "scope": "home_credit_expansion_E00_E08",
+  "scenarios": [
+    {
+      "id": "X01",
+      "description": "Catálogo completo, shards únicos, escopo e caminhos válidos",
+      "tests": [
+        "test_expansion_catalog.ExpansionCatalogTests.test_dictionary_and_shards_selected_once",
+        "test_expansion_catalog.ExpansionCatalogTests.test_test_files_traversal_wrong_table_and_duplicate_rejected"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X02",
+      "description": "Janelas sem lacunas/sobreposição e sem amostragem",
+      "tests": [
+        "test_expansion_bronze.TemporalPolicyTests.test_gaps_overlaps_and_sampling_are_rejected"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X03",
+      "description": "Bronze preserva históricos antigos/futuros, nulos e multiplicidade; corrupção bloqueia reuso",
+      "tests": [
+        "test_expansion_bronze.TemporalBronzeIntegrationTests.test_boundaries_history_replay_and_corruption"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X04",
+      "description": "Falha privada não ativa snapshot e retry reconstrói",
+      "tests": [
+        "test_expansion_bronze.TemporalBronzeIntegrationTests.test_private_failure_never_activates_snapshot_and_retry_succeeds"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X05",
+      "description": "Cast de datas sem novos nulos e bloqueio de calendário inválido",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_date_cast_preserves_nulls_and_blocks_invalid_calendar"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X06",
+      "description": "Comparação exata por chave detecta valores, faltas, extras e duplicatas",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_exact_compare_detects_changed_missing_extra_and_duplicate_keys"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X07",
+      "description": "Revisões, reenvios, eventos ultrapassados e conflitos",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_revisions_handle_resends_stale_events_and_conflicting_payloads"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X08",
+      "description": "Média hierárquica ponderada e distinção entre nulo e ausência",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_hierarchy_weighted_mean_null_and_absent_history"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X09",
+      "description": "Solicitante de índice zero e moda com desempate determinístico",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_applicant_index_zero_and_deterministic_mode"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X10",
+      "description": "Rejeições rastreáveis por chave/regra e preservação da entrada",
+      "tests": [
+        "test_expansion_stages.ExpansionStageSparkTests.test_rejection_diagnostic_preserves_input_and_identifies_key_and_rule"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X11",
+      "description": "Labels da reserva exigem opt-in e treino sem evidência temporal é bloqueado",
+      "tests": [
+        "test_expansion_stages.ExpansionReaderGuardTests.test_holdout_labels_require_opt_in_and_unproven_predictors_block_ml"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X12",
+      "description": "Delta MERGE, casos afetados, duas ABTs disjuntas e schemas iguais",
+      "tests": [
+        "test_expansion_revision_delta.ExpansionIsolatedDeltaTests.test_revisions_and_abts_real_delta"
+      ],
+      "nested": [
+        {
+          "file": "tests/expansion_revision_integration.py",
+          "method": "test_revision_dependency_temporal_audit_and_two_abts"
+        }
+      ]
+    },
+    {
+      "id": "X13",
+      "description": "Análise de nove meses, denominadores, ausências e categoria literal vs nulo",
+      "tests": [
+        "test_expansion_delivery.ExpansionDeliveryDeltaTests.test_public_analysis_delta_fixture"
+      ],
+      "nested": [
+        {
+          "file": "tests/expansion_delivery_integration.py",
+          "method": "test_nine_months_denominators_missingness_and_sentinel_codes"
+        }
+      ]
+    },
+    {
+      "id": "X14",
+      "description": "S3: falhas, rollback, reuso, histórico e labels individuais ocultos",
+      "tests": [
+        "test_expansion_delivery.ExpansionDeliveryObjectTests.test_publication_failure_recovery_and_historical_integrity"
+      ],
+      "nested": [
+        {
+          "file": "tests/expansion_object_delivery_integration.py",
+          "method": "test_fault_recovery_source_closure_immutable_history_and_label_guard"
+        }
+      ]
+    },
+    {
+      "id": "X15",
+      "description": "Upload nunca sobrescreve objeto divergente e logs não escapam do snapshot",
+      "tests": [
+        "test_expansion_delivery.ExpansionPublicationPolicyTests.test_stream_upload_never_overwrites_divergent_existing_object",
+        "test_expansion_delivery.ExpansionPublicationPolicyTests.test_delta_logs_cannot_escape_the_mirrored_snapshot"
+      ],
+      "nested": []
+    },
+    {
+      "id": "X16",
+      "description": "RAW inventada até S3 para MVP e expansão, sem Kaggle",
+      "tests": [
+        "test_e2e_synthetic.SyntheticEndToEndTests.test_raw_to_published_s3_with_invented_data"
+      ],
+      "nested": [
+        {
+          "file": "tests/expansion_e2e_synthetic.py",
+          "method": "run"
+        }
+      ]
+    },
+    {
+      "id": "X17",
+      "description": "Perfis 2/8 GiB separados e mudança de heap exige JVM nova",
+      "tests": [
+        "test_spark_config.SparkProfileSelectionTests.test_default_and_expansion_profiles_have_distinct_heap",
+        "test_spark_config.SparkProfileSelectionTests.test_explicit_profile_rejects_jvm_from_stopped_context"
+      ],
+      "nested": []
+    }
+  ],
+  "counting": "wrappers count once; nested flows are coverage evidence, not extra tests"
+}

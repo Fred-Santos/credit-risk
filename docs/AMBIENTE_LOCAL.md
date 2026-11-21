@@ -274,3 +274,16 @@ portátil explicitamente, para não herdar a versão padrão do runner.
 [Instruções de CI](testes/EXECUCAO_E_CI.md) e
 [evidência da reprodução](evidencias/F10_ACEITACAO.md).
 A CI está configurada e foi reproduzida localmente; nenhum job remoto foi executado.
+
+## Perfil da expansão Home Credit
+
+A expansão dispõe de [spark_expansion.yaml](../configs/spark_expansion.yaml),
+com driver de 8 GiB e seleção explícita por `config_path` nas fábricas Spark.
+O perfil padrão permanece em 2 GB. Iniciar um processo novo para selecionar
+outro perfil; uma JVM existente não pode ter seu heap redimensionado.
+
+A [evidência E01](evidencias/E01_PERFIL_EXECUCAO.md) registra heap efetivo,
+leitura/agregação real, Delta local e prova sintética Delta/S3. O Linux/WSL
+enxerga cerca de 15,46 GiB; os 32 GB físicos não estão integralmente disponíveis
+a esse ambiente. A carga representativa passou; o fluxo completo será medido
+em E07.

@@ -30,10 +30,10 @@ def load_spark_settings(path: Path) -> dict:
 
 
 def create_spark_session(repo_root: Path, *, app_name: str | None = None,
-                         delta: bool = False):
+                         delta: bool = False, config_path: Path | None = None):
     from pyspark.sql import SparkSession
 
-    settings = load_spark_settings(repo_root / "configs" / "spark.yaml")
+    settings = session_settings(repo_root, config_path)
     builder = (SparkSession.builder.master(settings["master"])
                .appName(app_name or settings["app_name"]))
     for key, value in settings.get("config", {}).items():
@@ -50,3 +50,14 @@ def create_spark_session(repo_root: Path, *, app_name: str | None = None,
     spark = builder.getOrCreate()
     spark.sparkContext.setLogLevel("WARN")
     return spark
+
+
+def session_settings(repo_root: Path, config_path: Path | None = None) -> dict:
+    """Perfil explícito exige JVM nova; getOrCreate não redimensiona heap existente."""
+    if config_path is not None:
+        from pyspark import SparkContext
+        if (SparkContext._active_spark_context is not None
+                or SparkContext._gateway is not None):
+            raise RuntimeError('Perfil explícito requer novo processo Spark, sem contexto ativo')
+    path = Path(config_path) if config_path is not None else Path('configs/spark.yaml')
+    return load_spark_settings(path if path.is_absolute() else repo_root / path)

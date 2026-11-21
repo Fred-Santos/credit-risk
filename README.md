@@ -5,8 +5,9 @@ Pipeline local de dados de crédito com **Python, PySpark, Delta Lake e S3 local
 contratos, processa revisões incrementais e publica uma base analítica por caso
 (ABT) e indicadores mensais.
 
-A reprodução abaixo parte da aquisição autenticada e termina em tabelas Delta
-publicadas. Não depende de notebook, de IDs de uma execução anterior ou de dados
+A reprodução detalhada abaixo corresponde ao MVP de três fontes e parte da
+aquisição autenticada até tabelas Delta publicadas. A expansão executada está
+resumida a seguir e tem comandos e evidências próprios. Não depende de notebook, de IDs de uma execução anterior ou de dados
 incluídos no repositório.
 
 ```mermaid
@@ -26,6 +27,26 @@ flowchart LR
 Fonte: competição **Home Credit — Credit Risk Model Stability**, no Kaggle.
 É necessário acesso próprio à competição e autenticação da API. Os dados e
 credenciais ficam locais, fora do Git. [Fonte e condições de uso](docs/governance/SOURCE.md).
+
+A expansão utiliza **todas as 17 tabelas lógicas de treino**, em 32 Parquets e
+um dicionário, sem amostragem por capacidade de hardware. Os casos são
+selecionados pela data de decisão; seus históricos relacionados são preservados.
+
+| Produto atual da expansão | Resultado executado |
+|---|---|
+| Bronze / Silver | 447.305 casos de janeiro–setembro/2020; 17 Silver Delta |
+| ABT de desenvolvimento | 259.695 casos de janeiro–maio/2020 |
+| ABT de avaliação temporal | 187.610 casos de junho–setembro/2020 |
+| Atributos | 166 retrospectivos; features e labels separadas |
+| Análise de público | Nove meses; cinco tabelas analíticas e gráficos |
+| Publicação S3 local | 42 Delta, CURRENT nos dados originais e histórico simulado separado |
+
+A finalidade é retrospectiva. O leitor ML permanece bloqueado
+(`ml_ready=false`): disponibilidade histórica, maturação do target e identidade
+global de clientes entre períodos ainda precisam de comprovação.
+[Roteiro e evidências da expansão](docs/ROTEIRO_EXPANSAO_HOME_CREDIT.md).
+
+### MVP preservado e reproduzido abaixo
 
 | Entrada lógica | Papel |
 |---|---|
@@ -53,12 +74,13 @@ Os scripts instalam Python 3.11.14, Java 17.0.21+9, Spark 3.5.7, Delta 3.3.2 e
 SeaweedFS 4.53 em `.venv/` e `.runtime/`, com versões e hashes declarados.
 Não é necessário instalar Spark separadamente ou usar Docker.
 
-A configuração padrão usa `local[2]`, driver de 2 GiB e quatro partições de
-shuffle. Um ensaio anterior de replay S3 consumiu pico RSS somado de 6,08 GiB e
+A configuração padrão do MVP usa `local[2]`, driver de 2 GiB e quatro partições de
+shuffle. A expansão tem [perfil próprio de 8 GiB](configs/spark_expansion.yaml),
+com execução e capacidade medidas na E01/E07. Um ensaio anterior de replay S3 consumiu pico RSS somado de 6,08 GiB e
 levou aproximadamente 18 minutos; isso é referência observada, não requisito
 mínimo nem previsão para a sequência completa. [Ambiente](docs/AMBIENTE_LOCAL.md).
 
-## Reproduzir com Home Credit real
+## Reproduzir o MVP com Home Credit real
 
 Execute na raiz do repositório, no mesmo terminal Bash. Cada etapa deve terminar
 com código zero antes da próxima. Não execute dois processos Spark em paralelo.
@@ -257,7 +279,7 @@ seis CSVs, gráficos e `semantic.json`. Consuma apenas uma pasta com
 comparar resultados semânticos; horários e IDs de tentativa podem variar.
 [Detalhes da reprodução analítica](docs/analise/EXECUCAO.md).
 
-## Resultados observados e critérios de sucesso
+## Resultados observados do MVP e critérios de sucesso
 
 | Critério | Resultado registrado no recorte validado |
 |---|---|
@@ -280,10 +302,14 @@ Após os três bootstraps, execute os checks e a regressão com integrações re
 bash scripts/project.sh scripts/check_code.py
 bash scripts/project.sh scripts/run_tests.py --integration-required
 bash scripts/project.sh scripts/check_acceptance.py --report artifacts/tests/report.json
+bash scripts/project.sh scripts/check_expansion_acceptance.py --report artifacts/tests/report.json
 ```
 
-A evidência F10 registra **153 testes obrigatórios, zero ignorados**, em ambiente
-novo. A CI está declarada; a entrega registra reprodução local, sem job remoto
+A evidência histórica F10 registra **153 testes obrigatórios, zero ignorados**, em ambiente
+novo. A expansão tem uma [matriz adicional X01–X17](docs/testes/MATRIZ_EXPANSAO.md),
+com e2e sintético próprio e integração à CI. A [E08](docs/evidencias/E08_ACEITACAO_EXPANSAO.md)
+registra **174 testes aprovados, zero ignorados**, com Spark, Delta, S3 e os dois
+e2e no ambiente local existente. A CI está declarada; a entrega registra reprodução local, sem job remoto
 executado. [Execução dos testes](docs/testes/EXECUCAO_E_CI.md).
 
 Sem credenciais Home Credit, é possível verificar o fluxo completo com fixtures
@@ -293,10 +319,26 @@ inventadas, de RAW até Gold S3:
 bash scripts/project.sh scripts/run_tests.py --suite e2e --integration-required
 ```
 
-Essa alternativa valida o software; a reprodução dos dados reais é a sequência
-principal deste README.
+Essa alternativa executa os dois fluxos: MVP e expansão. A expansão usa cinco
+fontes inventadas de níveis 0/1/2 e publica 18 Delta em um prefixo temporário S3;
+a entrega real usa as 17 fontes e publica 42 Delta. Nenhum acesso ao Kaggle é
+necessário nesses testes. A sequência principal deste README reproduz o MVP;
+os comandos da expansão estão nas evidências E02–E07.
 
 ## Decisões e limites
+
+A expansão para todas as tabelas de treino, novas janelas de 2020 e preparação
+para ML está organizada no [roteiro de expansão](docs/ROTEIRO_EXPANSAO_HOME_CREDIT.md).
+A expansão já tem [17 Silver Delta](docs/evidencias/E03_SILVER_EXPANSAO.md) e
+[duas ABTs retrospectivas](docs/evidencias/E05_ABTS_TEMPORAIS.md): 259.695 casos
+para desenvolvimento e 187.610 para avaliação, com 166 atributos e labels
+separadas. A [auditoria temporal](docs/evidencias/E04_ATRIBUTOS_E_TEMPO.md) mantém
+o uso para ML bloqueado por falta de comprovação de disponibilidade histórica
+e maturação do target. A [análise de público](docs/analise/PUBLICO_EXPANSAO.md) e a
+[publicação S3 ampliada](docs/evidencias/E07_PUBLICACAO_EXPANSAO.md) estão
+concluídas: 42 Delta no prefixo `lakehouse-expansion-v1`, com CURRENT nos dados
+originais, recuperação e consumidor independente validados. Os comandos e resultados das seções de reprodução acima correspondem ao MVP;
+os detalhes da expansão estão nas evidências vinculadas.
 
 Delta fornece transações por tabela. O protocolo da aplicação reúne três Silver
 e duas Gold em manifesto aprovado e só então ativa o ponteiro CURRENT.
@@ -305,8 +347,8 @@ exige consultar CURRENT antes de concluir qual publicação está vigente.
 
 A solução foi validada em um host/driver com escritores cooperantes. Não há
 cluster distribuído, streaming, modelo preditivo, agendador ou recursos AWS
-provisionados. A expansão para todas as tabelas requer novos contratos,
-tratamentos e definições analíticas. Dados reais e derivados permanecem locais;
+provisionados. A expansão usa contratos, tratamentos e definições analíticas próprios,
+documentados em [Silver e ABTs](docs/contratos/EXPANSAO_SILVER_E_ABT.md). Dados reais e derivados permanecem locais;
 a entrega pública preparada utiliza dados sintéticos.
 
 | Referência | Conteúdo |
@@ -315,6 +357,6 @@ a entrega pública preparada utiliza dados sintéticos.
 | [Contratos](docs/contratos/README.md) / [ABT](docs/contratos/ABT.md) | Grãos, chaves, regras e colunas |
 | [Operação S3](docs/objetos/OPERACAO.md) | Serviço, persistência e manutenção |
 | [Lineage](docs/operacao/LINEAGE_E_INVENTARIO.md) | Origem e versões dos resultados |
-| [Matriz de aceitação](docs/testes/MATRIZ_ACEITACAO.md) | Cenários T01–T24 |
+| [Matriz de aceitação](docs/testes/MATRIZ_ACEITACAO.md) / [expansão](docs/testes/MATRIZ_EXPANSAO.md) | Cenários T01–T24 e X01–X17 |
 | [Roteiro e evidências](docs/ROTEIRO_EXECUCAO_LAKEHOUSE.md) | 72 itens aceitos no escopo local |
 | [Guia de estudo](docs/GUIA_ESTUDO_LAKEHOUSE.md) | Leitura guiada da implementação |

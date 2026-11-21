@@ -73,3 +73,13 @@ O export é um pacote de código para validação, não a entrega final do portf
 O notebook original ainda contém outputs históricos e não está liberado para
 publicação direta. F11 deve preparar a entrega e revisar divulgação/direitos.
 [Aceitação F10](../evidencias/F10_ACEITACAO.md).
+
+## Ampliação E08
+
+A suíte atual inclui a expansão e preserva a evidência histórica F10. Consulte
+a [matriz X01–X17](MATRIZ_EXPANSAO.md) e a
+[evidência E08](../evidencias/E08_ACEITACAO_EXPANSAO.md) para os novos números.
+O wrapper e2e executa tanto o MVP quanto a expansão em JVMs separadas, com dados
+inventados e sem Kaggle. O workflow também verifica o gate da expansão e inclui
+os dois relatórios sintéticos entre os artefatos publicados. Não houve execução
+remota da CI nesta etapa.

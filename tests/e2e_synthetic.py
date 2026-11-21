@@ -114,5 +114,9 @@ def run():
 
 
 if __name__=='__main__':
-    result=run();target=ROOT/'artifacts/tests/e2e_result.json';target.parent.mkdir(parents=True,exist_ok=True)
+    result=run()
+    import subprocess
+    subprocess.run(['bash','scripts/objects.sh','tests/expansion_e2e_synthetic.py'],cwd=ROOT,check=True)
+    result['expansion_e2e_passed']=True
+    target=ROOT/'artifacts/tests/e2e_result.json';target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text(json.dumps(result,indent=2)+'\n');print('synthetic_e2e_passed '+json.dumps(result))

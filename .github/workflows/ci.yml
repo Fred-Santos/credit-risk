@@ -40,6 +40,9 @@ jobs:
       - name: Verify all 24 acceptance scenarios
         working-directory: ${{ runner.temp }}/credit-risk-source
         run: bash scripts/project.sh scripts/check_acceptance.py --report artifacts/tests/report.json --output artifacts/tests/acceptance_matrix.json
+      - name: Verify all 17 expansion scenarios
+        working-directory: ${{ runner.temp }}/credit-risk-source
+        run: bash scripts/project.sh scripts/check_expansion_acceptance.py --report artifacts/tests/report.json --output artifacts/expansion/e08/expansion_acceptance.json
       - name: Upload only synthetic acceptance reports
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
@@ -51,6 +54,8 @@ jobs:
             ${{ runner.temp }}/credit-risk-source/artifacts/tests/acceptance_matrix.json
             ${{ runner.temp }}/credit-risk-source/artifacts/tests/code_checks.json
             ${{ runner.temp }}/credit-risk-source/artifacts/tests/access_review.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/expansion/e08/expansion_acceptance.json
+            ${{ runner.temp }}/credit-risk-source/artifacts/expansion/e08/expansion_e2e.json
             ${{ runner.temp }}/credit-risk-source/source_manifest.json
           if-no-files-found: warn
           retention-days: 7

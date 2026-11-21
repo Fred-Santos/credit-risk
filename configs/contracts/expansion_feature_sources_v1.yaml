@@ -1,0 +1,2874 @@
+version: 1
+tables:
+  train_applprev_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    actualdpd_943P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    annuity_853A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    approvaldate_319D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    byoccupationinc_3656910L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    cancelreason_3545846M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    childnum_21L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    creationdate_885D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    credacc_actualbalance_314A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_credlmt_575A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_maxhisbal_375A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_minhisbal_90A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_status_367L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_transactions_402L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credamount_590A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    credtype_587L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    currdebt_94A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateactivated_425D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    district_544M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    downpmt_134A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dtlastpmt_581D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dtlastpmtallstes_3545839D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    education_1138M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    employedfrom_700D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    familystate_726L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    firstnonzeroinstldate_307D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    inittransactioncode_279L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    isbidproduct_390L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    isdebitcard_527L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mainoccupationinc_437A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    maxdpdtolerance_577P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    outstandingdebt_522A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtnum_8L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    postype_4733339M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    profession_152M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    rejectreason_755M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    rejectreasonclient_4145042M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    revolvingaccount_394A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    status_219L:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    tenor_203L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_applprev_2:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    cacccardblochreas_147M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    conts_type_509L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credacc_cards_status_52L:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    num_group2:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_base:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    date_decision:
+      raw_type: string
+      silver_type: date
+      role: population_metadata
+      reason: temporal_split_and_audit_only
+    MONTH:
+      raw_type: bigint
+      silver_type: bigint
+      role: population_metadata
+      reason: temporal_split_and_audit_only
+    WEEK_NUM:
+      raw_type: bigint
+      silver_type: bigint
+      role: population_metadata
+      reason: temporal_split_and_audit_only
+    target:
+      raw_type: bigint
+      silver_type: bigint
+      role: label_only
+      reason: never_predictor
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_credit_bureau_a_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    annualeffectiverate_199L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    annualeffectiverate_63L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    classificationofcontr_13M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    classificationofcontr_400M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractst_545M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    contractst_964M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractsum_5085717L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credlmt_230A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credlmt_935A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofcredend_289D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofcredend_353D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofcredstart_181D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofcredstart_739D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofrealrepmt_138D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    debtoutstand_525A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    debtoverdue_47A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    description_351M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmax_139P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    dpdmax_757P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    dpdmaxdatemonth_442T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmaxdatemonth_89T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmaxdateyear_596T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmaxdateyear_896T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    financialinstitution_382M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    financialinstitution_591M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    instlamount_768A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    instlamount_852A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    interestrate_508L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastupdate_1112D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    lastupdate_388D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    monthlyinstlamount_332A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    monthlyinstlamount_674A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    nominalrate_281L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    nominalrate_498L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    numberofcontrsvalue_258L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofcontrsvalue_358L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofinstls_229L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofinstls_320L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoutstandinstls_520L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoutstandinstls_59L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstlmax_1039L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstlmax_1151L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstlmaxdat_148D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstlmaxdat_641D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstls_725L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofoverdueinstls_834L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    outstandingamount_354A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    outstandingamount_362A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    overdueamount_31A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamount_659A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax2_14A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax2_398A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax2date_1002D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax2date_1142D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax_155A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax_35A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdatemonth_284T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdatemonth_365T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdateyear_2T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdateyear_994T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    periodicityofpmts_1102L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    periodicityofpmts_837L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    prolongationcount_1120L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    prolongationcount_599L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    purposeofcred_426M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    purposeofcred_874M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    refreshdate_3813885D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    residualamount_488A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    residualamount_856A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectrole_182M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectrole_93M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totalamount_6A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totalamount_996A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    totaldebtoverduevalue_178A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totaldebtoverduevalue_718A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totaloutstanddebtvalue_39A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totaloutstanddebtvalue_668A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_credit_bureau_a_2:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    collater_typofvalofguarant_298M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    collater_typofvalofguarant_407M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    collater_valueofguarantee_1124L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    collater_valueofguarantee_876L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    collaterals_typeofguarante_359M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    collaterals_typeofguarante_669M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    num_group2:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    pmts_dpd_1073P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_dpd_303P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_month_158T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmts_month_706T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmts_overdue_1140A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_overdue_1152A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_year_1139T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmts_year_507T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectroles_name_541M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectroles_name_838M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_credit_bureau_b_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    amount_1115A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    classificationofcontr_1114M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractdate_551D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractmaturitydate_151D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractst_516M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    contracttype_653M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credlmt_1052A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credlmt_228A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credlmt_3940954A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credor_3940957M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credquantity_1099L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credquantity_984L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    debtpastduevalue_732A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    debtvalue_227A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    dpd_550P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpd_733P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmax_851P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    dpdmaxdatemonth_804T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dpdmaxdateyear_742T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    installmentamount_644A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    installmentamount_833A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    instlamount_892A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    interesteffectiverate_369L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    interestrateyearly_538L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastupdate_260D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    maxdebtpduevalodued_3940955A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    numberofinstls_810L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmax_950A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdatemonth_494T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    overdueamountmaxdateyear_432T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    periodicityofpmts_997L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    periodicityofpmts_997M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtdaysoverdue_1135P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtmethod_731M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtnumpending_403L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    purposeofcred_722M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    residualamount_1093A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    residualamount_127A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    residualamount_3940956A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectrole_326M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    subjectrole_43M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totalamount_503A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totalamount_881A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_credit_bureau_b_2:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    num_group2:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    pmts_date_1107D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_dpdvalue_108P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmts_pmtsoverdue_635A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_debitcard_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    last180dayaveragebalance_704A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    last180dayturnover_1134A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    last30dayturnover_651A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    openingdate_857D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_deposit_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    amount_416A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    contractenddate_991D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    openingdate_313D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_other_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    amtdebitincoming_4809443A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    amtdebitoutgoing_4809440A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    amtdepositbalance_4809441A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    amtdepositincoming_4809444A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    amtdepositoutgoing_4809442A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_person_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    birth_259D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    birthdate_87D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    childnum_185L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contaddr_district_15M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contaddr_matchlist_1032L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contaddr_smempladdr_334L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contaddr_zipcode_807M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    education_927M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    empl_employedfrom_271D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    empl_employedtotal_800L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    empl_industry_691L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    empladdr_district_926M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    empladdr_zipcode_114M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    familystate_447L:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    gender_992L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    housetype_905L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    housingtype_772L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    incometype_1044T:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    isreference_387L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    language1_981M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mainoccupationinc_384A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    maritalst_703L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    personindex_1023L:
+      raw_type: double
+      silver_type: double
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    persontype_1072L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    persontype_792L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    registaddr_district_1083M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    registaddr_zipcode_184M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    relationshiptoclient_415T:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    relationshiptoclient_642T:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    remitter_829L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    role_1084L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    role_993L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    safeguarantyflag_411L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    sex_738L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    type_25L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_person_2:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    addres_district_368M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    addres_role_871L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    addres_zip_823M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    conts_role_79M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    empls_economicalst_849M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    empls_employedfrom_796D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    empls_employer_name_740M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    num_group2:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    relatedpersons_role_762T:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_static_0:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    actualdpdtolerance_344P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    amtinstpaidbefduel24m_4187115A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    annuity_780A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    annuitynextmonth_57A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    applicationcnt_361L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    applications30d_658L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    applicationscnt_1086L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    applicationscnt_464L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    applicationscnt_629L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    applicationscnt_867L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgdbddpdlast24m_3658932P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgdbddpdlast3m_4187120P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgdbdtollast24m_4525197P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgdpdtolclosure24_3658938P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avginstallast24m_3658937A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avglnamtstart24m_4525187A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgmaxdpdlast9m_3716943P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgoutstandbalancel6m_4187114A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    avgpmtlast12m_4525200A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    bankacctype_710L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    cardtype_51L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt12m_3712952L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt3m_3712950L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt6m_3712949L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_100L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_1022L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_1071L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_1130L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_136L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_157L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_257L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_304L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_360L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_493L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_533L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_887L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    clientscnt_946L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    cntincpaycont9m_3716944L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    cntpmts24_3658933L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    commnoinclast6m_3546845L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    credamount_770A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    credtype_322L:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    currdebt_22A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    currdebtcredtyperange_828A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    datefirstoffer_1144D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    datelastinstal40dpd_247D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    datelastunpaid_3546854D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    daysoverduetolerancedd_3976961L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    deferredmnthsnum_166L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    disbursedcredamount_1113A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    disbursementtype_67L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    downpmt_116A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dtlastpmtallstes_4499206D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    eir_270L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    equalitydataagreement_891L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    equalityempfrom_62L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    firstclxcampaign_1125D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    firstdatedue_489D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    homephncnt_628L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    inittransactionamount_650A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    inittransactioncode_186L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    interestrate_311L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    interestrategrace_34L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    isbidproduct_1095L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    isbidproductrequest_292L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    isdebitcard_729L:
+      raw_type: boolean
+      silver_type: boolean
+      role: selected_retrospective
+      reason: availability_unproven
+    lastactivateddate_801D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastapplicationdate_877D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    lastapprcommoditycat_1041M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastapprcommoditytypec_5251766M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastapprcredamount_781A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastapprdate_640D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastcancelreason_561M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastdelinqdate_224D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastdependentsnum_448L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastotherinc_902A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastotherlnsexpense_631A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectcommoditycat_161M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectcommodtypec_5251769M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectcredamount_222A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectdate_50D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectreason_759M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrejectreasonclient_4145040M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastrepayingdate_696D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    lastst_736L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maininc_215A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    mastercontrelectronic_519L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mastercontrexist_109L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxannuity_159A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxannuity_4075009A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdbddpdlast1m_3658939P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdbddpdtollast12m_3658940P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdbddpdtollast6m_4187119P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdebt4_972A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdfrom6mto36m_3546853P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdinstldate_3546855D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdinstlnum_3546846P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdlast12m_727P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdlast24m_143P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdlast3m_392P:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    maxdpdlast6m_474P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdlast9m_1059P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxdpdtolerance_374P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxinstallast24m_3658928A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxlnamtstart6m_4525199A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxoutstandbalancel12m_4187113A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maxpmtlast3m_4525190A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mindbddpdlast24m_3658935P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mindbdtollast24m_4525191P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    mobilephncnt_593L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    monthsannuity_845L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numactivecreds_622L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    numactivecredschannel_414L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numactiverelcontr_750L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numcontrs3months_479L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numincomingpmts_3546848L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstlallpaidearly3d_817L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstls_657L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstlsallpaid_934L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstlswithdpd10_728L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstlswithdpd5_4187116L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstlswithoutdpd_562L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstmatpaidtearly2d_4499204L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaid_4499208L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly3d_3546850L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly3dest_4493216L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly5d_1087L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly5dest_4493211L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly5dobd_4499205L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearly_338L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidearlyest_4493214L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidlastcontr_4325080L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstpaidlate1d_3546852L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstregularpaid_973L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstregularpaidest_4493210L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinsttopaygr_769L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinsttopaygrest_4493213L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstunpaidmax_3546851L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numinstunpaidmaxest_4493212L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numnotactivated_1143L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numpmtchanneldd_318L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numrejects9m_859L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    opencred_647L:
+      raw_type: boolean
+      silver_type: boolean
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    paytype1st_925L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    paytype_783L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    payvacationpostpone_4187118D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pctinstlsallpaidearl3d_427L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pctinstlsallpaidlat10d_839L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pctinstlsallpaidlate1d_3546856L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pctinstlsallpaidlate4d_3546849L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pctinstlsallpaidlate6d_3546844L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtnum_254L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    posfpd10lastmonth_333P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    posfpd30lastmonth_3976960P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    posfstqpd30lastmonth_3976962P:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    previouscontdistrict_112M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    price_1097A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    sellerplacecnt_915L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    sellerplacescnt_216L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    sumoutstandtotal_3546847A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    sumoutstandtotalest_4493215A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totaldebt_9A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    totalsettled_863A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    totinstallast1m_4525188A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    twobodfilling_608L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    typesuite_864L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    validfrom_1069D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_static_cb_0:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    assignmentdate_238D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    assignmentdate_4527235D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    assignmentdate_4955616D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    birthdate_574D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    contractssum_5085716L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofbirth_337D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    dateofbirth_342D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    days120_123L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    days180_256L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    days30_165L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    days360_512L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    days90_310L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    description_5085714M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    education_1103M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    education_88M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    firstquarter_103L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    for3years_128L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    for3years_504L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    for3years_584L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    formonth_118L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    formonth_206L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    formonth_535L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forquarter_1017L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forquarter_462L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forquarter_634L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    fortoday_1092L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forweek_1077L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forweek_528L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    forweek_601L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    foryear_618L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    foryear_818L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    foryear_850L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    fourthquarter_440L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    maritalst_385M:
+      raw_type: string
+      silver_type: string
+      role: selected_retrospective
+      reason: availability_unproven
+    maritalst_893M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    numberofqueries_373L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmtaverage_3A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtaverage_4527227A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtaverage_4955615A:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtcount_4527229L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtcount_4955617L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtcount_693L:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    pmtscount_423L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    pmtssum_45A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    requesttype_4525192L:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    responsedate_1012D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    responsedate_4527233D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    responsedate_4917613D:
+      raw_type: string
+      silver_type: date
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    riskassesment_302T:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: external_score_training_vintage_and_availability_unknown
+    riskassesment_940T:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: external_score_training_vintage_and_availability_unknown
+    secondquarter_766L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    thirdquarter_1082L:
+      raw_type: double
+      silver_type: double
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_tax_registry_a_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    amount_4527230A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    name_4527232M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    recorddate_4527225D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_tax_registry_b_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    amount_4917619A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    deductiondate_4917603D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    name_4917606M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+  train_tax_registry_c_1:
+    case_id:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    employername_160M:
+      raw_type: string
+      silver_type: string
+      role: silver_only
+      reason: not_selected_in_v1_no_target_driven_selection
+    num_group1:
+      raw_type: bigint
+      silver_type: bigint
+      role: identifier_or_local_index
+      reason: not_person_identity_or_predictor
+    pmtamount_36A:
+      raw_type: double
+      silver_type: double
+      role: selected_retrospective
+      reason: availability_unproven
+    processingdate_168D:
+      raw_type: string
+      silver_type: date
+      role: selected_retrospective
+      reason: availability_unproven
+    _source_file:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _selection_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _run_id:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor
+    _ingested_at_utc:
+      raw_type: string
+      silver_type: string
+      role: lineage_only
+      reason: technical_metadata_not_predictor

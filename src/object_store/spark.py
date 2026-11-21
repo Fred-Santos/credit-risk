@@ -1,13 +1,13 @@
 """Spark/Delta em S3A, com Hadoop/AWS SDK compatíveis com o runtime fixado."""
 from src.object_store.config import load_config,credentials
-from src.utils.spark import load_spark_settings
+from src.utils.spark import session_settings
 
 
-def create_object_spark(repo,*,app_name='credit-risk-objects'):
+def create_object_spark(repo,*,app_name='credit-risk-objects',config_path=None):
     from pyspark.sql import SparkSession
     from delta import configure_spark_with_delta_pip
     config=load_config(repo);secret=credentials(repo,config)
-    settings=load_spark_settings(repo/'configs/spark.yaml')
+    settings=session_settings(repo,config_path)
     builder=SparkSession.builder.master(settings['master']).appName(app_name)
     for name,value in settings.get('config',{}).items():builder=builder.config(name,value)
     options={'spark.jars.ivy':str(repo/'.runtime/ivy'),

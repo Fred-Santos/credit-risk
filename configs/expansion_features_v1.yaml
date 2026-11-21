@@ -1,0 +1,81 @@
+version: 1
+scope: retrospective_features_no_fitted_preprocessing
+numeric_aggregates: [non_null_count, mean, max]
+float_comparison: {absolute: 0.00000001, relative: 0.0000000001}
+missing_history: zero_counts_false_flags_null_values
+predictor_availability: unproven_no_point_in_time_allowlist
+sources:
+  train_static_0:
+    kind: direct
+    columns: [annuity_780A, credamount_770A, maininc_215A, currdebt_22A, totaldebt_9A, numactivecreds_622L, maxdpdlast3m_392P, credtype_322L, isdebitcard_729L, applicationcnt_361L, lastapplicationdate_877D]
+  train_static_cb_0:
+    kind: direct
+    columns: [days30_165L, days90_310L, numberofqueries_373L, education_88M, maritalst_385M, pmtcount_693L, pmtssum_45A, responsedate_1012D]
+  train_person_1:
+    kind: applicant
+    columns: [birth_259D, mainoccupationinc_384A, education_927M, familystate_447L, incometype_1044T, empl_employedfrom_271D]
+  train_applprev_1:
+    kind: history
+    numeric: [credamount_590A, actualdpd_943P, mainoccupationinc_437A]
+    dates: [creationdate_885D, approvaldate_319D]
+    categories: [status_219L]
+  train_applprev_2:
+    kind: history
+    numeric: []
+    dates: []
+    categories: [credacc_cards_status_52L]
+  train_credit_bureau_a_1:
+    kind: history
+    numeric: [totalamount_996A, outstandingamount_362A, dpdmax_139P, dpdmax_757P]
+    dates: [lastupdate_1112D]
+    categories: [contractst_545M]
+  train_credit_bureau_a_2:
+    kind: history
+    numeric: [pmts_dpd_1073P, pmts_dpd_303P, pmts_overdue_1140A, pmts_overdue_1152A]
+    dates: []
+    categories: []
+  train_credit_bureau_b_1:
+    kind: history
+    numeric: [amount_1115A, debtvalue_227A, dpdmax_851P]
+    dates: [lastupdate_260D]
+    categories: [contractst_516M]
+  train_credit_bureau_b_2:
+    kind: history
+    numeric: [pmts_dpdvalue_108P, pmts_pmtsoverdue_635A]
+    dates: [pmts_date_1107D]
+    categories: []
+  train_debitcard_1:
+    kind: history
+    numeric: [last180dayaveragebalance_704A, last30dayturnover_651A]
+    dates: [openingdate_857D]
+    categories: []
+  train_deposit_1:
+    kind: history
+    numeric: [amount_416A]
+    dates: [openingdate_313D, contractenddate_991D]
+    categories: []
+  train_other_1:
+    kind: history
+    numeric: [amtdebitincoming_4809443A, amtdebitoutgoing_4809440A, amtdepositbalance_4809441A]
+    dates: []
+    categories: []
+  train_person_2:
+    kind: history
+    numeric: []
+    dates: [empls_employedfrom_796D]
+    categories: [empls_economicalst_849M]
+  train_tax_registry_a_1:
+    kind: history
+    numeric: [amount_4527230A]
+    dates: [recorddate_4527225D]
+    categories: []
+  train_tax_registry_b_1:
+    kind: history
+    numeric: [amount_4917619A]
+    dates: [deductiondate_4917603D]
+    categories: []
+  train_tax_registry_c_1:
+    kind: history
+    numeric: [pmtamount_36A]
+    dates: [processingdate_168D]
+    categories: []

@@ -1,0 +1,19 @@
+version: 1
+scope: retrospective_full_public_population
+start_inclusive: '2020-01-01'
+end_exclusive: '2020-10-01'
+small_group_min_cases: 500
+small_group_min_target_1: 20
+labels: explicit_descriptive_access_no_model_selection
+history_source: applprev_1__observation_count
+segments: [no_history, one_observation, two_to_five, six_or_more]
+categories:
+  product_code: static_0__credtype_322L
+  applicant_education_code: person_1__education_927M
+selected_numeric:
+  - static_0__annuity_780A
+  - static_0__maininc_215A
+  - other_1__amtdebitincoming_4809443A__mean
+amount_units: transformed_no_currency_claim
+causal_or_operational_default_claim: forbidden
+reserve_use: descriptive_only_no_fitted_preprocessing

@@ -25,3 +25,25 @@ class SparkConfigurationTests(unittest.TestCase):
                         "spark: {master: 'local[1]', app_name: x, config: {spark.x: 1}}"]:
             with self.subTest(content=content), self.assertRaises(ValueError):
                 self.load(content)
+
+
+class SparkProfileSelectionTests(unittest.TestCase):
+    def test_default_and_expansion_profiles_have_distinct_heap(self):
+        root = Path(__file__).resolve().parents[1]
+        self.assertEqual(load_spark_settings(root/'configs/spark.yaml')['config']['spark.driver.memory'], '2g')
+        self.assertEqual(load_spark_settings(root/'configs/spark_expansion.yaml')['config']['spark.driver.memory'], '8g')
+
+    def test_explicit_profile_rejects_existing_context(self):
+        from unittest.mock import patch
+        from src.utils.spark import session_settings
+        with patch('pyspark.SparkContext._active_spark_context', object()):
+            with self.assertRaisesRegex(RuntimeError, 'novo processo'):
+                session_settings(Path('.'), Path('configs/spark_expansion.yaml'))
+
+    def test_explicit_profile_rejects_jvm_from_stopped_context(self):
+        from unittest.mock import patch
+        from src.utils.spark import session_settings
+        with patch('pyspark.SparkContext._active_spark_context', None), \
+                patch('pyspark.SparkContext._gateway', object()):
+            with self.assertRaisesRegex(RuntimeError, 'novo processo'):
+                session_settings(Path('.'), Path('configs/spark_expansion.yaml'))
